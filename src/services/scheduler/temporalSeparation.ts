@@ -1,7 +1,7 @@
 // Core
 import { addHours, isSameDay } from 'date-fns'
 // Types
-import type { ScheduleOccurrence } from '@/types/scheduleOccurrence'
+import type { ScheduleOccurrence } from '../../types/scheduleOccurrence'
 
 export interface TemporalSeparationStatus {
   blocked: boolean

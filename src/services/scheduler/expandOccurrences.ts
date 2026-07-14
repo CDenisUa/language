@@ -1,8 +1,8 @@
 // Core
 import { addDays, format } from 'date-fns'
 // Types
-import type { ScheduleEventRecord } from '@/types/scheduleEvent'
-import type { ScheduleOccurrence } from '@/types/scheduleOccurrence'
+import type { ScheduleEventRecord } from '../../types/scheduleEvent'
+import type { ScheduleOccurrence } from '../../types/scheduleOccurrence'
 
 function combineDateAndTime(date: Date, time: string): Date {
   const [hours, minutes] = time.split(':').map(Number)

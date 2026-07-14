@@ -1,5 +1,5 @@
 // Types
-import type { Language } from '@/types/language'
+import type { Language } from './language'
 
 export interface ScheduleOccurrence {
   id: string

@@ -1,8 +1,8 @@
 // Core
 import { addMinutes } from 'date-fns'
 // Types
-import type { ScheduleOccurrence } from '@/types/scheduleOccurrence'
-import type { UpcomingEventReminder } from '@/types/reminder'
+import type { ScheduleOccurrence } from '../../types/scheduleOccurrence'
+import type { UpcomingEventReminder } from '../../types/reminder'
 
 /**
  * Surfaces labeled schedule occurrences (e.g. the Thursday "Mi Casa, Graz" exchange) that are

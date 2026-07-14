@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .playwright-mcp
+.wrangler
+.dev.vars
 
 # Editor directories and files
 .vscode/*

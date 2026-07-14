@@ -49,5 +49,6 @@ export default defineConfig({
     },
     globals: true,
     setupFiles: ['./src/setupTests.ts'],
+    exclude: ['**/node_modules/**', 'worker/**'],
   },
 })
