@@ -1,0 +1,20 @@
+.separation-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.separation-status--available {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.separation-status--blocked {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}

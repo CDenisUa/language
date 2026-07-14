@@ -12,4 +12,10 @@ describe('getDatabase', () => {
     const tx = db.transaction('words', 'readonly')
     expect(tx.store.indexNames.contains('by-language')).toBe(true)
   })
+
+  it('creates the scheduleEvents store', async () => {
+    const db = await getDatabase()
+
+    expect(db.objectStoreNames.contains('scheduleEvents')).toBe(true)
+  })
 })
