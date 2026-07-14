@@ -2,7 +2,7 @@
 
 _Last updated: 2026-07-14_
 
-This is the daily source of truth for what's actually built. If this disagrees with the code, trust the code and fix this file. For why decisions were made, see [`DECISIONS.md`](./DECISIONS.md).
+This is the daily source of truth for what's actually built. If this disagrees with the code, trust the code and fix this file. For what's next, see [`ROADMAP.md`](./ROADMAP.md); for why decisions were made, see [`DECISIONS.md`](./DECISIONS.md).
 
 ## Done
 
@@ -21,7 +21,7 @@ This is the daily source of truth for what's actually built. If this disagrees w
 
 ## Not built yet
 
-Push notifications, Shadowing Lab, error journal, dashboard analytics, JSON export/import. Additional IndexedDB stores (shadowing clips/sessions, error log, study sessions) will be added incrementally, one per owning task, via schema version bumps in `src/services/db/schema.ts` — not all upfront. See the todo list in-session or `DECISIONS.md` for the shape each of these is expected to take.
+See [`ROADMAP.md`](./ROADMAP.md) for the task-by-task checklist and scope of each remaining piece (Notifications, Shadowing Lab, Error Journal, Dashboard, Export/Import). Additional IndexedDB stores get added incrementally, one per owning task, via schema version bumps in `src/services/db/schema.ts` — not all upfront.
 
 ## Known constraints carried forward
 

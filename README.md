@@ -24,5 +24,8 @@ npm run lint     # oxlint
 
 ## Docs
 
-- [`CURRENT_STATE.md`](./CURRENT_STATE.md) — dated snapshot of what's actually implemented
-- [`DECISIONS.md`](./DECISIONS.md) — architecture decision log (ADR-lite)
+Start a new session by reading these in order:
+
+1. [`ROADMAP.md`](./ROADMAP.md) — task checklist (what's next) and how to resume work
+2. [`CURRENT_STATE.md`](./CURRENT_STATE.md) — dated snapshot of what's actually implemented
+3. [`DECISIONS.md`](./DECISIONS.md) — architecture decision log (ADR-lite), why each choice was made
