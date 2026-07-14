@@ -15,6 +15,12 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      injectManifest: {
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
+      },
       includeAssets: ['icons/apple-touch-icon.png'],
       manifest: {
         id: '/sprachlabor',
@@ -32,11 +38,6 @@ export default defineConfig({
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
           { src: 'icons/icon-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
-      },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
-        navigateFallback: 'index.html',
-        cleanupOutdatedCaches: true,
       },
     }),
   ],
