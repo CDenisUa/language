@@ -255,3 +255,66 @@ The "English unblocked" reminder (`shouldFireUnblockNudge()`) is detected as a b
 `public/icons/icon-192.png`, `icon-512.png`, and `apple-touch-icon.png` are direct resizes of a user-provided 1254×1254 source icon. `icon-512-maskable.png` is *not* a direct resize — the source is scaled to 80% and centered on an opaque `#0b0b0f` (the app's own `theme_color`/`background_color`) 512×512 canvas, per the maskable safe-zone rule in the global PWA guidelines.
 
 **Why:** The source artwork's content (book + language badges) runs close to its own edges, and its corners are baked-in solid black rather than transparent — using it as-is for the maskable icon risked Android's shape mask (circle/squircle) cropping into the badges. Filling the safe-zone margin with the app's existing theme background color (rather than sampling a color from the artwork's gradient) keeps the icon visually consistent with the rest of the PWA's dark theme instead of introducing an arbitrary new color.
+
+---
+
+### 2026-07-14 — Web Push worker shares scheduling logic with the client via direct import, not duplication or a synced precomputed window
+**Status:** accepted
+
+`worker/` (Task 5b) imports `expandOccurrences`, `getEnglishSeparationStatus`, `getUpcomingEventReminders`, and `shouldFireUnblockNudge` from `src/services/scheduler/` and `src/services/reminders/` directly via relative path — the same files the client uses, not a copy. The client syncs only its raw `ScheduleEventRecord[]` to the Worker's D1 database (`PUT /api/schedule`), and the Worker's cron recomputes "is English blocked / is there a labeled event soon" fresh on every 5-minute tick.
+
+**Why:** User's explicit choice when asked directly, over the alternative of having the client precompute a rolling window of concrete (timestamp, message) reminders and push that to the Worker. Reusing the exact same already-tested pure functions means there's exactly one implementation of the scheduling rules to keep correct, and the Worker's view of "what's due" is never stale from an out-of-date precomputed window — it's recomputed from the current raw schedule on every tick. This is also why these particular files were converted from `@/...` alias imports to relative imports (see the entry immediately below) — they needed to be portable to a second, independent bundler.
+
+---
+
+### 2026-07-14 — Shared scheduler/reminder modules use relative imports, not the `@/` alias
+**Status:** accepted
+
+`src/types/scheduleEvent.ts`, `scheduleOccurrence.ts`, `src/services/scheduler/expandOccurrences.ts`, `temporalSeparation.ts`, and `src/services/reminders/getUpcomingEventReminders.ts` import their own dependencies (`Language`, `ScheduleEventRecord`, etc.) via relative paths (`../../types/scheduleEvent`) instead of the app's `@/` Vite alias.
+
+**Why:** These specific files are now a "shared kernel" imported by two independent bundlers — Vite (the app) and Wrangler/esbuild (`worker/`, Task 5b) — each with its own tsconfig. Relying on both configuring an identical `@/` alias would be a hidden coupling that silently breaks if either build tool's config changes; relative imports have no such dependency and work identically in both.
+
+---
+
+### 2026-07-14 — Workers have no local timezone; `zonedNow()` compensates so the reused client logic stays correct for Graz
+**Status:** accepted
+
+`worker/src/zonedNow.ts` produces a `Date` whose local-time getters (`getHours`, `getDay`, etc.) read as wall-clock time in `Europe/Vienna`, by round-tripping through `toLocaleString('en-US', { timeZone })`. The cron handler (`worker/src/index.ts`) feeds this into `expandOccurrences`/`getEnglishSeparationStatus` instead of a plain `new Date()`.
+
+**Why:** Cloudflare Workers have no concept of a "local machine timezone" — `Date`'s local-time getters always behave as UTC there. The client's scheduler logic is written against those same getters and is correct in the browser only because the browser's local timezone happens to match the user (Graz, Austria). Reusing that logic unchanged in the Worker (per the decision above) without this compensation would silently compute occurrence times shifted by the UTC offset (2h in summer CEST, 1h in winter CET) — a wrong-but-no-error bug. Verified with `zonedNow.test.ts` against both DST cases and a UTC day-boundary crossing.
+
+---
+
+### 2026-07-14 — Web Push sending uses `@block65/webcrypto-web-push`, not the `web-push` npm package
+**Status:** accepted
+
+`worker/src/push.ts` builds and sends Web Push payloads via `@block65/webcrypto-web-push`, which implements VAPID signing and payload encryption entirely on the standard `crypto.subtle` (Web Crypto) API.
+
+**Why:** The popular `web-push` package depends on Node's `crypto` module internally; Cloudflare Workers' `nodejs_compat` layer doesn't guarantee full parity with every Node crypto API, and getting VAPID/encryption subtly wrong fails silently (a push that never arrives, not a thrown error). `@block65/webcrypto-web-push` explicitly targets Workers/Deno/Bun alongside Node using only standard WebCrypto, avoiding that whole class of risk. Confirmed via `wrangler deploy --dry-run` that the bundle has no unresolved Node built-ins.
+
+---
+
+### 2026-07-14 — Custom service worker (`injectManifest`) replaces `vite-plugin-pwa`'s `generateSW` strategy
+**Status:** accepted
+
+`src/sw.ts` is now a hand-written service worker (workbox-precaching + workbox-routing for the precache/navigation-fallback behavior `generateSW` used to generate automatically), built via `vite-plugin-pwa`'s `injectManifest` strategy instead of `generateSW`.
+
+**Why:** Receiving a Web Push message and turning it into a visible system notification requires a `push` event listener (and a `notificationclick` handler to focus/open the app) inside the service worker itself. `generateSW` only ever produces a Workbox SW from config — it has no injection point for custom event listeners — so supporting Task 5b required this switch. The precaching/offline-fallback behavior is preserved manually (`precacheAndRoute`, `NavigationRoute` + `createHandlerBoundToURL('index.html')`) to match what `generateSW`'s config (`navigateFallback: 'index.html'`, `cleanupOutdatedCaches: true`) was doing before.
+
+---
+
+### 2026-07-14 — Push subscription/schedule sync happens once per app load, not only after Scheduler edits
+**Status:** accepted
+
+`usePushScheduleSync()` re-PUTs the current `ScheduleEventRecord[]` to the Worker's `/api/schedule` route once per app session, the moment the schedule finishes loading from IndexedDB and an active push subscription exists — not tied to the Scheduler page's save/delete handlers.
+
+**Why:** User's explicit choice when asked directly, over syncing only from the Scheduler's edit handlers. Syncing on every app load is self-healing (a previously failed sync gets retried the next time the app opens) without needing any retry/queue logic, at the cost of a sync call the schedule hasn't actually changed — acceptable since the payload is small and infrequent (once per session, not per keystroke).
+
+---
+
+### 2026-07-14 — Browser notification-permission grant and live push delivery are outside this environment's testing reach
+**Status:** accepted
+
+Task 5b's automated verification covers: the Worker's HTTP routes and D1 persistence (confirmed via direct `curl` requests with real CORS headers), the cron/reminder logic (unit-tested pure functions, reused as-is), the `zonedNow()` timezone compensation (unit-tested), and service worker registration in a real production build (`vite preview`). It does *not* cover an actual granted `Notification.requestPermission()` call or a real push notification arriving on a device — confirmed by direct test that `Notification.requestPermission()` hangs indefinitely in this environment's automated browser (no permission-grant capability available here), rather than resolving either way.
+
+**Why:** This is a hard platform boundary, not a gap in test coverage that more effort would close — granting a notification permission is deliberately gated behind a real user gesture in every browser, and no automation hook for it was available in this session's toolset. The user needs to manually enable notifications from the Settings page on an actual device/browser to confirm the last mile of the pipeline.

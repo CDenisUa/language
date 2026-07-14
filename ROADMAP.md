@@ -20,9 +20,7 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 - [x] **Task 3 — Vocabulary module**: FSRS review queue (`ts-fsrs`), on-demand TTS pronunciation, Austrian-variant tagging + filter.
 - [x] **Task 4 — Smart Scheduler**: `scheduleEvents` store (recurring rules + skip/add exceptions), `react-big-calendar` week view, `getEnglishSeparationStatus()` (pure temporal-separation logic — blocks English until 3h after German ends). Status is only *displayed* on the Scheduler page so far, not enforced elsewhere.
 - [x] **Task 5a — In-app reminder banner**: `ReminderBanner` nudges English-unblocked (blocked->available transition) and upcoming/ongoing labeled schedule occurrences (e.g. "Mi Casa, Graz"), dismissible and persisted per-day. Notification-only — never gates Vocabulary/Shadowing (open question from Task 4 resolved, see `DECISIONS.md`).
-- [ ] **Task 5b — Web Push (VAPID)**
-  - Push subscription flow + a send-side endpoint (likely a Cloudflare Worker, per the hosting decision in `DECISIONS.md`), for reminders to arrive when the app isn't open.
-  - iOS only supports push for home-screen-installed PWAs (iOS 16.4+), after an explicit user gesture — the Task 5a in-app banner remains the fallback everywhere else.
+- [x] **Task 5b — Web Push (VAPID)**: standalone `worker/` (Cloudflare Worker + D1, `sprachlabor-push`) reuses the app's own `expandOccurrences`/`getEnglishSeparationStatus`/`getUpcomingEventReminders`/`shouldFireUnblockNudge` directly (relative import, no logic duplication) on a 5-minute cron, sending via `@block65/webcrypto-web-push`. Client subscribes via `usePushSubscription`/Settings toggle and syncs schedule events on app load (`usePushScheduleSync`). Not independently verified end-to-end here — the browser notification-permission grant needs a real device/user gesture; see `DECISIONS.md`.
 - [ ] **Task 6 — Shadowing Lab**
   - Personal audio upload only (no RSS/URL fetching — copyright decision already made, see `DECISIONS.md`).
   - TTS-only pronunciation-base reminders on iOS/Safari; Chrome/Android also gets `SpeechRecognition`-based repetition scoring.
@@ -41,5 +39,5 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 ## Deferred / not scheduled
 
 - **CEFR-level text parser** (paste an article → auto-flag C1–C2 vocabulary) — explicitly out of scope until the core daily-use loop (Vocabulary/Scheduler/Shadowing) is validated. When built, uses local frequency/CEFR wordlists, not a cloud LLM call.
-- **Cross-device sync** (e.g. Cloudflare Workers + D1) — app is local-first for now; the data layer's id/createdAt/updatedAt convention is already designed so a sync layer can be added without a rewrite.
+- **Cross-device sync of app data** (words, review history, etc.) — still not built. Task 5b's `worker/` D1 database only holds push subscriptions and a schedule-events snapshot for reminder-scheduling purposes, not a general sync layer; the data layer's id/createdAt/updatedAt convention is still what a future full sync layer would build on.
 - **CI auto-deploy on push to `main`** — currently manual `wrangler pages deploy`. Needs either Cloudflare's native Git integration (dashboard-connected) or a narrowly-scoped Pages-only API token; the only credential available so far is a broad account-wide OAuth token that's deliberately not being used for this.
