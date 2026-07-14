@@ -15,7 +15,7 @@
     {
       "binding": "DB",
       "database_name": "sprachlabor-push",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "3289e336-2957-4d08-849e-17ddce1bf757",
       "migrations_dir": "migrations"
     }
   ],
