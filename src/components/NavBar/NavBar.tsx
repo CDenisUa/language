@@ -2,35 +2,40 @@
 import { NavLink } from 'react-router-dom'
 // Hooks
 import { useLanguageStore } from '@/hooks/useLanguageStore'
+import { useTranslation } from '@/i18n/useTranslation'
 // Types
 import type { Language } from '@/types/language'
 import { LANGUAGE_LABELS } from '@/types/language'
+import type { Locale } from '@/types/locale'
+import { LOCALE_LABELS } from '@/types/locale'
 // Consts
 import { ROUTES } from '@/consts/routes'
 // Styles
 import './NavBar.css'
 
-const NAV_ITEMS: Array<{ to: string; label: string }> = [
-  { to: ROUTES.dashboard, label: 'Dashboard' },
-  { to: ROUTES.vocabulary, label: 'Vocabulary' },
-  { to: ROUTES.scheduler, label: 'Scheduler' },
-  { to: ROUTES.shadowing, label: 'Shadowing' },
-  { to: ROUTES.errorJournal, label: 'Errors' },
-  { to: ROUTES.settings, label: 'Settings' },
-]
-
 const LANGUAGES: Language[] = ['de', 'en']
+const LOCALES: Locale[] = ['uk', 'ru']
 
 function NavBar() {
   const activeLanguage = useLanguageStore((state) => state.activeLanguage)
   const setActiveLanguage = useLanguageStore((state) => state.setActiveLanguage)
+  const { t, locale, setLocale } = useTranslation()
+
+  const navItems: Array<{ to: string; label: string }> = [
+    { to: ROUTES.dashboard, label: t.nav.dashboard },
+    { to: ROUTES.vocabulary, label: t.nav.vocabulary },
+    { to: ROUTES.scheduler, label: t.nav.scheduler },
+    { to: ROUTES.shadowing, label: t.nav.shadowing },
+    { to: ROUTES.errorJournal, label: t.nav.errorJournal },
+    { to: ROUTES.settings, label: t.nav.settings },
+  ]
 
   return (
     <header className="nav-bar">
       <div className="nav-bar__inner">
         <span className="nav-bar__brand">Sprachlabor</span>
         <nav className="nav-bar__links">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -43,7 +48,27 @@ function NavBar() {
             </NavLink>
           ))}
         </nav>
-        <div className="nav-bar__language-switch" role="group" aria-label="Active language">
+        <div className="nav-bar__locale-switch" role="group" aria-label={t.localeSwitch.ariaLabel}>
+          {LOCALES.map((localeOption) => (
+            <button
+              key={localeOption}
+              type="button"
+              className={
+                localeOption === locale
+                  ? 'nav-bar__locale-button nav-bar__locale-button--active'
+                  : 'nav-bar__locale-button'
+              }
+              onClick={() => setLocale(localeOption)}
+            >
+              {LOCALE_LABELS[localeOption]}
+            </button>
+          ))}
+        </div>
+        <div
+          className="nav-bar__language-switch"
+          role="group"
+          aria-label={t.languageSwitch.ariaLabel}
+        >
           {LANGUAGES.map((language) => (
             <button
               key={language}

@@ -1,8 +1,13 @@
+// Hooks
+import { useTranslation } from '@/i18n/useTranslation'
+
 function Shadowing() {
+  const { t } = useTranslation()
+
   return (
     <section>
-      <h1>Shadowing Lab</h1>
-      <p>Personal audio upload, TTS articulation reminders, and playback will live here (Task 6).</p>
+      <h1>{t.pages.shadowing.title}</h1>
+      <p>{t.pages.shadowing.description}</p>
     </section>
   )
 }

@@ -1,8 +1,13 @@
+// Hooks
+import { useTranslation } from '@/i18n/useTranslation'
+
 function Dashboard() {
+  const { t } = useTranslation()
+
   return (
     <section>
-      <h1>Dashboard</h1>
-      <p>Hours per language, 70/30 balance, and error frequency will live here (Task 8).</p>
+      <h1>{t.pages.dashboard.title}</h1>
+      <p>{t.pages.dashboard.description}</p>
     </section>
   )
 }
