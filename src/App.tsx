@@ -2,6 +2,7 @@
 import { Route, Routes } from 'react-router-dom'
 // Components
 import NavBar from '@/components/NavBar/NavBar'
+import ReminderBanner from '@/components/ReminderBanner/ReminderBanner'
 import ChepioTechFooter from '@/components/ChepioTechFooter/ChepioTechFooter'
 // Hooks
 import { useLanguageStore } from '@/hooks/useLanguageStore'
@@ -21,6 +22,7 @@ function App() {
   return (
     <div data-language={activeLanguage} className="app-shell">
       <NavBar />
+      <ReminderBanner />
       <main className="app-shell__content">
         <Routes>
           <Route path={ROUTES.dashboard} element={<Dashboard />} />

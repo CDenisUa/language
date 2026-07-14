@@ -196,8 +196,62 @@ A newly-added word gets `fsrs: createNewCard()`, whose `due` is "now" — so it 
 ---
 
 ### 2026-07-14 — Scheduler computes the separation status but doesn't act on it yet
-**Status:** accepted
+**Status:** superseded by the decision below
 
 `getEnglishSeparationStatus()` and `SeparationStatus` only surface the blocked/available state on the Scheduler page itself. No other page (Vocabulary, Shadowing) checks it, and nothing pushes a notification about it yet.
 
 **Why:** Matches the roadmap split — Task 4 (Scheduler) owns the calendar and the pure blocking logic; Task 5 (Notifications) is where that logic gets *consumed* (push reminders, and potentially gating the Vocabulary/Shadowing review flows for English while blocked). Wiring enforcement into other pages now would be scope creep ahead of deciding, in Task 5, what "blocked" should actually do in the UI beyond a status readout.
+
+---
+
+### 2026-07-14 — English-blocked status stays a notification-only nudge, never a gate
+**Status:** accepted
+
+Resolves the open question carried from Task 4. Being "blocked" (per `getEnglishSeparationStatus()`) never disables or hides anything in Vocabulary or Shadowing — it only drives the in-app reminder banner (Task 5a). Studying English during the blocked window remains fully possible; the app nudges, it doesn't enforce.
+
+**Why:** User's explicit choice when asked directly. A hard or soft gate risks a dead-end if the schedule data is ever wrong or missing an exception (e.g. a cancelled class), and self-discipline around the separation is the actual goal — friction from the app getting in the way when the calendar is stale is a worse failure mode than an occasional missed nudge.
+
+---
+
+### 2026-07-14 — Task 5 split: in-app reminder banner first, Web Push deferred to Task 5b
+**Status:** accepted
+
+Task 5 ("Notifications") is split into 5a (in-app reminder banner, built now) and 5b (Web Push/VAPID, deferred). 5a ships a `ReminderBanner` that nudges on the English-unblock transition and on upcoming/ongoing labeled schedule occurrences, entirely client-side — no push subscriptions, no VAPID keys, no send-side endpoint.
+
+**Why:** User's explicit choice when asked directly. Web Push needs a subscription-storage + send-side piece (most likely a Cloudflare Worker, consistent with the hosting decision above) that's a meaningfully separate chunk of work from the reminder *logic* itself; validating the reminder content/timing with the simpler in-app banner first avoids building the push infrastructure before knowing the nudges are the right ones.
+
+---
+
+### 2026-07-14 — Reminder banner is generic over any labeled occurrence, not hardcoded to "Mi Casa, Graz"
+**Status:** accepted
+
+`getUpcomingEventReminders()` (`src/services/reminders/`) reminds about *any* schedule occurrence (recurring or one-off exception) that has a `label` and is starting within `UPCOMING_EVENT_LEAD_MINUTES` or already in progress — not a special case for the Thursday language exchange specifically.
+
+**Why:** The roadmap named "Mi Casa, Graz" as the motivating example, but hardcoding a label string would silently stop working the moment that event's wording changes, and wouldn't cover any future labeled event the user adds. The generic rule covers the named case for free.
+
+---
+
+### 2026-07-14 — English-unblock nudge only fires on a live transition, not retroactively
+**Status:** accepted
+
+The "English unblocked" reminder (`shouldFireUnblockNudge()`) is detected as a blocked->available transition while the app is open (a `now`-driven `useEffect` comparing consecutive `separationStatus.blocked` values, ticking every `REMINDER_TICK_INTERVAL_MS`). If the user opens the app *after* the transition already happened, no nudge appears for it.
+
+**Why:** This is the correct scope for an in-app-only fallback (Task 5a) — there's no backend to remember "the transition happened at 16:00 and nobody saw it" and replay that later. Task 5b's Web Push is what actually needs to reach the user regardless of whether the app is open; this gap is exactly why Web Push isn't deferred forever, just deferred past this task.
+
+---
+
+### 2026-07-14 — Reminder dismissals persist in `localStorage`, keyed by reminder id
+**Status:** accepted
+
+`useReminders()` stores dismissed reminder ids in `localStorage` (`DISMISSED_REMINDERS_STORAGE_KEY`), not IndexedDB. The English-unblock nudge's id embeds the date (`english-unblocked:yyyy-MM-dd`) so it can fire again the next day; an upcoming-event reminder's id is the occurrence id, which is already date-scoped for exceptions and day-scoped for recurring events.
+
+**Why:** This is UI-preference-shaped data (aligned with the interface language, not app content), not a durable record worth a full IndexedDB repository/schema bump — same category as `useLocaleStore`'s persisted zustand store, which also uses `localStorage`.
+
+---
+
+### 2026-07-14 — PWA icons regenerated from a single source artwork; maskable variant is a solid-background safe-zone crop, not the raw source
+**Status:** accepted
+
+`public/icons/icon-192.png`, `icon-512.png`, and `apple-touch-icon.png` are direct resizes of a user-provided 1254×1254 source icon. `icon-512-maskable.png` is *not* a direct resize — the source is scaled to 80% and centered on an opaque `#0b0b0f` (the app's own `theme_color`/`background_color`) 512×512 canvas, per the maskable safe-zone rule in the global PWA guidelines.
+
+**Why:** The source artwork's content (book + language badges) runs close to its own edges, and its corners are baked-in solid black rather than transparent — using it as-is for the maskable icon risked Android's shape mask (circle/squircle) cropping into the badges. Filling the safe-zone margin with the app's existing theme background color (rather than sampling a color from the artwork's gradient) keeps the icon visually consistent with the rest of the PWA's dark theme instead of introducing an arbitrary new color.

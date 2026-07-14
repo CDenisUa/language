@@ -78,4 +78,9 @@ export interface TranslationDictionary {
     daySat: string
     daySun: string
   }
+  reminders: {
+    englishUnblocked: string
+    upcomingEvent: string
+    dismiss: string
+  }
 }

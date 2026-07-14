@@ -19,10 +19,10 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 - [x] **Task 2 — IndexedDB data layer**: `idb` wrapper (`getDatabase`), generic `createRepository()` factory (id/createdAt/updatedAt stamping), `words` store.
 - [x] **Task 3 — Vocabulary module**: FSRS review queue (`ts-fsrs`), on-demand TTS pronunciation, Austrian-variant tagging + filter.
 - [x] **Task 4 — Smart Scheduler**: `scheduleEvents` store (recurring rules + skip/add exceptions), `react-big-calendar` week view, `getEnglishSeparationStatus()` (pure temporal-separation logic — blocks English until 3h after German ends). Status is only *displayed* on the Scheduler page so far, not enforced elsewhere.
-- [ ] **Task 5 — Notifications**
-  - Web Push (VAPID) + an in-app fallback banner (iOS only supports push for home-screen-installed PWAs, iOS 16.4+, after an explicit user gesture).
-  - Reminder content built on top of Task 4's `getEnglishSeparationStatus()` and schedule events — e.g. a nudge when English unblocks, and a Thursday-evening reminder for the "Mi Casa, Graz" language-exchange exception.
-  - Open question carried from Task 4: should being "blocked" actually gate the Vocabulary/Shadowing review flows, or stay a notification-only nudge? Decide here.
+- [x] **Task 5a — In-app reminder banner**: `ReminderBanner` nudges English-unblocked (blocked->available transition) and upcoming/ongoing labeled schedule occurrences (e.g. "Mi Casa, Graz"), dismissible and persisted per-day. Notification-only — never gates Vocabulary/Shadowing (open question from Task 4 resolved, see `DECISIONS.md`).
+- [ ] **Task 5b — Web Push (VAPID)**
+  - Push subscription flow + a send-side endpoint (likely a Cloudflare Worker, per the hosting decision in `DECISIONS.md`), for reminders to arrive when the app isn't open.
+  - iOS only supports push for home-screen-installed PWAs (iOS 16.4+), after an explicit user gesture — the Task 5a in-app banner remains the fallback everywhere else.
 - [ ] **Task 6 — Shadowing Lab**
   - Personal audio upload only (no RSS/URL fetching — copyright decision already made, see `DECISIONS.md`).
   - TTS-only pronunciation-base reminders on iOS/Safari; Chrome/Android also gets `SpeechRecognition`-based repetition scoring.

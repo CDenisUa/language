@@ -99,6 +99,11 @@ const uk = {
     daySat: 'Сб',
     daySun: 'Нд',
   },
+  reminders: {
+    englishUnblocked: 'Англійська щойно розблокувалась — можна починати',
+    upcomingEvent: 'Скоро:',
+    dismiss: 'Закрити нагадування',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -194,6 +199,11 @@ const ru = {
     dayFri: 'Пт',
     daySat: 'Сб',
     daySun: 'Вс',
+  },
+  reminders: {
+    englishUnblocked: 'Английский только что разблокировался — можно начинать',
+    upcomingEvent: 'Скоро:',
+    dismiss: 'Закрыть напоминание',
   },
 } satisfies TranslationDictionary
 
