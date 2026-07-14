@@ -1,8 +1,13 @@
+// Hooks
+import { useTranslation } from '@/i18n/useTranslation'
+
 function Scheduler() {
+  const { t } = useTranslation()
+
   return (
     <section>
-      <h1>Scheduler</h1>
-      <p>Recurring course blocks, exceptions, and temporal separation logic will live here (Task 4).</p>
+      <h1>{t.pages.scheduler.title}</h1>
+      <p>{t.pages.scheduler.description}</p>
     </section>
   )
 }

@@ -102,3 +102,21 @@ Notifications (Task 5) use standard Web Push (VAPID). Because iOS only supports 
 Settings (Task 9) includes manual JSON export/import of the full local database.
 
 **Why:** Direct consequence of being local-first with no sync/backend yet — IndexedDB data has no other durability guarantee if browser storage is cleared.
+
+---
+
+### 2026-07-14 — UI localization is Ukrainian/Russian, separate from card translations
+**Status:** accepted
+
+Interface chrome (nav labels, page headings, ARIA labels) switches between Ukrainian (default) and Russian via a dedicated `useLocaleStore` + `useTranslation()`, independent of the DE/EN study-language switch (`useLanguageStore`). Vocabulary card translations (what language the "back" of a word card is shown in) were explicitly scoped out of this — that's a separate decision to make when Task 3 (Vocabulary) is built.
+
+**Why:** User's native/understood languages are Ukrainian and Russian; the app's own UI text was previously hardcoded in English, which doesn't belong to either their study languages (DE/EN) or their native languages. Keeping `Locale` (uk/ru, interface) and `Language` (de/en, study target) as separate types/stores avoids conflating "what am I reading the UI in" with "what am I studying right now."
+
+---
+
+### 2026-07-14 — Test-env `localStorage` polyfill required
+**Status:** accepted
+
+`src/setupTests.ts` overrides `globalThis.localStorage` with a minimal in-memory `Storage` implementation before tests run.
+
+**Why:** In this Node version (25.x), Node's own built-in `localStorage` (Web Storage API) global shadows jsdom's window-scoped one and is non-functional without a `--localstorage-file` path, causing `storage.setItem is not a function` inside zustand's `persist` middleware. This is an environment quirk, not an app bug — remove this workaround if a future Node/vitest/jsdom upgrade resolves the conflict, but check `useLocaleStore.test.ts` still passes first.

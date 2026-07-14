@@ -1,8 +1,13 @@
+// Hooks
+import { useTranslation } from '@/i18n/useTranslation'
+
 function Settings() {
+  const { t } = useTranslation()
+
   return (
     <section>
-      <h1>Settings</h1>
-      <p>Study-balance target, notification preferences, and JSON export/import will live here.</p>
+      <h1>{t.pages.settings.title}</h1>
+      <p>{t.pages.settings.description}</p>
     </section>
   )
 }

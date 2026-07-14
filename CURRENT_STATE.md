@@ -10,8 +10,10 @@ This is the daily source of truth for what's actually built. If this disagrees w
 - **Routing shell** — six placeholder pages wired up via `react-router-dom`: Dashboard, Vocabulary, Scheduler, Shadowing, Error Journal, Settings.
 - **Two-language theming** — `zustand` store (`useLanguageStore`) drives a `data-language` attribute on the app root; CSS custom property `--color-accent` switches red (German) / blue (English) app-wide.
 - **Branding** — `ChepioTechFooter` component wired in, per global project convention.
-- **Test infra** — Vitest + Testing Library + jsdom configured, one smoke test passing (`src/App.test.tsx`).
-- **Verified in-browser** — dev server, production build, and language-switch behavior manually checked with Playwright.
+- **UI localization (i18n)** — interface text switches between Ukrainian (default) and Russian via `useLocaleStore` (zustand, persisted to `localStorage`), independent of the DE/EN study-language switch. Translation dictionaries live in `src/i18n/translations.ts`; `useTranslation()` is the access hook. Card content (word translations) is a separate, not-yet-built concern.
+- **Test infra** — Vitest + Testing Library + jsdom configured (with a `localStorage` polyfill in `src/setupTests.ts` — Node's own built-in Web Storage shadows jsdom's in this Node version and isn't functional by default). 5 tests passing across 3 files.
+- **Verified in-browser** — dev server, production build, and DE/EN + UA/RU switch behavior manually checked with Playwright.
+- **Deployed to GitHub** — `git@github.com:CDenisUa/language.git`, `main` branch.
 
 ## Not built yet
 
