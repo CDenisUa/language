@@ -25,8 +25,7 @@ const uk = {
     },
     vocabulary: {
       title: 'Словник',
-      description:
-        "Картки на основі FSRS з фільтром австрійських варіантів з'являться тут (Задача 3).",
+      description: 'Картки на основі FSRS з підтримкою австрійських варіантів.',
     },
     scheduler: {
       title: 'Розклад',
@@ -48,6 +47,30 @@ const uk = {
       description:
         "Цільовий баланс навчання, налаштування сповіщень та експорт/імпорт JSON з'являться тут.",
     },
+  },
+  vocabulary: {
+    addWord: 'Додати слово',
+    editWord: 'Редагувати слово',
+    front: 'Слово',
+    back: 'Переклад',
+    example: 'Приклад речення',
+    grammar: 'Граматична примітка',
+    austrianVariant: 'Австрійський варіант',
+    save: 'Зберегти',
+    cancel: 'Скасувати',
+    edit: 'Редагувати',
+    delete: 'Видалити',
+    listen: 'Прослухати',
+    reviewHeading: 'Повторення',
+    showAnswer: 'Показати відповідь',
+    noDueWords: 'Зараз нічого повторювати',
+    ratingAgain: 'Знову',
+    ratingHard: 'Важко',
+    ratingGood: 'Добре',
+    ratingEasy: 'Легко',
+    wordListHeading: 'Усі слова',
+    austrianOnlyFilter: 'Тільки з австрійським варіантом',
+    emptyWordList: 'Поки немає жодного слова — додайте перше.',
   },
 } satisfies TranslationDictionary
 
@@ -73,8 +96,7 @@ const ru = {
     },
     vocabulary: {
       title: 'Словарь',
-      description:
-        'Карточки на основе FSRS с фильтром австрийских вариантов появятся здесь (Задача 3).',
+      description: 'Карточки на основе FSRS с поддержкой австрийских вариантов.',
     },
     scheduler: {
       title: 'Расписание',
@@ -94,6 +116,30 @@ const ru = {
       title: 'Настройки',
       description: 'Целевой баланс обучения, настройки уведомлений и экспорт/импорт JSON появятся здесь.',
     },
+  },
+  vocabulary: {
+    addWord: 'Добавить слово',
+    editWord: 'Редактировать слово',
+    front: 'Слово',
+    back: 'Перевод',
+    example: 'Пример предложения',
+    grammar: 'Грамматическая заметка',
+    austrianVariant: 'Австрийский вариант',
+    save: 'Сохранить',
+    cancel: 'Отмена',
+    edit: 'Редактировать',
+    delete: 'Удалить',
+    listen: 'Прослушать',
+    reviewHeading: 'Повторение',
+    showAnswer: 'Показать ответ',
+    noDueWords: 'Сейчас нечего повторять',
+    ratingAgain: 'Снова',
+    ratingHard: 'Трудно',
+    ratingGood: 'Хорошо',
+    ratingEasy: 'Легко',
+    wordListHeading: 'Все слова',
+    austrianOnlyFilter: 'Только с австрийским вариантом',
+    emptyWordList: 'Пока нет ни одного слова — добавьте первое.',
   },
 } satisfies TranslationDictionary
 
