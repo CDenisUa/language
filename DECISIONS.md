@@ -147,3 +147,12 @@ Task 2 (data-layer infra) ships exactly one concrete object store — `words` �
 `createRepository(storeName)` (`src/services/db/createRepository.ts`) gives every object store the same `getAll/getById/put/remove/clear/save` shape. `save()` generates a `crypto.randomUUID()` id when absent and stamps `createdAt`/`updatedAt`, enforced via a `{ id, createdAt, updatedAt }` type constraint on every store's value.
 
 **Why:** This isn't speculative — every store planned in the roadmap (words, schedule events, shadowing sessions, error log, study sessions) needs identical CRUD plus the id/timestamp convention already committed to in the local-first/sync-deferred decision above. One factory avoids re-implementing that stamping logic per store as each later task adds its own.
+
+---
+
+### 2026-07-14 — Cloudflare Pages over Vercel; manual `wrangler` deploys for now
+**Status:** accepted
+
+Hosting is Cloudflare Pages (project `sprachlabor`, production branch `main`, live at https://sprachlabor.pages.dev), not Vercel. Deploys are run manually via `wrangler pages deploy dist --project-name=sprachlabor` after a merge to `main` — there's no CI/auto-deploy wired up yet.
+
+**Why:** Cloudflare Pages serves static assets + the service worker without needing a `vercel.json` rewrite for cache headers (handled here by `public/_headers`). More importantly, it matches the local-first-with-sync-deferred decision above: if/when a sync backend is built, Cloudflare Workers + D1 sit on the same account/deploy pipeline as this Pages project, rather than introducing a second platform. Continuous deployment on push-to-main was deliberately *not* set up via a GitHub Actions + API token, since the only Cloudflare credential available in this environment is a broad, account-wide OAuth token (workers/D1/KV/secrets_store/email write, etc.) — far more scope than a Pages deploy needs, and not something to hand to a CI secret. The safer path is either Cloudflare's native Git integration (dashboard-connected, no token to manage) or a narrowly-scoped Pages-only API token created by the user — both require a one-time manual step in the Cloudflare dashboard that wasn't done yet.

@@ -15,6 +15,7 @@ This is the daily source of truth for what's actually built. If this disagrees w
 - **Test infra** — Vitest + Testing Library + jsdom configured, with two environment polyfills in `src/setupTests.ts`: `localStorage` (Node's built-in shadows jsdom's and is non-functional by default) and `fake-indexeddb/auto` (jsdom doesn't implement IndexedDB at all). 10 tests passing across 5 files.
 - **Verified in-browser** — dev server, production build, and DE/EN + UA/RU switch behavior manually checked with Playwright.
 - **Deployed to GitHub** — `git@github.com:CDenisUa/language.git`, `main` branch.
+- **Deployed to Cloudflare Pages** — project `sprachlabor`, production branch `main`, live at https://sprachlabor.pages.dev. `public/_redirects` (`/* /index.html 200`) gives client-side routes a SPA fallback; `public/_headers` sets `Cache-Control: public, max-age=0, must-revalidate` on `/sw.js` so service-worker updates aren't stuck behind stale caching. Deploys are currently manual via `wrangler pages deploy dist --project-name=sprachlabor`; no CI auto-deploy is wired up yet (see `DECISIONS.md`).
 
 ## Not built yet
 
