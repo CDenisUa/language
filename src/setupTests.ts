@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom/vitest'
+// jsdom doesn't implement IndexedDB at all — polyfill it globally for tests.
+import 'fake-indexeddb/auto'
 
 // Node's own built-in `localStorage` (Web Storage API) shadows jsdom's window.localStorage
 // in this Node/vitest combo, and is non-functional without a `--localstorage-file` path.

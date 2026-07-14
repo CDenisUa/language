@@ -120,3 +120,30 @@ Interface chrome (nav labels, page headings, ARIA labels) switches between Ukrai
 `src/setupTests.ts` overrides `globalThis.localStorage` with a minimal in-memory `Storage` implementation before tests run.
 
 **Why:** In this Node version (25.x), Node's own built-in `localStorage` (Web Storage API) global shadows jsdom's window-scoped one and is non-functional without a `--localstorage-file` path, causing `storage.setItem is not a function` inside zustand's `persist` middleware. This is an environment quirk, not an app bug — remove this workaround if a future Node/vitest/jsdom upgrade resolves the conflict, but check `useLocaleStore.test.ts` still passes first.
+
+---
+
+### 2026-07-14 — One IndexedDB store per owning task, not all upfront
+**Status:** accepted
+
+Task 2 (data-layer infra) ships exactly one concrete object store — `words` — plus a generic `createRepository()` factory that any future store can reuse. Stores for scheduling, shadowing, error journal, and study sessions are deliberately *not* pre-created; each gets added, with its own schema version bump, by the task that actually needs it (Scheduler, Shadowing Lab, etc.).
+
+**Why:** IndexedDB schema changes are cheap incrementally (an `upgrade()` callback can add stores at any version), so there's no technical reason to guess every future store's shape now. Defining fields for e.g. shadowing sessions before that task's design questions are answered would be exactly the kind of speculative schema this project avoids elsewhere (see the CEFR-parser and sync deferrals above).
+
+---
+
+### 2026-07-14 — Reuse `ts-fsrs`'s `Card` type instead of redefining FSRS fields
+**Status:** accepted
+
+`WordRecord.fsrs` (`src/types/word.ts`) is typed directly as `ts-fsrs`'s own `Card` interface (`due`, `stability`, `difficulty`, `state`, `reps`, `lapses`, etc.), not a hand-rolled equivalent.
+
+**Why:** `ts-fsrs` already owns this shape and evolves it (e.g. `elapsed_days` is marked deprecated upstream ahead of v6). Duplicating the fields would mean manually tracking every upstream change instead of getting it for free through the dependency.
+
+---
+
+### 2026-07-14 — Generic repository factory with auto id/createdAt/updatedAt stamping
+**Status:** accepted
+
+`createRepository(storeName)` (`src/services/db/createRepository.ts`) gives every object store the same `getAll/getById/put/remove/clear/save` shape. `save()` generates a `crypto.randomUUID()` id when absent and stamps `createdAt`/`updatedAt`, enforced via a `{ id, createdAt, updatedAt }` type constraint on every store's value.
+
+**Why:** This isn't speculative — every store planned in the roadmap (words, schedule events, shadowing sessions, error log, study sessions) needs identical CRUD plus the id/timestamp convention already committed to in the local-first/sync-deferred decision above. One factory avoids re-implementing that stamping logic per store as each later task adds its own.
