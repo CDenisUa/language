@@ -183,3 +183,21 @@ A newly-added word gets `fsrs: createNewCard()`, whose `due` is "now" — so it 
 `src/setupTests.ts` defines a minimal `SpeechSynthesisUtterance` stub when the global is absent.
 
 **Why:** Same category of gap as the `localStorage` and IndexedDB polyfills above — jsdom doesn't implement the Web Speech API at all, so constructing a real utterance in a test throws a `ReferenceError` without this.
+
+---
+
+### 2026-07-14 — Schedule events are a discriminated union; `createRepository` needed a distributive `Omit`
+**Status:** accepted
+
+`ScheduleEventRecord` (`src/types/scheduleEvent.ts`) is `RecurringScheduleEvent | ExceptionScheduleEvent`, not one flat type with a pile of optional fields — recurring events carry `daysOfWeek`/`startTime`/`endTime`, exceptions carry `date`/`action`/optional `startTime`/`endTime`. This surfaced a real bug in the generic repository factory from Task 2: plain `Omit<Value, 'id'|'createdAt'|'updatedAt'>` collapses a union to only its *shared* keys (`keyof (A|B)` is an intersection, not a union, of each member's keys), silently dropping `daysOfWeek`, `date`, etc. from `save()`'s input type. Fixed with a distributive conditional type (`T extends unknown ? Omit<T, K> : never`) in `src/services/db/createRepository.ts`.
+
+**Why:** A flat type with every field optional (`daysOfWeek?`, `date?`, `action?`, ...) would've dodged the union-typing bug entirely, but would let a "recurring" event get saved with a `date` field or vice versa — the type system wouldn't catch a legitimate class of bugs. Worth the extra distributive-type complexity in one shared, already-generic file rather than losing that safety in every event handler.
+
+---
+
+### 2026-07-14 — Scheduler computes the separation status but doesn't act on it yet
+**Status:** accepted
+
+`getEnglishSeparationStatus()` and `SeparationStatus` only surface the blocked/available state on the Scheduler page itself. No other page (Vocabulary, Shadowing) checks it, and nothing pushes a notification about it yet.
+
+**Why:** Matches the roadmap split — Task 4 (Scheduler) owns the calendar and the pure blocking logic; Task 5 (Notifications) is where that logic gets *consumed* (push reminders, and potentially gating the Vocabulary/Shadowing review flows for English while blocked). Wiring enforcement into other pages now would be scope creep ahead of deciding, in Task 5, what "blocked" should actually do in the UI beyond a status readout.

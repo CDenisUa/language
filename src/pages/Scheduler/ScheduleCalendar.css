@@ -1,0 +1,48 @@
+.schedule-calendar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  height: 32rem;
+}
+
+.schedule-calendar .rbc-calendar {
+  color: var(--color-text);
+}
+
+.schedule-calendar .rbc-toolbar button {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.schedule-calendar .rbc-toolbar button:hover,
+.schedule-calendar .rbc-toolbar button.rbc-active {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
+.schedule-calendar .rbc-toolbar-label {
+  color: var(--color-text);
+}
+
+.schedule-calendar .rbc-header,
+.schedule-calendar .rbc-time-header-content,
+.schedule-calendar .rbc-time-content,
+.schedule-calendar .rbc-time-gutter,
+.schedule-calendar .rbc-day-slot,
+.schedule-calendar .rbc-timeslot-group,
+.schedule-calendar .rbc-month-view,
+.schedule-calendar .rbc-time-view {
+  border-color: var(--color-border) !important;
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.schedule-calendar .rbc-today {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.schedule-calendar .rbc-event {
+  border: none;
+}

@@ -50,4 +50,32 @@ export interface TranslationDictionary {
     austrianOnlyFilter: string
     emptyWordList: string
   }
+  scheduler: {
+    addEvent: string
+    typeRecurring: string
+    typeException: string
+    language: string
+    daysOfWeek: string
+    startTime: string
+    endTime: string
+    label: string
+    date: string
+    action: string
+    actionSkip: string
+    actionAdd: string
+    save: string
+    edit: string
+    delete: string
+    eventsHeading: string
+    emptyEvents: string
+    separationBlockedUntil: string
+    separationAvailable: string
+    dayMon: string
+    dayTue: string
+    dayWed: string
+    dayThu: string
+    dayFri: string
+    daySat: string
+    daySun: string
+  }
 }

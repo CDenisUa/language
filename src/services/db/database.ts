@@ -16,6 +16,9 @@ export function getDatabase(): Promise<IDBPDatabase<SprachlaborDBSchema>> {
           const wordsStore = db.createObjectStore('words', { keyPath: 'id' })
           wordsStore.createIndex('by-language', 'language')
         }
+        if (!db.objectStoreNames.contains('scheduleEvents')) {
+          db.createObjectStore('scheduleEvents', { keyPath: 'id' })
+        }
       },
     })
   }

@@ -1,0 +1,81 @@
+.schedule-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.schedule-form h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.schedule-form__row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.schedule-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  flex: 1;
+  min-width: 10rem;
+}
+
+.schedule-form__field input,
+.schedule-form__field select {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5rem 0.625rem;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+.schedule-form__field--kind {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.schedule-form__field--kind label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+.schedule-form__days {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.schedule-form__day {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.schedule-form__submit {
+  appearance: none;
+  border: none;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+}
