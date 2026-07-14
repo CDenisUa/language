@@ -83,4 +83,10 @@ export interface TranslationDictionary {
     upcomingEvent: string
     dismiss: string
   }
+  settings: {
+    pushHeading: string
+    pushUnsupported: string
+    pushEnable: string
+    pushDisable: string
+  }
 }

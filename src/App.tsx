@@ -6,6 +6,7 @@ import ReminderBanner from '@/components/ReminderBanner/ReminderBanner'
 import ChepioTechFooter from '@/components/ChepioTechFooter/ChepioTechFooter'
 // Hooks
 import { useLanguageStore } from '@/hooks/useLanguageStore'
+import { usePushScheduleSync } from '@/hooks/usePushScheduleSync'
 // Pages
 import Dashboard from '@/pages/Dashboard/Dashboard'
 import Vocabulary from '@/pages/Vocabulary/Vocabulary'
@@ -18,6 +19,7 @@ import { ROUTES } from '@/consts/routes'
 
 function App() {
   const activeLanguage = useLanguageStore((state) => state.activeLanguage)
+  usePushScheduleSync()
 
   return (
     <div data-language={activeLanguage} className="app-shell">

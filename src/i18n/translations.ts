@@ -104,6 +104,12 @@ const uk = {
     upcomingEvent: 'Скоро:',
     dismiss: 'Закрити нагадування',
   },
+  settings: {
+    pushHeading: 'Push-сповіщення',
+    pushUnsupported: 'Цей браузер не підтримує push-сповіщення.',
+    pushEnable: 'Увімкнути сповіщення',
+    pushDisable: 'Вимкнути сповіщення',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -204,6 +210,12 @@ const ru = {
     englishUnblocked: 'Английский только что разблокировался — можно начинать',
     upcomingEvent: 'Скоро:',
     dismiss: 'Закрыть напоминание',
+  },
+  settings: {
+    pushHeading: 'Push-уведомления',
+    pushUnsupported: 'Этот браузер не поддерживает push-уведомления.',
+    pushEnable: 'Включить уведомления',
+    pushDisable: 'Выключить уведомления',
   },
 } satisfies TranslationDictionary
 
