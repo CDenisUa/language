@@ -1,0 +1,70 @@
+.nav-bar {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.nav-bar__inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-bar__brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+.nav-bar__links {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.nav-bar__link {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.375rem 0.125rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-bar__link:hover {
+  color: var(--color-text);
+}
+
+.nav-bar__link--active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+.nav-bar__language-switch {
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 0.25rem;
+}
+
+.nav-bar__language-button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-bar__language-button--active {
+  background: var(--color-accent);
+  color: #ffffff;
+}
