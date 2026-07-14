@@ -39,3 +39,23 @@ Object.defineProperty(globalThis, 'localStorage', {
   configurable: true,
   writable: true,
 })
+
+// jsdom doesn't implement the Web Speech API either — stub just enough of
+// SpeechSynthesisUtterance for code under test to construct one and read
+// `.text`/`.lang` back. Actual speech output is mocked per-test.
+if (!('SpeechSynthesisUtterance' in globalThis)) {
+  class MockSpeechSynthesisUtterance {
+    text: string
+    lang = ''
+
+    constructor(text = '') {
+      this.text = text
+    }
+  }
+
+  Object.defineProperty(globalThis, 'SpeechSynthesisUtterance', {
+    value: MockSpeechSynthesisUtterance,
+    configurable: true,
+    writable: true,
+  })
+}

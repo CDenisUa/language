@@ -156,3 +156,30 @@ Task 2 (data-layer infra) ships exactly one concrete object store — `words` �
 Hosting is Cloudflare Pages (project `sprachlabor`, production branch `main`, live at https://sprachlabor.pages.dev), not Vercel. Deploys are run manually via `wrangler pages deploy dist --project-name=sprachlabor` after a merge to `main` — there's no CI/auto-deploy wired up yet.
 
 **Why:** Cloudflare Pages serves static assets + the service worker without needing a `vercel.json` rewrite for cache headers (handled here by `public/_headers`). More importantly, it matches the local-first-with-sync-deferred decision above: if/when a sync backend is built, Cloudflare Workers + D1 sit on the same account/deploy pipeline as this Pages project, rather than introducing a second platform. Continuous deployment on push-to-main was deliberately *not* set up via a GitHub Actions + API token, since the only Cloudflare credential available in this environment is a broad, account-wide OAuth token (workers/D1/KV/secrets_store/email write, etc.) — far more scope than a Pages deploy needs, and not something to hand to a CI secret. The safer path is either Cloudflare's native Git integration (dashboard-connected, no token to manage) or a narrowly-scoped Pages-only API token created by the user — both require a one-time manual step in the Cloudflare dashboard that wasn't done yet.
+
+---
+
+### 2026-07-14 — New cards are immediately due; review queue always shows `dueWords[0]`
+**Status:** accepted
+
+A newly-added word gets `fsrs: createNewCard()`, whose `due` is "now" — so it enters the review queue the same session instead of waiting a day. The review UI has no manual queue/index state: it always renders `dueWords[0]` from a `useMemo`-filtered, due-sorted list, and re-derives that list from IndexedDB after every rating.
+
+**Why:** Simpler than tracking a review-session index — after `wordsRepository.save()` moves a card's `due` into the future and `reload()` refetches, that card naturally drops out of `dueWords` and whatever's next becomes `dueWords[0]` with no extra state to keep in sync.
+
+---
+
+### 2026-07-14 — TTS locale codes: `de-DE` / `de-AT` / `en-US`
+**Status:** accepted
+
+`speak()` (`src/services/tts/speak.ts`) is called with `de-DE` for standard German, `de-AT` specifically when reading out a word's `austrianVariant`, and `en-US` for English (`src/consts/speechLocales.ts`).
+
+**Why:** Direct extension of the Austrian-focus decision already made for card content — hearing "Erdapfel" pronounced with an `de-AT` voice (where the browser has one) reinforces the accent goal from the original plan, not just the vocabulary.
+
+---
+
+### 2026-07-14 — Test-env `SpeechSynthesisUtterance` stub required
+**Status:** accepted
+
+`src/setupTests.ts` defines a minimal `SpeechSynthesisUtterance` stub when the global is absent.
+
+**Why:** Same category of gap as the `localStorage` and IndexedDB polyfills above — jsdom doesn't implement the Web Speech API at all, so constructing a real utterance in a test throws a `ReferenceError` without this.

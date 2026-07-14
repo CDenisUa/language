@@ -26,4 +26,28 @@ export interface TranslationDictionary {
     errorJournal: TranslatedPage
     settings: TranslatedPage
   }
+  vocabulary: {
+    addWord: string
+    editWord: string
+    front: string
+    back: string
+    example: string
+    grammar: string
+    austrianVariant: string
+    save: string
+    cancel: string
+    edit: string
+    delete: string
+    listen: string
+    reviewHeading: string
+    showAnswer: string
+    noDueWords: string
+    ratingAgain: string
+    ratingHard: string
+    ratingGood: string
+    ratingEasy: string
+    wordListHeading: string
+    austrianOnlyFilter: string
+    emptyWordList: string
+  }
 }

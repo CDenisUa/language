@@ -1,0 +1,106 @@
+.review-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 28rem;
+}
+
+.review-card h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+.review-card__front,
+.review-card__back,
+.review-card__austrian {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-card__word {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.review-card__back {
+  font-size: 1.25rem;
+}
+
+.review-card__listen {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.review-card__example {
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.review-card__grammar {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.review-card__austrian {
+  font-size: 0.875rem;
+  color: var(--color-accent);
+}
+
+.review-card__reveal {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  align-self: flex-start;
+}
+
+.review-card__ratings {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.review-card__rating {
+  appearance: none;
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.review-card__rating--ratingAgain {
+  background: #ef4444;
+}
+
+.review-card__rating--ratingHard {
+  background: #f59e0b;
+}
+
+.review-card__rating--ratingGood {
+  background: #22c55e;
+}
+
+.review-card__rating--ratingEasy {
+  background: #3b82f6;
+}
