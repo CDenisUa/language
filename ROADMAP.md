@@ -21,10 +21,7 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 - [x] **Task 4 — Smart Scheduler**: `scheduleEvents` store (recurring rules + skip/add exceptions), `react-big-calendar` week view, `getEnglishSeparationStatus()` (pure temporal-separation logic — blocks English until 3h after German ends). Status is only *displayed* on the Scheduler page so far, not enforced elsewhere.
 - [x] **Task 5a — In-app reminder banner**: `ReminderBanner` nudges English-unblocked (blocked->available transition) and upcoming/ongoing labeled schedule occurrences (e.g. "Mi Casa, Graz"), dismissible and persisted per-day. Notification-only — never gates Vocabulary/Shadowing (open question from Task 4 resolved, see `DECISIONS.md`).
 - [x] **Task 5b — Web Push (VAPID)**: standalone `worker/` (Cloudflare Worker + D1, `sprachlabor-push`) reuses the app's own `expandOccurrences`/`getEnglishSeparationStatus`/`getUpcomingEventReminders`/`shouldFireUnblockNudge` directly (relative import, no logic duplication) on a 5-minute cron, sending via `@block65/webcrypto-web-push`. Client subscribes via `usePushSubscription`/Settings toggle and syncs schedule events on app load (`usePushScheduleSync`). Not independently verified end-to-end here — the browser notification-permission grant needs a real device/user gesture; see `DECISIONS.md`.
-- [ ] **Task 6 — Shadowing Lab**
-  - Personal audio upload only (no RSS/URL fetching — copyright decision already made, see `DECISIONS.md`).
-  - TTS-only pronunciation-base reminders on iOS/Safari; Chrome/Android also gets `SpeechRecognition`-based repetition scoring.
-  - Needs its own IndexedDB store (schema v3) for audio blobs + shadowing sessions.
+- [x] **Task 6 — Shadowing Lab**: personal audio upload only (no RSS/URL fetching, per the copyright decision), real-time play-along practice (not a segment drill), self-rating only (1–5 stars, no transcript/auto-scoring — see `DECISIONS.md`), live `SpeechRecognition` feedback on Chrome/Android and a graceful "unsupported" message on Safari/iOS, nothing recorded/stored beyond the uploaded track itself. Own IndexedDB store (schema v3): `shadowingTracks` + `shadowingSessions`.
 - [ ] **Task 7 — Error journal**
   - Manual entry only — no automatic grammar-checking source exists in this app.
   - Link entries to related words/sessions where relevant.

@@ -19,6 +19,14 @@ export function getDatabase(): Promise<IDBPDatabase<SprachlaborDBSchema>> {
         if (!db.objectStoreNames.contains('scheduleEvents')) {
           db.createObjectStore('scheduleEvents', { keyPath: 'id' })
         }
+        if (!db.objectStoreNames.contains('shadowingTracks')) {
+          const shadowingTracksStore = db.createObjectStore('shadowingTracks', { keyPath: 'id' })
+          shadowingTracksStore.createIndex('by-language', 'language')
+        }
+        if (!db.objectStoreNames.contains('shadowingSessions')) {
+          const shadowingSessionsStore = db.createObjectStore('shadowingSessions', { keyPath: 'id' })
+          shadowingSessionsStore.createIndex('by-track', 'trackId')
+        }
       },
     })
   }

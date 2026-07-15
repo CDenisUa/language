@@ -90,4 +90,20 @@ export interface TranslationDictionary {
     pushEnable: string
     pushDisable: string
   }
+  shadowing: {
+    uploadHeading: string
+    trackTitleLabel: string
+    fileLabel: string
+    upload: string
+    trackListHeading: string
+    emptyTrackList: string
+    practice: string
+    delete: string
+    backToList: string
+    heardLabel: string
+    liveFeedbackUnavailable: string
+    rateHeading: string
+    notesLabel: string
+    saveSession: string
+  }
 }

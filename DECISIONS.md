@@ -337,4 +337,32 @@ Only `.rbc-time-header`/`.rbc-time-content` (the day-header row and the time gri
 
 **Why:** An earlier version of this fix scoped the scroll container one level too high (`.rbc-time-view`, which contains the toolbar too), and confirmed by testing that this dragged the toolbar out of view along with the grid — a user would've had to swipe right just to find the "Next" button. Scoping the scroll to only the grid keeps navigation controls reachable at all times, which matters more for actual usability than a technically-simpler one-line fix.
 
+---
+
+### 2026-07-15 — Shadowing Lab is real-time (play-along), not a segment-drill; no transcript/auto-scoring; nothing recorded
+
+**Status:** accepted
+
+Three scope decisions for Task 6, made with the user before implementation (each had a real alternative, so recorded explicitly rather than left implicit in code):
+
+1. **Interaction model**: the practice flow is classic real-time shadowing — the user plays their uploaded track via a native `<audio controls>` element and speaks along live while it plays. There's no clip-marking or listen-pause-repeat drill mode; a session is one continuous pass over a track.
+2. **No reference transcript, no computed accuracy score**: track uploads have no transcript field. Where `SpeechRecognition` is supported (`src/services/speechRecognition/`), its live output is surfaced to the user as in-the-moment feedback ("Heard: ...") only — never diffed against anything. The only score that exists is the user's own 1–5 self-rating (`ShadowingPractice`'s star widget), saved on every session regardless of browser, so behavior doesn't fork between Chrome and Safari beyond whether the feedback panel is present.
+3. **The user's own repetition is never recorded or stored**: no `MediaRecorder` capture, no audio blob for the user's voice. `SpeechRecognition` is used live and discarded after each result callback.
+
+**Why:** Keeps scoring behavior uniform across browsers (real-time text-diff accuracy scoring would only ever work on Chrome/Android per the existing WebKit `SpeechRecognition` gap, see the Task 6 line above) and avoids fragile word-error-rate matching logic for an MVP. Not recording the user's voice avoids a second, larger IndexedDB blob per session (on top of the uploaded track itself) and the extra mic-recording-permission UX, for a feature whose value (self-assessment while shadowing) doesn't obviously require played-back self-review to work.
+
+**How to apply:** `shadowingSessions` records (`src/types/shadowingSession.ts`) only ever hold `rating`, `practiceDurationSeconds` (read from `audio.currentTime` when the user clicks save, not accumulated across seeks), and optional freeform `notes` — no transcript or recognition-confidence fields. If transcript-based scoring is ever wanted later, it's a new decision (a transcript field on `ShadowingTrackRecord` plus real diffing), not a natural extension of today's `recognizedText`-as-feedback plumbing.
+
+---
+
+### 2026-07-15 — Test-env `Blob`/`File` polyfill: swapped for Node's native `node:buffer` versions
+
+**Status:** accepted
+
+`src/setupTests.ts` overrides `globalThis.Blob`/`globalThis.File` with `node:buffer`'s implementations before tests run.
+
+**Why:** jsdom's own `Blob`/`File` classes don't survive `structuredClone` in this Node/vitest combo — cloning one silently produces an empty `{}` rather than throwing or preserving content, because Node's native `structuredClone` doesn't recognize jsdom's polyfilled class as a "real" Blob. `fake-indexeddb` uses `structuredClone` internally for every `put()` (per the IndexedDB spec's "clone value" step), so any test that round-trips a Blob through a repository — `shadowingTracksRepository`, and by extension anything touching `<input type="file">` via `userEvent.upload` — would silently store a corrupted, content-less record. Node's native Blob/File round-trip correctly through `structuredClone`, confirmed by direct test before adopting this. Same category of gap as the `localStorage` polyfill above: an environment quirk, not an app bug — real browsers store Blobs in IndexedDB natively without any of this.
+
+**How to apply:** If a future Node/vitest/jsdom upgrade makes jsdom's own Blob/File structured-clone-compatible, this override becomes redundant and can be removed — check `shadowingTracksRepository.test.ts`'s `toBeInstanceOf(Blob)` assertion still passes first.
+
 A sticky time-gutter column (hour labels staying pinned while day columns scroll) was also attempted and reverted — confirmed via `getBoundingClientRect()` that `position: sticky` on `.rbc-time-gutter` doesn't take effect, because `react-big-calendar`'s internal header/content scroll-sync mechanism applies a CSS transform to an intermediate ancestor, which establishes a new containing block and defeats sticky positioning relative to the actual scroll container. Not worth vendoring a patched version of the library's scroll-sync just for this; losing the time-of-day label while mid-swipe is a minor rough edge, not a blocker.
