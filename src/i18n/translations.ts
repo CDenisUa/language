@@ -34,8 +34,7 @@ const uk = {
     },
     shadowing: {
       title: 'Шедовінг-лабораторія',
-      description:
-        "Особисте завантаження аудіо, нагадування про артикуляційну базу та відтворення з'являться тут (Задача 6).",
+      description: 'Завантажте власне аудіо і повторюйте вголос одночасно з відтворенням.',
     },
     errorJournal: {
       title: 'Журнал помилок',
@@ -111,6 +110,22 @@ const uk = {
     pushEnable: 'Увімкнути сповіщення',
     pushDisable: 'Вимкнути сповіщення',
   },
+  shadowing: {
+    uploadHeading: 'Завантажити аудіо',
+    trackTitleLabel: 'Назва',
+    fileLabel: 'Аудіофайл',
+    upload: 'Завантажити',
+    trackListHeading: 'Мої записи',
+    emptyTrackList: 'Поки немає жодного запису — завантажте перший.',
+    practice: 'Практикувати',
+    delete: 'Видалити',
+    backToList: '← До списку записів',
+    heardLabel: 'Почуто:',
+    liveFeedbackUnavailable: 'Цей браузер не підтримує розпізнавання мовлення — повторюйте вголос і оцініть спробу самостійно.',
+    rateHeading: 'Оціни цю спробу',
+    notesLabel: 'Нотатка (необов’язково)',
+    saveSession: 'Зберегти спробу',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -144,8 +159,7 @@ const ru = {
     },
     shadowing: {
       title: 'Лаборатория шедоуинга',
-      description:
-        'Личная загрузка аудио, напоминания об артикуляционной базе и воспроизведение появятся здесь (Задача 6).',
+      description: 'Загрузите своё аудио и повторяйте вслух одновременно с воспроизведением.',
     },
     errorJournal: {
       title: 'Журнал ошибок',
@@ -218,6 +232,22 @@ const ru = {
     pushUnsupported: 'Этот браузер не поддерживает push-уведомления.',
     pushEnable: 'Включить уведомления',
     pushDisable: 'Выключить уведомления',
+  },
+  shadowing: {
+    uploadHeading: 'Загрузить аудио',
+    trackTitleLabel: 'Название',
+    fileLabel: 'Аудиофайл',
+    upload: 'Загрузить',
+    trackListHeading: 'Мои записи',
+    emptyTrackList: 'Пока нет ни одной записи — загрузите первую.',
+    practice: 'Практиковать',
+    delete: 'Удалить',
+    backToList: '← К списку записей',
+    heardLabel: 'Услышано:',
+    liveFeedbackUnavailable: 'Этот браузер не поддерживает распознавание речи — повторяйте вслух и оцените попытку самостоятельно.',
+    rateHeading: 'Оцени эту попытку',
+    notesLabel: 'Заметка (необязательно)',
+    saveSession: 'Сохранить попытку',
   },
 } satisfies TranslationDictionary
 
