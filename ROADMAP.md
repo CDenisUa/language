@@ -22,10 +22,7 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 - [x] **Task 5a — In-app reminder banner**: `ReminderBanner` nudges English-unblocked (blocked->available transition) and upcoming/ongoing labeled schedule occurrences (e.g. "Mi Casa, Graz"), dismissible and persisted per-day. Notification-only — never gates Vocabulary/Shadowing (open question from Task 4 resolved, see `DECISIONS.md`).
 - [x] **Task 5b — Web Push (VAPID)**: standalone `worker/` (Cloudflare Worker + D1, `sprachlabor-push`) reuses the app's own `expandOccurrences`/`getEnglishSeparationStatus`/`getUpcomingEventReminders`/`shouldFireUnblockNudge` directly (relative import, no logic duplication) on a 5-minute cron, sending via `@block65/webcrypto-web-push`. Client subscribes via `usePushSubscription`/Settings toggle and syncs schedule events on app load (`usePushScheduleSync`). Not independently verified end-to-end here — the browser notification-permission grant needs a real device/user gesture; see `DECISIONS.md`.
 - [x] **Task 6 — Shadowing Lab**: personal audio upload only (no RSS/URL fetching, per the copyright decision), real-time play-along practice (not a segment drill), self-rating only (1–5 stars, no transcript/auto-scoring — see `DECISIONS.md`), live `SpeechRecognition` feedback on Chrome/Android and a graceful "unsupported" message on Safari/iOS, nothing recorded/stored beyond the uploaded track itself. Own IndexedDB store (schema v3): `shadowingTracks` + `shadowingSessions`.
-- [ ] **Task 7 — Error journal**
-  - Manual entry only — no automatic grammar-checking source exists in this app.
-  - Link entries to related words/sessions where relevant.
-  - Needs its own IndexedDB store.
+- [x] **Task 7 — Error journal**: manual entry only (mistake + correction + category — grammar/vocabulary/pronunciation/other — + optional note), no automatic grammar-checking. Entries can optionally link to one existing Vocabulary word or Shadowing track via a picker; full edit/delete like Vocabulary. Own IndexedDB store (schema v4): `errorJournalEntries`.
 - [ ] **Task 8 — Dashboard analytics**
   - Hours per language via an in-app session timer (timer itself doesn't exist yet — will likely need to be threaded through Vocabulary/Scheduler/Shadowing).
   - 70/30 study-balance target as a configurable Settings value, not hardcoded.

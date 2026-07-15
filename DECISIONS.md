@@ -337,6 +337,8 @@ Only `.rbc-time-header`/`.rbc-time-content` (the day-header row and the time gri
 
 **Why:** An earlier version of this fix scoped the scroll container one level too high (`.rbc-time-view`, which contains the toolbar too), and confirmed by testing that this dragged the toolbar out of view along with the grid — a user would've had to swipe right just to find the "Next" button. Scoping the scroll to only the grid keeps navigation controls reachable at all times, which matters more for actual usability than a technically-simpler one-line fix.
 
+A sticky time-gutter column (hour labels staying pinned while day columns scroll) was also attempted and reverted — confirmed via `getBoundingClientRect()` that `position: sticky` on `.rbc-time-gutter` doesn't take effect, because `react-big-calendar`'s internal header/content scroll-sync mechanism applies a CSS transform to an intermediate ancestor, which establishes a new containing block and defeats sticky positioning relative to the actual scroll container. Not worth vendoring a patched version of the library's scroll-sync just for this; losing the time-of-day label while mid-swipe is a minor rough edge, not a blocker.
+
 ---
 
 ### 2026-07-15 — Shadowing Lab is real-time (play-along), not a segment-drill; no transcript/auto-scoring; nothing recorded
@@ -365,4 +367,18 @@ Three scope decisions for Task 6, made with the user before implementation (each
 
 **How to apply:** If a future Node/vitest/jsdom upgrade makes jsdom's own Blob/File structured-clone-compatible, this override becomes redundant and can be removed — check `shadowingTracksRepository.test.ts`'s `toBeInstanceOf(Blob)` assertion still passes first.
 
-A sticky time-gutter column (hour labels staying pinned while day columns scroll) was also attempted and reverted — confirmed via `getBoundingClientRect()` that `position: sticky` on `.rbc-time-gutter` doesn't take effect, because `react-big-calendar`'s internal header/content scroll-sync mechanism applies a CSS transform to an intermediate ancestor, which establishes a new containing block and defeats sticky positioning relative to the actual scroll container. Not worth vendoring a patched version of the library's scroll-sync just for this; losing the time-of-day label while mid-swipe is a minor rough edge, not a blocker.
+---
+
+### 2026-07-15 — Error Journal entry shape and linking, agreed with the user before implementation
+
+**Status:** accepted
+
+Three scope decisions for Task 7, made with the user directly (each had a real alternative):
+
+1. **Fields**: an entry is `mistake` + `correction` (both required free text) + `category` (`grammar` | `vocabulary` | `pronunciation` | `other`) + optional `note`. Category was chosen over a field-free log specifically so Task 8's planned "error-frequency breakdown" has something to group by.
+2. **Linking**: an entry can optionally reference one existing Vocabulary word or Shadowing track, picked from a single combined `<select>` (`ErrorEntryForm`'s "link to" field, built by `ErrorJournal.tsx` from `useWords`/`useShadowingTracks` for the active language). Stored as a loose `linkedRecordType`/`linkedRecordId` pair (`src/types/errorJournalEntry.ts`), not a real foreign key — resolved back to a display label at render time by matching against the current word/track list (`resolveLinkLabel` in `ErrorJournal.tsx`).
+3. **Edit/delete**: entries are fully editable and deletable, matching the Vocabulary module's pattern (`ErrorEntryForm` doubles as add/edit, same as `WordForm`), rather than being an append-only log.
+
+**Why:** Keeping the link as an unenforced reference (rather than a real relational constraint IndexedDB doesn't have anyway) means deleting a linked word or track later doesn't need any cascade/cleanup logic — `resolveLinkLabel` just returns `null` and the entry silently stops showing a link. This matches the project's broader local-first/no-heavy-relational-integrity posture.
+
+**How to apply:** If a linked word/track is deleted, its error-journal entries are *not* cleaned up or unlinked — the stale `linkedRecordId` stays on the record but simply resolves to no visible link. Don't add cascade-delete logic for this without a fresh decision; it hasn't come up as a problem yet since Vocabulary/Shadowing deletion is infrequent and low-stakes.

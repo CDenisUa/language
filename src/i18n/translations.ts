@@ -38,8 +38,7 @@ const uk = {
     },
     errorJournal: {
       title: 'Журнал помилок',
-      description:
-        "Вручну зафіксовані граматичні та фонетичні помилки з'являться тут (Задача 7).",
+      description: 'Фіксуйте власні помилки вручну — граматика, лексика, вимова — з посиланням на слово чи аудіозапис.',
     },
     settings: {
       title: 'Налаштування',
@@ -126,6 +125,28 @@ const uk = {
     notesLabel: 'Нотатка (необов’язково)',
     saveSession: 'Зберегти спробу',
   },
+  errorJournal: {
+    addEntry: 'Додати запис',
+    editEntry: 'Редагувати запис',
+    category: 'Категорія',
+    categoryGrammar: 'Граматика',
+    categoryVocabulary: 'Лексика',
+    categoryPronunciation: 'Вимова',
+    categoryOther: 'Інше',
+    mistake: 'Помилка',
+    correction: 'Правильний варіант',
+    note: 'Нотатка',
+    linkTo: 'Пов’язати з',
+    linkNone: '— Без зв’язку —',
+    linkWordPrefix: 'Слово:',
+    linkTrackPrefix: 'Аудіо:',
+    save: 'Зберегти',
+    cancel: 'Скасувати',
+    edit: 'Редагувати',
+    delete: 'Видалити',
+    entriesHeading: 'Записи',
+    emptyEntries: 'Поки немає жодного запису — додайте перший.',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -163,7 +184,7 @@ const ru = {
     },
     errorJournal: {
       title: 'Журнал ошибок',
-      description: 'Вручную зафиксированные грамматические и фонетические ошибки появятся здесь (Задача 7).',
+      description: 'Фиксируйте свои ошибки вручную — грамматика, лексика, произношение — со ссылкой на слово или аудиозапись.',
     },
     settings: {
       title: 'Настройки',
@@ -248,6 +269,28 @@ const ru = {
     rateHeading: 'Оцени эту попытку',
     notesLabel: 'Заметка (необязательно)',
     saveSession: 'Сохранить попытку',
+  },
+  errorJournal: {
+    addEntry: 'Добавить запись',
+    editEntry: 'Редактировать запись',
+    category: 'Категория',
+    categoryGrammar: 'Грамматика',
+    categoryVocabulary: 'Лексика',
+    categoryPronunciation: 'Произношение',
+    categoryOther: 'Другое',
+    mistake: 'Ошибка',
+    correction: 'Правильный вариант',
+    note: 'Заметка',
+    linkTo: 'Связать с',
+    linkNone: '— Без связи —',
+    linkWordPrefix: 'Слово:',
+    linkTrackPrefix: 'Аудио:',
+    save: 'Сохранить',
+    cancel: 'Отмена',
+    edit: 'Редактировать',
+    delete: 'Удалить',
+    entriesHeading: 'Записи',
+    emptyEntries: 'Пока нет ни одной записи — добавьте первую.',
   },
 } satisfies TranslationDictionary
 

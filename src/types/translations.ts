@@ -106,4 +106,26 @@ export interface TranslationDictionary {
     notesLabel: string
     saveSession: string
   }
+  errorJournal: {
+    addEntry: string
+    editEntry: string
+    category: string
+    categoryGrammar: string
+    categoryVocabulary: string
+    categoryPronunciation: string
+    categoryOther: string
+    mistake: string
+    correction: string
+    note: string
+    linkTo: string
+    linkNone: string
+    linkWordPrefix: string
+    linkTrackPrefix: string
+    save: string
+    cancel: string
+    edit: string
+    delete: string
+    entriesHeading: string
+    emptyEntries: string
+  }
 }
