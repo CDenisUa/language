@@ -91,6 +91,16 @@ export interface TranslationDictionary {
     pushDisable: string
     balanceHeading: string
     balanceTargetLabel: string
+    backupHeading: string
+    exportButton: string
+    importButton: string
+    importConfirmMessage: string
+    importConfirm: string
+    importCancel: string
+    importInvalidFile: string
+    importSuccessMessage: string
+    importSkippedTracksNote: string
+    importReloadButton: string
   }
   dashboard: {
     hoursHeading: string
