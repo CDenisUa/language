@@ -10,6 +10,7 @@ const uk = {
     shadowing: 'Шедовінг',
     errorJournal: 'Помилки',
     settings: 'Налаштування',
+    menuToggle: 'Меню',
   },
   languageSwitch: {
     ariaLabel: 'Активна мова вивчення',
@@ -120,6 +121,7 @@ const ru = {
     shadowing: 'Шедоуинг',
     errorJournal: 'Ошибки',
     settings: 'Настройки',
+    menuToggle: 'Меню',
   },
   languageSwitch: {
     ariaLabel: 'Активный язык изучения',

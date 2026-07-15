@@ -11,6 +11,7 @@ export interface TranslationDictionary {
     shadowing: string
     errorJournal: string
     settings: string
+    menuToggle: string
   }
   languageSwitch: {
     ariaLabel: string
