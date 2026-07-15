@@ -3,6 +3,7 @@ import type { GrammarCategory } from '@/types/grammarTopic'
 
 export const voiceCausatives: GrammarCategory = {
   id: 'voice-causatives',
+  language: 'en',
   title: 'Стан і каузативні конструкції',
   description:
     'Пасивний стан, безособові конструкції зі словами на кшталт said/thought та каузативні структури (have/get something done) — як в англійській зміщують фокус з виконавця дії на об\'єкт або результат.',
@@ -13,9 +14,9 @@ export const voiceCausatives: GrammarCategory = {
       theory:
         'Пасивний стан (be + V3) переносить увагу з виконавця дії на об\'єкт або результат: "Someone stole my bike" → "My bike was stolen" — виконавець (someone) уже не важливий. Форма be змінюється за часом (is/was/has been/will be), а V3 лишається незмінним: Present Simple — is/are done, Past Simple — was/were done, Present Perfect — has/have been done, Future — will be done, модальне дієслово + пасив — must/can/should be done. Пасив обирають, коли діяч невідомий, неважливий, очевидний з контексту, або коли треба підкреслити сам об\'єкт чи результат дії, а не того, хто її виконав.',
       examples: [
-        { en: 'The new hospital will be finished next year.', uk: 'Нову лікарню добудують наступного року.' },
-        { en: 'This report must be submitted by Friday.', uk: 'Цей звіт треба подати до п\'ятниці.' },
-        { en: 'My car has been repaired.', uk: 'Мою машину відремонтували.' },
+        { target: 'The new hospital will be finished next year.', uk: 'Нову лікарню добудують наступного року.' },
+        { target: 'This report must be submitted by Friday.', uk: 'Цей звіт треба подати до п\'ятниці.' },
+        { target: 'My car has been repaired.', uk: 'Мою машину відремонтували.' },
       ],
       exercises: [
         {
@@ -74,9 +75,9 @@ export const voiceCausatives: GrammarCategory = {
       theory:
         'Безособовий пасив дозволяє передати чутки, припущення чи неперевірені твердження, не називаючи джерело. Є дві типові моделі: "It is + V3 (said/thought/believed/reported) + that-clause" ("It is thought that he left the country") і "Subject + is + V3 + to-infinitive (або to have + V3 для минулого)" ("He is thought to have left the country"). Обидві конструкції типові для новинного, наукового чи офіційного стилю, коли автор навмисно дистанціюється від відповідальності за правдивість інформації.',
       examples: [
-        { en: 'It is believed that the fire started in the kitchen.', uk: 'Вважається, що пожежа почалась на кухні.' },
-        { en: 'He is thought to have left the country.', uk: 'Вважається, що він уже виїхав з країни.' },
-        { en: 'The suspect is said to be hiding in the mountains.', uk: 'Кажуть, що підозрюваний ховається в горах.' },
+        { target: 'It is believed that the fire started in the kitchen.', uk: 'Вважається, що пожежа почалась на кухні.' },
+        { target: 'He is thought to have left the country.', uk: 'Вважається, що він уже виїхав з країни.' },
+        { target: 'The suspect is said to be hiding in the mountains.', uk: 'Кажуть, що підозрюваний ховається в горах.' },
       ],
       exercises: [
         {
@@ -130,9 +131,9 @@ export const voiceCausatives: GrammarCategory = {
       theory:
         'Каузативна конструкція have/get + object + V3 (past participle) описує дію, яку для вас виконує хтось інший — ви лише організовуєте чи замовляєте її: "I had my hair cut" (мене підстригли, не я сама), "I\'m getting the car repaired" (машину ремонтує майстер). Це принципово відрізняється від простої активної форми "I cut my hair" чи "I repaired the car", де підмет сам фізично виконує дію. Get + object + V3 звучить трохи розмовніше за have + object + V3, а обидва можуть вживатися в будь-якому часі.',
       examples: [
-        { en: 'I had my hair cut yesterday.', uk: 'Мені вчора підстригли волосся.' },
-        { en: "We're getting our house painted next week.", uk: 'Нам пофарбують будинок наступного тижня.' },
-        { en: 'She had her phone repaired at the shop.', uk: 'Їй відремонтували телефон у майстерні.' },
+        { target: 'I had my hair cut yesterday.', uk: 'Мені вчора підстригли волосся.' },
+        { target: "We're getting our house painted next week.", uk: 'Нам пофарбують будинок наступного тижня.' },
+        { target: 'She had her phone repaired at the shop.', uk: 'Їй відремонтували телефон у майстерні.' },
       ],
       exercises: [
         {
@@ -191,9 +192,9 @@ export const voiceCausatives: GrammarCategory = {
       theory:
         'Після дієслів want, expect, ask, would like, tell, advise (та подібних) в англійській вживається конструкція object + to-infinitive, а не підрядне речення з that: "I want her to come", а не "*I want that she comes". Носії української мови часто помиляються саме тут, бо в українській природно звучить "хочу, щоб вона прийшла" — і ця модель через кальку переноситься в англійську як that-clause, хоча англійська вимагає прямого об\'єкта з інфінітивом. Дієслова tell і advise завжди потребують object перед to-infinitive (told us to leave, advised him to rest), тоді як want і would like можуть вживатися і без об\'єкта (I want to leave) — але з об\'єктом значення зміщується на іншу особу.',
       examples: [
-        { en: 'I want her to come to the party.', uk: 'Я хочу, щоб вона прийшла на вечірку.' },
-        { en: 'The teacher told us to hand in our essays by Monday.', uk: 'Вчителька сказала нам здати есе до понеділка.' },
-        { en: 'We would like you to join our team.', uk: 'Ми хотіли б, щоб ви приєднались до нашої команди.' },
+        { target: 'I want her to come to the party.', uk: 'Я хочу, щоб вона прийшла на вечірку.' },
+        { target: 'The teacher told us to hand in our essays by Monday.', uk: 'Вчителька сказала нам здати есе до понеділка.' },
+        { target: 'We would like you to join our team.', uk: 'Ми хотіли б, щоб ви приєднались до нашої команди.' },
       ],
       exercises: [
         {

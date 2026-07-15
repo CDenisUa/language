@@ -1,0 +1,302 @@
+// Types
+import type { GrammarCategory } from '@/types/grammarTopic'
+
+export const deVerbformenZeiten: GrammarCategory = {
+  id: 'de-verbformen-zeiten',
+  language: 'de',
+  title: 'Дієслівні форми та часи',
+  description:
+    'Система німецьких часів — від Präsens до Futur II — з акцентом на те, яка форма домінує в розмовній мові, яка в письмовій, і як вони позначають послідовність подій у минулому чи майбутньому.',
+  topics: [
+    {
+      id: 'praesens',
+      title: 'Präsens',
+      theory:
+        'Präsens — теперішній час, найуживаніша форма дієслова в німецькій мові. Слабкі (регулярні) дієслова відмінюються за стандартною схемою: ich -e, du -st, er/sie/es -t, wir -en, ihr -t, sie/Sie -en (ich mache, du machst, er macht). Сильні дієслова у 2-й та 3-й особі однини змінюють кореневий голосний: fahren → du fährst / er fährt (a → ä), sehen → du siehst / er sieht (e → ie), sprechen → du sprichst / er spricht (e → i) — цю зміну обов\'язково запам\'ятовувати для кожного окремого дієслова. Крім теперішньої дії, Präsens регулярно вживається для позначення майбутньої дії, якщо контекст або обставина часу вказують на майбутнє (Ich fahre morgen nach Berlin) — на відміну від англійської, де в такому випадку частіше вжили б Present Continuous або will, у німецькій це звичайний і навіть переважний спосіб говорити про заплановане майбутнє.',
+      examples: [
+        { target: 'Ich arbeite jeden Tag acht Stunden.', uk: 'Я працюю щодня вісім годин (регулярне відмінювання слабкого дієслова).' },
+        { target: 'Er fährt mit dem Auto zur Arbeit.', uk: 'Він їде на роботу машиною (сильне дієслово fahren: a → ä у 3-й особі однини).' },
+        { target: 'Ich fahre morgen nach Berlin.', uk: 'Я їду завтра до Берліна (Präsens у значенні майбутнього часу — типово для німецької).' },
+      ],
+      exercises: [
+        {
+          id: 'praes-1',
+          type: 'multiple-choice',
+          prompt: 'Du ___ sehr schnell. (fahren)',
+          options: ['fahrst', 'fährst', 'fahren', 'fahre'],
+          correctIndex: 1,
+          explanation: 'Fahren — сильне дієслово: у 2-й особі однини корінний голосний змінюється a → ä: du fährst.',
+        },
+        {
+          id: 'praes-2',
+          type: 'multiple-choice',
+          prompt: 'Er ___ den Film heute Abend. (sehen)',
+          options: ['sehe', 'siehst', 'sieht', 'sehen'],
+          correctIndex: 2,
+          explanation: 'Sehen — сильне дієслово: у 3-й особі однини e → ie: er sieht.',
+        },
+        {
+          id: 'praes-3',
+          type: 'fill-blank',
+          prompt: 'Ich ___ (arbeiten) in einer Bank.',
+          correctAnswers: ['arbeite'],
+          explanation: 'Слабке дієслово, регулярне відмінювання: ich-форма отримує закінчення -e.',
+        },
+        {
+          id: 'praes-4',
+          type: 'fill-blank',
+          prompt: 'Wir ___ (fahren) nächste Woche nach Wien.',
+          correctAnswers: ['fahren'],
+          explanation: 'Präsens вживається тут для позначення запланованої майбутньої дії (nächste Woche вказує на майбутнє).',
+        },
+        {
+          id: 'praes-5',
+          type: 'multiple-choice',
+          prompt: 'Which sentence uses Präsens with a future meaning, as is typical in German?',
+          options: [
+            'Ich fliege morgen nach Rom.',
+            'Ich bin gestern nach Rom geflogen.',
+            'Ich flog letztes Jahr nach Rom.',
+            'Ich war schon einmal in Rom gewesen.',
+          ],
+          correctIndex: 0,
+          explanation: 'Обставина morgen (завтра) у поєднанні з Präsens — типовий для німецької спосіб говорити про майбутнє.',
+        },
+      ],
+    },
+    {
+      id: 'perfekt',
+      title: 'Perfekt',
+      theory:
+        'Perfekt утворюється за допомогою допоміжного дієслова haben або sein у Präsens + Partizip II смислового дієслова (ich habe gemacht, ich bin gegangen) і є домінантним минулим часом у розмовній німецькій та неформальному письмі. Sein вживається з неперехідними дієсловами руху (gehen, fahren, laufen) та зміни стану (werden, sterben, aufwachen), а також із bleiben; haben вживається з більшістю інших дієслів, включно з усіма зворотними (sich waschen) та перехідними дієсловами. Partizip II слабких дієслів регулярний: ge- + основа + -t (machen → gemacht, kaufen → gekauft); сильні дієслова утворюють Partizip II за схемою ge- + основа (часто зі зміненим голосним) + -en (sehen → gesehen, fahren → gefahren) — ці форми потрібно запам\'ятовувати окремо, оскільки правило непередбачуване.',
+      examples: [
+        { target: 'Ich habe gestern einen Film gesehen.', uk: 'Я вчора подивився фільм (haben + неправильний Partizip II gesehen).' },
+        { target: 'Er ist nach Berlin gefahren.', uk: 'Він поїхав до Берліна (sein — дієслово руху fahren).' },
+        { target: 'Wir haben das Auto gewaschen.', uk: 'Ми помили машину (haben + правильний Partizip II ge-t: gewaschen).' },
+      ],
+      exercises: [
+        {
+          id: 'perf-1',
+          type: 'multiple-choice',
+          prompt: 'Ich ___ nach Hause gegangen.',
+          options: ['habe', 'bin', 'hat', 'ist'],
+          correctIndex: 1,
+          explanation: 'Gehen — дієслово руху, тому Perfekt утворюється з sein: ich bin gegangen.',
+        },
+        {
+          id: 'perf-2',
+          type: 'multiple-choice',
+          prompt: 'Which auxiliary verb goes with "gefahren" (a verb of motion)?',
+          options: ['haben', 'sein', 'werden', 'mögen'],
+          correctIndex: 1,
+          explanation: 'Дієслова руху (fahren, gehen, laufen) утворюють Perfekt з sein.',
+        },
+        {
+          id: 'perf-3',
+          type: 'fill-blank',
+          prompt: 'Ich habe das Buch ___ (lesen).',
+          correctAnswers: ['gelesen'],
+          explanation: 'Lesen — сильне дієслово, Partizip II: gelesen (haben, бо lesen перехідне).',
+        },
+        {
+          id: 'perf-4',
+          type: 'fill-blank',
+          prompt: 'Er ist gestern zu Hause ___ (bleiben).',
+          correctAnswers: ['geblieben'],
+          explanation: 'Bleiben утворює Perfekt із sein, хоч і не є дієсловом руху; Partizip II: geblieben.',
+        },
+        {
+          id: 'perf-5',
+          type: 'multiple-choice',
+          prompt: 'Which group of verbs typically use "sein" as the Perfekt auxiliary?',
+          options: [
+            'reflexive verbs',
+            'transitive verbs',
+            'verbs of motion and change of state',
+            'modal verbs',
+          ],
+          correctIndex: 2,
+          explanation: 'Sein вживається з неперехідними дієсловами руху (gehen, fahren) та зміни стану (werden, sterben).',
+        },
+      ],
+    },
+    {
+      id: 'praeteritum',
+      title: 'Präteritum',
+      theory:
+        'Präteritum — простий минулий час, що утворюється синтетично (без допоміжного дієслова): слабкі дієслова додають -te до основи (machen → ich machte), сильні дієслова змінюють корінний голосний (fahren → ich fuhr, sehen → ich sah). На відміну від Perfekt, який домінує в розмовній мові, Präteritum є основним минулим часом у писемному наративі — оповіданнях, романах, новинах, офіційних текстах. Виняток становлять дуже вживані дієслова sein, haben та модальні дієслова (können, müssen, wollen, dürfen, sollen, mögen): навіть у звичайній розмові німці кажуть ich war, ich hatte, ich konnte, а не ich bin gewesen, ich habe gehabt, ich habe gekonnt, бо Perfekt цих дієслів звучить неприродно важко.',
+      examples: [
+        { target: 'Es war einmal eine Prinzessin, die in einem Schloss lebte.', uk: 'Жила-була принцеса, яка мешкала в замку (Präteritum — типовий стиль писемної оповіді).' },
+        { target: 'Ich hatte gestern keine Zeit.', uk: 'У мене вчора не було часу (haben у Präteritum вживається навіть у розмові).' },
+        { target: 'Ich konnte nicht kommen, weil ich krank war.', uk: 'Я не міг прийти, бо був хворий (модальне дієслово konnte та sein у Präteritum, типово для розмови).' },
+      ],
+      exercises: [
+        {
+          id: 'praet-1',
+          type: 'multiple-choice',
+          prompt: 'Which tense do Germans typically use in everyday speech for the verb "sein"?',
+          options: [
+            'Perfekt (ich bin gewesen)',
+            'Präteritum (ich war)',
+            'Plusquamperfekt (ich war gewesen)',
+            'Futur I (ich werde sein)',
+          ],
+          correctIndex: 1,
+          explanation: 'Sein — один із небагатьох дієслів, які навіть у розмові вживають у Präteritum: ich war.',
+        },
+        {
+          id: 'praet-2',
+          type: 'multiple-choice',
+          prompt: 'Ich ___ gestern keine Zeit. (haben)',
+          options: ['habe', 'hatte', 'gehabt', 'hätte'],
+          correctIndex: 1,
+          explanation: 'Haben у Präteritum: ich hatte — вживається навіть у розмовній мові замість Perfekt.',
+        },
+        {
+          id: 'praet-3',
+          type: 'fill-blank',
+          prompt: 'Er ___ (können) das Problem nicht lösen.',
+          correctAnswers: ['konnte'],
+          explanation: 'Модальні дієслова вживаються в Präteritum навіть у розмові: können → konnte.',
+        },
+        {
+          id: 'praet-4',
+          type: 'fill-blank',
+          prompt: 'Es ___ (sein) einmal ein König.',
+          correctAnswers: ['war'],
+          explanation: 'Sein у Präteritum: war — типовий початок казкової оповіді.',
+        },
+        {
+          id: 'praet-5',
+          type: 'multiple-choice',
+          prompt: 'In which register is Präteritum the dominant past tense in German?',
+          options: [
+            'informal spoken conversation',
+            'written narrative and formal writing',
+            'text messages and casual chat',
+            'telephone calls',
+          ],
+          correctIndex: 1,
+          explanation: 'Präteritum домінує в писемному наративі та формальному стилі, тоді як Perfekt переважає в розмовній мові.',
+        },
+      ],
+    },
+    {
+      id: 'plusquamperfekt',
+      title: 'Plusquamperfekt',
+      theory:
+        'Plusquamperfekt утворюється з haben або sein у Präteritum + Partizip II (ich hatte gemacht, ich war gegangen) і позначає дію, яка відбулася РАНІШЕ за іншу дію в минулому — це німецький відповідник англійського Past Perfect. Вибір допоміжного дієслова (haben чи sein) підпорядковується тим самим правилам, що й у Perfekt: sein для дієслів руху та зміни стану, haben для решти. Найтиповіший контекст вживання — складнопідрядне речення зі сполучником nachdem (після того як): Nachdem ich gegessen hatte, ging ich spazieren — спочатку я поїв (Plusquamperfekt), потім пішов гуляти (Präteritum); порядок дій у часі стає граматично однозначним.',
+      examples: [
+        { target: 'Nachdem ich gegessen hatte, ging ich spazieren.', uk: 'Після того як я поїв, я пішов на прогулянку (Plusquamperfekt — дія, що відбулася раніше за іншу минулу дію).' },
+        { target: 'Sie hatte die Prüfung bereits bestanden, bevor sie den Brief bekam.', uk: 'Вона вже склала іспит, перш ніж отримала листа (haben + Partizip II bestanden).' },
+        { target: 'Er war schon eingeschlafen, als ich nach Hause kam.', uk: 'Він уже заснув, коли я прийшов додому (sein + Partizip II — зміна стану einschlafen).' },
+      ],
+      exercises: [
+        {
+          id: 'pqp-1',
+          type: 'multiple-choice',
+          prompt: 'Nachdem ich ___ (essen) hatte, ging ich spazieren.',
+          options: ['esse', 'aß', 'gegessen', 'essen'],
+          correctIndex: 2,
+          explanation: 'Plusquamperfekt вимагає Partizip II: essen → gegessen.',
+        },
+        {
+          id: 'pqp-2',
+          type: 'multiple-choice',
+          prompt: 'Er ___ schon eingeschlafen, als ich nach Hause kam.',
+          options: ['hatte', 'war', 'ist', 'hat'],
+          correctIndex: 1,
+          explanation: 'Einschlafen позначає зміну стану, тому допоміжне дієслово — sein у Präteritum: war.',
+        },
+        {
+          id: 'pqp-3',
+          type: 'fill-blank',
+          prompt: 'Nachdem sie die Prüfung ___ (bestehen) hatte, feierte sie.',
+          correctAnswers: ['bestanden'],
+          explanation: 'Bestehen — сильне дієслово, Partizip II: bestanden.',
+        },
+        {
+          id: 'pqp-4',
+          type: 'fill-blank',
+          prompt: 'Der Film ___ schon begonnen, bevor wir ankamen.',
+          correctAnswers: ['hatte'],
+          explanation: 'Beginnen вживається з haben; допоміжне дієслово в Präteritum: hatte.',
+        },
+        {
+          id: 'pqp-5',
+          type: 'multiple-choice',
+          prompt: 'What does the Plusquamperfekt express?',
+          options: [
+            'an action happening right now',
+            'an action that happened before another past action',
+            'a future prediction',
+            'a repeated habitual action',
+          ],
+          correctIndex: 1,
+          explanation: 'Plusquamperfekt позначає дію, яка передувала іншій минулій дії — німецький аналог Past Perfect.',
+        },
+      ],
+    },
+    {
+      id: 'futur-i-ii',
+      title: 'Futur I und Futur II',
+      theory:
+        'Futur I утворюється з werden у Präsens + Infinitiv смислового дієслова (ich werde fahren) і вживається у двох основних значеннях: по-перше, для позначення майбутньої дії (Ich werde morgen einkaufen gehen), хоча в цій функції в розмовній мові частіше вживають просто Präsens; по-друге, і навіть частіше, для вираження припущення чи прогнозу щодо теперішнього моменту (Er wird wohl zu Hause sein — "він, напевно, вдома") — це не майбутня дія, а оцінка ймовірності зараз. Futur II утворюється з werden + Partizip II + haben/sein (ich werde gemacht haben, ich werde gegangen sein) і виражає припущення, що якась дія вже буде або вже є завершеною до певного моменту — у майбутньому чи навіть у теперішньому: Er wird die Arbeit schon beendet haben означає "він, напевно, вже закінчив роботу", тобто йдеться про ймовірний завершений факт, а не про буквальне майбутнє.',
+      examples: [
+        { target: 'Ich werde morgen einkaufen gehen.', uk: 'Я піду завтра за покупками (Futur I — пряма майбутня дія).' },
+        { target: 'Er wird wohl zu Hause sein.', uk: 'Він, напевно, вдома (Futur I для вираження припущення про теперішній момент, а не майбутнього).' },
+        { target: 'Er wird die Arbeit schon beendet haben.', uk: 'Він, напевно, вже закінчив роботу (Futur II — припущення про завершену дію).' },
+      ],
+      exercises: [
+        {
+          id: 'fut-1',
+          type: 'multiple-choice',
+          prompt: 'Ich ___ morgen nach Hause fahren. (werden)',
+          options: ['werde', 'wirst', 'wird', 'werdet'],
+          correctIndex: 0,
+          explanation: 'Futur I: werden відмінюється за особою, 1-а особа однини — werde.',
+        },
+        {
+          id: 'fut-2',
+          type: 'multiple-choice',
+          prompt: 'Which sentence expresses a present assumption/probability rather than a literal future event?',
+          options: [
+            'Er wird wohl krank sein.',
+            'Er wird morgen zur Arbeit gehen.',
+            'Er wird nächste Woche verreisen.',
+            'Er wird im Sommer heiraten.',
+          ],
+          correctIndex: 0,
+          explanation: 'Er wird wohl krank sein виражає припущення про теперішній стан, а не майбутню дію.',
+        },
+        {
+          id: 'fut-3',
+          type: 'fill-blank',
+          prompt: 'Sie ___ (werden) das Projekt bis Freitag beenden.',
+          correctAnswers: ['wird'],
+          explanation: 'Futur I, 3-я особа однини: sie wird.',
+        },
+        {
+          id: 'fut-4',
+          type: 'fill-blank',
+          prompt: 'Er wird die Arbeit schon ___ (beenden) haben.',
+          correctAnswers: ['beendet'],
+          explanation: 'Futur II: werden + Partizip II (beendet) + haben.',
+        },
+        {
+          id: 'fut-5',
+          type: 'multiple-choice',
+          prompt: 'What does Futur II typically express?',
+          options: [
+            'a simple future action',
+            'an action assumed to be completed by a future or even present point in time',
+            'a past habitual action',
+            'a polite request',
+          ],
+          correctIndex: 1,
+          explanation: 'Futur II виражає припущення про завершеність дії до певного моменту — у майбутньому чи вже зараз.',
+        },
+      ],
+    },
+  ],
+}

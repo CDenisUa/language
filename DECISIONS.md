@@ -471,7 +471,7 @@ Three implementation decisions made while building the Text Analyzer, each a nat
 
 ### 2026-07-15 — Grammar module: English-only, explanations in Ukrainian, auto-checked exercises, all 8 categories built together
 
-**Status:** accepted
+**Status:** superseded — see 2026-07-15 "German grammar content" entry below (the "not wired to `useLanguageStore`" part specifically; the exercise-type/explanation-language/build-together choices below still stand for both languages)
 
 A new, large, previously-unplanned feature (not on the original roadmap), so — consistent with this project's standing pattern of clarifying scope before building rather than guessing — four scope questions were put to the user directly before any code was written:
 
@@ -533,3 +533,32 @@ Instead, `getEngVidSearchUrl()` (`src/consts/engvid.ts`) builds `https://www.eng
 **Why:** A universal search link is honest and correct for every topic today, including all future German topics, at zero per-topic curation cost — versus a curated-video approach that would need real, individually-verified research per topic and would still leave gaps wherever no matching engVid lesson exists.
 
 **How to apply:** If a specific, verified video is later wanted for a particular high-value topic, that's an additive, per-topic override on top of this generic link (e.g. an optional `engVidUrl` field on `GrammarTopic`), not a replacement of the general mechanism.
+
+---
+
+### 2026-07-15 — German grammar content: its own category structure, scoped by the DE/EN study-language switch — supersedes the "English-only" part of the earlier Grammar decision
+
+**Status:** accepted
+
+The user asked for German grammar alongside English. Two real design questions came with that, both resolved with the user directly before building:
+
+1. **Category structure**: German gets its own 11 categories (Kasus, Genus & Artikel, Wortstellung, Verbformen & Zeiten, Modalverben, Trennbare Verben, Konjunktiv, Passiv, Präpositionen, Adjektivdeklination, Nebensätze) rather than reusing the English 8 (Tenses & Aspects, Modals, Conditionals...) — the user's explicit choice, over mechanically relabeling the English list. This is the right call structurally too: German's core difficulties (case system, gender/article declension, V2/verb-final word order, separable verb prefixes) have no clean equivalent in the English category list, and several English categories (Conditionals as a distinct system, the Tenses/Aspects 4-way Simple/Continuous/Perfect/Perfect-Continuous grid) don't map onto how German grammar is actually organized.
+2. **Scoping to the DE/EN switch**: the Grammar module is now wired to `useLanguageStore`'s `activeLanguage` — English content shows only in English mode, German only in German mode — reversing the earlier decision that Grammar was deliberately *not* tied to this switch. That earlier decision made sense when only English existed (there was nothing to switch between); now that German exists too, leaving both languages' categories visible at once would defeat the purpose of the switch that every other module (Vocabulary, Text Analyzer, Shadowing) already respects.
+
+Two structural changes followed directly from this: `GrammarCategory` gained a required `language: Language` field, and `GrammarExample`'s `en` field was renamed to `target` (English-specific naming stopped making sense once a German category needed the same field for German sentences) — applied mechanically across all 8 existing English content files via a scoped `sed` replace, verified with `tsc --noEmit` and the full test suite afterward.
+
+**Why:** A German-specific structure teaches German the way German actually works, rather than forcing it through an English-shaped lens; scoping by the study-language switch keeps Grammar consistent with how every other module in the app already behaves, and avoids a 19-category, ~90-topic single list that would be unwieldy to browse regardless of which language the user is actually studying that day.
+
+**How to apply:** Explanation language (Ukrainian) and exercise type (auto-checked multiple-choice/fill-blank) from the original 2026-07-15 Grammar decision still apply to German content unchanged — only the "not wired to the language switch" part was superseded.
+
+---
+
+### 2026-07-15 — Content-integrity test added after real bugs surfaced during German content review
+
+**Status:** accepted
+
+While merging the German content, a new `src/content/grammar/index.test.ts` was written to assert three invariants across the entire `GRAMMAR_CATEGORIES` dataset: every topic id and every exercise id is globally unique (not just unique within its own file), every `multiple-choice` exercise's `correctIndex` is a valid index into its own `options`, and every `fill-blank` exercise has at least one non-empty `correctAnswers` entry. This test caught two real, pre-merge bugs: (1) exercise ids `pc-*` were reused between an English "Present Continuous" topic and an unrelated English "Participle Clauses" topic (both written directly, not by an agent — a same-author abbreviation collision across files that were never cross-checked against each other), and `sv-*` were reused between an English "State Verbs" topic and a German "Separable Verbs" topic (an English file and an agent-written German file, neither aware of the other's abbreviations); and (2) two German "Nullartikel" fill-blank exercises had `correctAnswers: ['—', '']` — an empty string intended to mean "type nothing," which is impossible to actually submit since the exercise UI disables its Check button until the input is non-empty. All three were fixed before merging (the id collisions renamed, the two broken exercises converted to multiple-choice with an explicit "— (kein Artikel)" option, matching the pattern already used correctly elsewhere in the same file).
+
+**Why:** Neither bug is something `tsc` or the per-file agent-authoring process could catch — ids are just string literals with no type-level uniqueness constraint, and an empty-but-non-empty-typed `correctAnswers` array passes the `GrammarExercise` type contract just fine. Both are exactly the class of cross-file, whole-dataset invariant that only becomes checkable once every file is aggregated together, which only happens at merge time — so a real regression test for it, not just a one-off manual check, is worth keeping permanently as more categories/topics get added later (e.g. if French or another language is ever added to Grammar).
+
+**How to apply:** Any new grammar content file — for any language — must pick exercise-id prefixes that don't assume they're safe just because they're unique within that one file; `index.test.ts` will fail loudly at test time if that assumption breaks, which is the intended safety net.
