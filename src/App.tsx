@@ -13,6 +13,7 @@ import Vocabulary from '@/pages/Vocabulary/Vocabulary'
 import Scheduler from '@/pages/Scheduler/Scheduler'
 import Shadowing from '@/pages/Shadowing/Shadowing'
 import ErrorJournal from '@/pages/ErrorJournal/ErrorJournal'
+import TextAnalyzer from '@/pages/TextAnalyzer/TextAnalyzer'
 import Settings from '@/pages/Settings/Settings'
 // Consts
 import { ROUTES } from '@/consts/routes'
@@ -32,6 +33,7 @@ function App() {
           <Route path={ROUTES.scheduler} element={<Scheduler />} />
           <Route path={ROUTES.shadowing} element={<Shadowing />} />
           <Route path={ROUTES.errorJournal} element={<ErrorJournal />} />
+          <Route path={ROUTES.textAnalyzer} element={<TextAnalyzer />} />
           <Route path={ROUTES.settings} element={<Settings />} />
         </Routes>
       </main>

@@ -10,6 +10,7 @@ export interface TranslationDictionary {
     scheduler: string
     shadowing: string
     errorJournal: string
+    textAnalyzer: string
     settings: string
     menuToggle: string
   }
@@ -25,6 +26,7 @@ export interface TranslationDictionary {
     scheduler: TranslatedPage
     shadowing: TranslatedPage
     errorJournal: TranslatedPage
+    textAnalyzer: TranslatedPage
     settings: TranslatedPage
   }
   vocabulary: {
@@ -150,5 +152,17 @@ export interface TranslationDictionary {
     delete: string
     entriesHeading: string
     emptyEntries: string
+  }
+  textAnalyzer: {
+    placeholder: string
+    analyzeButton: string
+    emptyResult: string
+    legendB2: string
+    legendC1: string
+    legendC2: string
+    legendUnranked: string
+    wordAdded: string
+    alreadyInVocabulary: string
+    dataCredit: string
   }
 }
