@@ -6,6 +6,8 @@ import userEvent from '@testing-library/user-event'
 import Grammar from '@/pages/Grammar/Grammar'
 // Services
 import { grammarProgressRepository } from '@/services/db/grammarProgressRepository'
+import { grammarTopicReviewsRepository } from '@/services/db/grammarTopicReviewsRepository'
+import { createNewCard } from '@/services/fsrs/fsrsScheduler'
 // Hooks
 import { useLocaleStore } from '@/hooks/useLocaleStore'
 
@@ -20,6 +22,7 @@ async function openTopic(user: ReturnType<typeof userEvent.setup>) {
 describe('Grammar', () => {
   beforeEach(async () => {
     await grammarProgressRepository.clear()
+    await grammarTopicReviewsRepository.clear()
     useLocaleStore.setState({ locale: 'uk' })
   })
 
@@ -103,5 +106,50 @@ describe('Grammar', () => {
 
     const topicListItem = screen.getByText('Present Simple').closest('button')!
     expect(within(topicListItem).getByText('1/5')).toBeInTheDocument()
+  })
+
+  it('shows an engVid search link for the current topic', async () => {
+    const user = userEvent.setup()
+    render(<Grammar />)
+    await openTopic(user)
+
+    const link = screen.getByRole('link', { name: /engVid/ })
+    expect(link).toHaveAttribute('href', 'https://www.engvid.com/?s=Present%20Simple')
+    expect(link).toHaveAttribute('target', '_blank')
+  })
+
+  it('schedules a topic review once all of its exercises have been answered', async () => {
+    const user = userEvent.setup()
+    render(<Grammar />)
+    await openTopic(user)
+
+    await user.click(within(screen.getByText('She ___ football every Sunday.').closest('li')!).getByRole('button', { name: 'plays' }))
+    await user.click(within(screen.getByText('___ you speak German?').closest('li')!).getByRole('button', { name: 'Do' }))
+    await user.type(within(screen.getByText('The train ___ (leave) at 9 a.m. every day.').closest('li')!).getByRole('textbox'), 'leaves')
+    await user.click(within(screen.getByText('The train ___ (leave) at 9 a.m. every day.').closest('li')!).getByRole('button', { name: 'Перевірити' }))
+    await user.click(within(screen.getByText("He ___ like coffee, he prefers tea.").closest('li')!).getByRole('button', { name: "doesn't" }))
+    await user.type(within(screen.getByText('A: You never call me. B: I ___ call you, you never answer!').closest('li')!).getByRole('textbox'), 'do')
+    await user.click(within(screen.getByText('A: You never call me. B: I ___ call you, you never answer!').closest('li')!).getByRole('button', { name: 'Перевірити' }))
+
+    await waitFor(async () => {
+      const review = await grammarTopicReviewsRepository.getById('present-simple')
+      expect(review).toBeDefined()
+    })
+  })
+
+  it('shows a due-for-review entry on the main page and jumps straight into the topic when clicked', async () => {
+    await grammarTopicReviewsRepository.save({
+      id: 'present-simple',
+      topicId: 'present-simple',
+      fsrs: createNewCard(),
+    })
+
+    const user = userEvent.setup()
+    render(<Grammar />)
+
+    expect(await screen.findByRole('heading', { name: 'Час повторити' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /Present Simple/ }))
+
+    expect(screen.getByRole('heading', { name: 'Present Simple', level: 2 })).toBeInTheDocument()
   })
 })

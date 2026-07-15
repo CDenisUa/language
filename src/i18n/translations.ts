@@ -201,6 +201,8 @@ const uk = {
     back: '←',
     allCategories: 'усі розділи',
     progressLabel: 'правильних відповідей',
+    dueForReviewHeading: 'Час повторити',
+    watchOnEngVid: 'Шукати цю тему на engVid ↗',
   },
 } satisfies TranslationDictionary
 
@@ -403,6 +405,8 @@ const ru = {
     back: '←',
     allCategories: 'все разделы',
     progressLabel: 'правильных ответов',
+    dueForReviewHeading: 'Время повторить',
+    watchOnEngVid: 'Искать эту тему на engVid ↗',
   },
 } satisfies TranslationDictionary
 

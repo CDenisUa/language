@@ -5,6 +5,8 @@ import { useTranslation } from '@/i18n/useTranslation'
 // Types
 import type { GrammarTopic } from '@/types/grammarTopic'
 import type { GrammarProgressRecord } from '@/types/grammarProgress'
+// Consts
+import { getEngVidSearchUrl } from '@/consts/engvid'
 // Styles
 import './GrammarTopicView.css'
 
@@ -30,6 +32,15 @@ function GrammarTopicView({ topic, progress, onAnswered }: GrammarTopicViewProps
           </li>
         ))}
       </ul>
+
+      <a
+        className="grammar-topic-view__engvid-link"
+        href={getEngVidSearchUrl(topic.title)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t.grammar.watchOnEngVid}
+      </a>
 
       <h3 className="grammar-topic-view__exercises-heading">{t.grammar.exercisesHeading}</h3>
       <ul className="grammar-topic-view__exercise-list">

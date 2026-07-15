@@ -507,3 +507,29 @@ A new `grammarProgress` IndexedDB store (schema v6, `src/types/grammarProgress.t
 **Why:** With only 250 exercises total across the whole module, one full-store read is cheap and simple, and avoids either a second per-topic hook (extra round trips when browsing the topic list) or a denormalized rollup counter that would need separate invalidation logic. This is the same "read once, derive the rest in memory" shape already used by Dashboard's error/hours breakdown.
 
 **How to apply:** If the exercise count grows by an order of magnitude and a full-store read becomes a real cost, category/topic-level counts could be pre-aggregated instead — not a concern at the current content size, so not built now.
+
+---
+
+### 2026-07-15 — Grammar reviews reuse Vocabulary's FSRS scheduler per-topic, with an auto-derived grade instead of self-rating
+
+**Status:** accepted
+
+User's explicit choice when asked directly (over a plain fixed interval, or just a Dashboard "not reviewed lately" widget). Each grammar *topic* — not each exercise — gets its own FSRS card in a new `grammarTopicReviews` store (schema v7), scheduled with the exact same `ts-fsrs` wrapper (`src/services/fsrs/fsrsScheduler.ts`) Vocabulary already uses, rather than a second scheduling implementation. The one real difference from Vocabulary: Vocabulary's review flow asks the user to self-rate their own recall (Again/Hard/Good/Easy) after seeing the answer, but Grammar's exercises are already auto-checked right/wrong — there's no natural moment to ask "how well did you know that?" a second time. `deriveGradeFromScore()` (`src/services/grammarReview/deriveGradeFromScore.ts`) closes that gap by mapping the topic's correct-answer ratio onto a grade (5/5 → Easy, 4/5 → Good, 2–3/5 → Hard, 0–1/5 → Again) the moment all of a topic's exercises have been answered for the first time.
+
+**Why:** Reusing the existing scheduler means Grammar's spacing behaves identically to Vocabulary's (same algorithm, same tuning) rather than inventing a second, subtly-different notion of "due" in the same app. Auto-deriving the grade from the score is a reasonable proxy for self-rating specifically *because* the exercises are objectively checked — a real wrong/right count is at least as informative as an unprompted self-assessment would be, and doesn't require adding a redundant "how did that feel?" step after an already-graded quiz.
+
+**How to apply:** `handleAnswered` in `Grammar.tsx` only schedules a review on the *transition* from "not fully answered" to "fully answered" (checked via the topic's progress-record count before vs. after saving) — re-answering exercises in an already-completed topic does not reschedule it again. If a "retake this topic" flow is ever added that's meant to intentionally re-trigger scheduling, that's a new, explicit action, not a side effect of editing old answers.
+
+---
+
+### 2026-07-15 — engVid: a generic per-topic search link, not per-topic curated videos or an embedded player
+
+**Status:** accepted
+
+User's explicit choice, informed by real research done before building: engVid.com does organize lessons by topic and has a search feature with stable per-lesson URLs (confirmed via a live fetch), but there is no reliable way to know in advance which specific lesson URL matches any given one of this module's ~50+ (and growing, with German) topics without verifying each one individually by hand — and guessing/fabricating a specific engVid URL per topic was rejected outright as a fabrication risk. Embedding engVid's own player via `iframe` was also not pursued, since it's a third-party, ad-supported site with no confirmed embed support and real ToS/technical uncertainty.
+
+Instead, `getEngVidSearchUrl()` (`src/consts/engvid.ts`) builds `https://www.engvid.com/?s=<topic title>` — engVid's own real search page, opened in a new tab (`target="_blank"`) from a link rendered on every topic view, right after the theory/examples and before the exercises (per the user's requested placement: watch first, then practice).
+
+**Why:** A universal search link is honest and correct for every topic today, including all future German topics, at zero per-topic curation cost — versus a curated-video approach that would need real, individually-verified research per topic and would still leave gaps wherever no matching engVid lesson exists.
+
+**How to apply:** If a specific, verified video is later wanted for a particular high-value topic, that's an additive, per-topic override on top of this generic link (e.g. an optional `engVidUrl` field on `GrammarTopic`), not a replacement of the general mechanism.

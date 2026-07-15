@@ -175,5 +175,7 @@ export interface TranslationDictionary {
     back: string
     allCategories: string
     progressLabel: string
+    dueForReviewHeading: string
+    watchOnEngVid: string
   }
 }

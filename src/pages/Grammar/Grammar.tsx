@@ -4,19 +4,27 @@ import { useMemo, useState } from 'react'
 import GrammarTopicView from '@/pages/Grammar/GrammarTopicView'
 // Hooks
 import { useGrammarProgress } from '@/hooks/useGrammarProgress'
+import { useGrammarTopicReviews } from '@/hooks/useGrammarTopicReviews'
 import { useTranslation } from '@/i18n/useTranslation'
 // Services
 import { grammarProgressRepository } from '@/services/db/grammarProgressRepository'
+import { scheduleTopicReview } from '@/services/grammarReview/scheduleTopicReview'
+import { isDue } from '@/services/fsrs/fsrsScheduler'
 // Types
-import type { GrammarCategoryId } from '@/types/grammarTopic'
+import type { GrammarCategory, GrammarCategoryId, GrammarTopic } from '@/types/grammarTopic'
 // Consts
 import { GRAMMAR_CATEGORIES } from '@/content/grammar'
 // Styles
 import './Grammar.css'
 
+function findCategoryByTopicId(topicId: string) {
+  return GRAMMAR_CATEGORIES.find((category) => category.topics.some((topic) => topic.id === topicId)) ?? null
+}
+
 function Grammar() {
   const { t } = useTranslation()
   const { progress, reload } = useGrammarProgress()
+  const { reviews, reload: reloadReviews } = useGrammarTopicReviews()
   const [selectedCategoryId, setSelectedCategoryId] = useState<GrammarCategoryId | null>(null)
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null)
 
@@ -29,8 +37,22 @@ function Grammar() {
     [selectedCategory, selectedTopicId],
   )
 
+  const dueTopics = useMemo(
+    () =>
+      reviews
+        .filter((review) => isDue(review.fsrs))
+        .map((review) => {
+          const category = findCategoryByTopicId(review.topicId)
+          const topic = category?.topics.find((candidate) => candidate.id === review.topicId)
+          return topic && category ? { topic, category } : null
+        })
+        .filter((entry): entry is { topic: GrammarTopic; category: GrammarCategory } => entry !== null),
+    [reviews],
+  )
+
   const handleAnswered = async (exerciseId: string, correct: boolean) => {
     if (!selectedTopic) return
+    const wasFullyAnswered = progress.filter((record) => record.topicId === selectedTopic.id).length === selectedTopic.exercises.length
     await grammarProgressRepository.save({
       id: `${selectedTopic.id}:${exerciseId}`,
       topicId: selectedTopic.id,
@@ -38,11 +60,24 @@ function Grammar() {
       correct,
     })
     await reload()
+
+    const updatedTopicProgress = await grammarProgressRepository.getByTopic(selectedTopic.id)
+    const isNowFullyAnswered = updatedTopicProgress.length === selectedTopic.exercises.length
+    if (!wasFullyAnswered && isNowFullyAnswered) {
+      const correctCount = updatedTopicProgress.filter((record) => record.correct).length
+      await scheduleTopicReview(selectedTopic.id, correctCount, selectedTopic.exercises.length)
+      await reloadReviews()
+    }
   }
 
   const openCategory = (categoryId: GrammarCategoryId) => {
     setSelectedCategoryId(categoryId)
     setSelectedTopicId(null)
+  }
+
+  const openTopicDirectly = (categoryId: GrammarCategoryId, topicId: string) => {
+    setSelectedCategoryId(categoryId)
+    setSelectedTopicId(topicId)
   }
 
   if (selectedTopic && selectedCategory) {
@@ -89,6 +124,27 @@ function Grammar() {
     <section className="grammar-page">
       <h1>{t.pages.grammar.title}</h1>
       <p>{t.pages.grammar.description}</p>
+
+      {dueTopics.length > 0 && (
+        <div className="grammar-due">
+          <h2 className="grammar-due__heading">{t.grammar.dueForReviewHeading}</h2>
+          <ul className="grammar-due__list">
+            {dueTopics.map(({ topic, category }) => (
+              <li key={topic.id}>
+                <button
+                  type="button"
+                  className="grammar-due__item"
+                  onClick={() => openTopicDirectly(category.id, topic.id)}
+                >
+                  <span className="grammar-due__topic-title">{topic.title}</span>
+                  <span className="grammar-due__category-title">{category.title}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="grammar-categories">
         {GRAMMAR_CATEGORIES.map((category) => {
           const topicIds = new Set(category.topics.map((topic) => topic.id))
