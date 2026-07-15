@@ -15,6 +15,7 @@ import Shadowing from '@/pages/Shadowing/Shadowing'
 import ErrorJournal from '@/pages/ErrorJournal/ErrorJournal'
 import TextAnalyzer from '@/pages/TextAnalyzer/TextAnalyzer'
 import Grammar from '@/pages/Grammar/Grammar'
+import WordLevels from '@/pages/WordLevels/WordLevels'
 import Settings from '@/pages/Settings/Settings'
 // Consts
 import { ROUTES } from '@/consts/routes'
@@ -36,6 +37,7 @@ function App() {
           <Route path={ROUTES.errorJournal} element={<ErrorJournal />} />
           <Route path={ROUTES.textAnalyzer} element={<TextAnalyzer />} />
           <Route path={ROUTES.grammar} element={<Grammar />} />
+          <Route path={ROUTES.wordLevels} element={<WordLevels />} />
           <Route path={ROUTES.settings} element={<Settings />} />
         </Routes>
       </main>

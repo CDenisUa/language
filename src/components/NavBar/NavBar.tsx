@@ -31,6 +31,7 @@ function NavBar() {
     { to: ROUTES.errorJournal, label: t.nav.errorJournal },
     { to: ROUTES.textAnalyzer, label: t.nav.textAnalyzer },
     { to: ROUTES.grammar, label: t.nav.grammar },
+    { to: ROUTES.wordLevels, label: t.nav.wordLevels },
     { to: ROUTES.settings, label: t.nav.settings },
   ]
 

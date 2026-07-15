@@ -11,6 +11,7 @@ const uk = {
     errorJournal: 'Помилки',
     textAnalyzer: 'Аналіз тексту',
     grammar: 'Граматика',
+    wordLevels: 'Рівні слів',
     settings: 'Налаштування',
     menuToggle: 'Меню',
   },
@@ -48,6 +49,10 @@ const uk = {
     grammar: {
       title: 'Граматика',
       description: 'Теорія та вправи з граматики — розділи й теми залежать від активної мови вивчення (DE/EN).',
+    },
+    wordLevels: {
+      title: 'Рівні слів',
+      description: 'Перевір, які слова від A1 до C2 ти вже знаєш — рівень залежить від активної мови вивчення (DE/EN).',
     },
     settings: {
       title: 'Налаштування',
@@ -204,6 +209,16 @@ const uk = {
     dueForReviewHeading: 'Час повторити',
     watchOnEngVid: 'Шукати цю тему на engVid ↗',
   },
+  wordLevels: {
+    allLevels: 'усі рівні',
+    knownCountSuffix: 'знаю',
+    know: 'Знаю',
+    dontKnow: 'Не знаю',
+    noMoreWords: 'Усі слова цього рівня вже позначені як відомі.',
+    roundSummaryPrefix: 'Цей раунд:',
+    roundSummarySuffix: 'позначено як "знаю"',
+    nextRound: 'Ще раунд',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -215,6 +230,7 @@ const ru = {
     errorJournal: 'Ошибки',
     textAnalyzer: 'Анализ текста',
     grammar: 'Грамматика',
+    wordLevels: 'Уровни слов',
     settings: 'Настройки',
     menuToggle: 'Меню',
   },
@@ -252,6 +268,10 @@ const ru = {
     grammar: {
       title: 'Грамматика',
       description: 'Теория и упражнения по грамматике — разделы и темы зависят от активного языка изучения (DE/EN).',
+    },
+    wordLevels: {
+      title: 'Уровни слов',
+      description: 'Проверь, какие слова от A1 до C2 ты уже знаешь — уровень зависит от активного языка изучения (DE/EN).',
     },
     settings: {
       title: 'Настройки',
@@ -407,6 +427,16 @@ const ru = {
     progressLabel: 'правильных ответов',
     dueForReviewHeading: 'Время повторить',
     watchOnEngVid: 'Искать эту тему на engVid ↗',
+  },
+  wordLevels: {
+    allLevels: 'все уровни',
+    knownCountSuffix: 'знаю',
+    know: 'Знаю',
+    dontKnow: 'Не знаю',
+    noMoreWords: 'Все слова этого уровня уже отмечены как известные.',
+    roundSummaryPrefix: 'Этот раунд:',
+    roundSummarySuffix: 'отмечено как "знаю"',
+    nextRound: 'Ещё раунд',
   },
 } satisfies TranslationDictionary
 

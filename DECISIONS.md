@@ -562,3 +562,32 @@ While merging the German content, a new `src/content/grammar/index.test.ts` was 
 **Why:** Neither bug is something `tsc` or the per-file agent-authoring process could catch — ids are just string literals with no type-level uniqueness constraint, and an empty-but-non-empty-typed `correctAnswers` array passes the `GrammarExercise` type contract just fine. Both are exactly the class of cross-file, whole-dataset invariant that only becomes checkable once every file is aggregated together, which only happens at merge time — so a real regression test for it, not just a one-off manual check, is worth keeping permanently as more categories/topics get added later (e.g. if French or another language is ever added to Grammar).
 
 **How to apply:** Any new grammar content file — for any language — must pick exercise-id prefixes that don't assume they're safe just because they're unique within that one file; `index.test.ts` will fail loudly at test time if that assumption breaks, which is the intended safety net.
+
+---
+
+### 2026-07-15 — Word Levels: self-assessment ("Знаю"/"Не знаю"), not an auto-graded quiz — frequency rank as the CEFR proxy for both languages
+
+**Status:** accepted
+
+The user asked for an A1–C2 word list "baked into" the app, sourced from open/academic material, with some form of testing. Before building, the same real constraint from the Text Analyzer decision was reconfirmed: the open frequency wordlists already in this project (`public/data/frequency-{de,en}.json`) are just rank-ordered word lists — word only, no translations, no example sentences, no CEFR tags. Two design questions followed directly from that gap, both resolved with the user directly:
+
+1. **How the "test" works, given there's no translation to grade against**: self-assessment ("Знаю" / "Не знаю"), not an auto-graded quiz — the user's explicit choice over a real quiz, which would have required bulk-translating thousands of words (rejected: no reliable open bilingual dataset was identified, and machine-translating at scale wasn't something to do without a fresh decision on accuracy/licensing). This matches how a real learner actually self-assesses vocabulary knowledge anyway (I-know-this vs. I-don't), and sidesteps needing any translation data at all for the pass/fail signal itself.
+2. **Where the CEFR levels come from**: the same frequency-rank proxy already used by Text Analyzer (`loadFrequencyRanks()`, reused directly — no new fetch, no duplicated data), bucketed into six bands instead of Text Analyzer's four, uniformly for German and English — the user's explicit choice, consistent with the existing 2026-07-15 Text Analyzer decision's reasoning (no open, full-range CEFR wordlist exists for German, so a uniform proxy method beats a technically-better-for-English-only approach).
+
+For a word marked "Не знаю", `WordForm` (already built for Vocabulary, already reused once for Text Analyzer's click-to-add) opens pre-filled with that word via the same `initialFront` prop — the user supplies their own translation there rather than the app inventing one, keeping Vocabulary's existing "the user writes both sides of the card" model intact.
+
+**Why:** Self-assessment is the only grading mechanism that's actually honest about what data exists — anything claiming to auto-grade a quiz here would either need fabricated/unreliable translations or silently defer to some other, undisclosed correctness signal. Reusing the exact same frequency data and fetch path as Text Analyzer avoids a second large dataset and a second offline-precaching concern for what is fundamentally the same underlying resource used a different way.
+
+**How to apply:** If real bilingual translation data is ever sourced for these words (a licensed dictionary, a vetted bulk-translation pass), swapping self-assessment for an actual recall quiz is a new decision with its own data-quality bar to clear — not a silent upgrade bolted onto today's word-only dataset.
+
+---
+
+### 2026-07-15 — Word Levels: six-band tier cutoffs are a separate const from Text Analyzer's four-tier cutoffs; corpus artifacts filtered by a dedicated helper
+
+**Status:** accepted
+
+`src/consts/cefrWordLevels.ts`'s `CEFR_LEVEL_MAX_RANK` (A1 ≤1000, A2 ≤2000, B1 ≤4000, B2 ≤8000, C1 ≤20000, C2 ≤50000) is a new, separate set of cutoffs from Text Analyzer's existing `FREQUENCY_TIER_MAX_RANK` (`common`/`B2`/`C1`/`C2`, `src/consts/frequency.ts`) — not a shared or renamed version of it. `isDisplayableWord()` (`src/services/wordLevels/isDisplayableWord.ts`) filters out corpus artifacts — contraction fragments like `'s`/`'t`/`'re` and stray single letters — that show up verbatim in the raw frequency word list (an OpenSubtitles-derived corpus splits contractions into fragments) but would look broken as standalone vocabulary-browser entries, keeping a small allowlist for the single letters that are real words ("I", "a").
+
+**Why:** Text Analyzer's four tiers answer "is this word advanced enough to flag while reading running text" (only B2+ gets visually flagged; A1–B1-equivalent words are deliberately left as plain, unstyled text) — a coarser, reading-focused split. Word Levels needs the full A1–C2 range as distinct, browsable levels, which is a different granularity for a different purpose; conflating the two consts would mean a change meant for one feature's tuning silently affecting the other's. The artifact filter wasn't needed for Text Analyzer (it operates on real running text, where contractions stay whole — "don't", not "do" + "'t" — per `tokenize()`'s own apostrophe-inclusive word pattern) but matters here because Word Levels reads the raw word list directly, fragments included.
+
+**How to apply:** If Text Analyzer's own tier cutoffs are ever retuned, that's independent of `CEFR_LEVEL_MAX_RANK` and vice versa — check both call sites before assuming a single "the frequency tiers" source of truth exists.

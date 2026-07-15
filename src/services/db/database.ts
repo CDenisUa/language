@@ -42,6 +42,10 @@ export function getDatabase(): Promise<IDBPDatabase<SprachlaborDBSchema>> {
         if (!db.objectStoreNames.contains('grammarTopicReviews')) {
           db.createObjectStore('grammarTopicReviews', { keyPath: 'id' })
         }
+        if (!db.objectStoreNames.contains('knownWords')) {
+          const knownWordsStore = db.createObjectStore('knownWords', { keyPath: 'id' })
+          knownWordsStore.createIndex('by-language', 'language')
+        }
       },
     })
   }
