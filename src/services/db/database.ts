@@ -35,6 +35,10 @@ export function getDatabase(): Promise<IDBPDatabase<SprachlaborDBSchema>> {
           const vocabularyStudySessionsStore = db.createObjectStore('vocabularyStudySessions', { keyPath: 'id' })
           vocabularyStudySessionsStore.createIndex('by-language', 'language')
         }
+        if (!db.objectStoreNames.contains('grammarProgress')) {
+          const grammarProgressStore = db.createObjectStore('grammarProgress', { keyPath: 'id' })
+          grammarProgressStore.createIndex('by-topic', 'topicId')
+        }
       },
     })
   }

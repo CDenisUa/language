@@ -11,6 +11,7 @@ export interface TranslationDictionary {
     shadowing: string
     errorJournal: string
     textAnalyzer: string
+    grammar: string
     settings: string
     menuToggle: string
   }
@@ -27,6 +28,7 @@ export interface TranslationDictionary {
     shadowing: TranslatedPage
     errorJournal: TranslatedPage
     textAnalyzer: TranslatedPage
+    grammar: TranslatedPage
     settings: TranslatedPage
   }
   vocabulary: {
@@ -164,5 +166,14 @@ export interface TranslationDictionary {
     wordAdded: string
     alreadyInVocabulary: string
     dataCredit: string
+  }
+  grammar: {
+    exercisesHeading: string
+    check: string
+    correct: string
+    incorrect: string
+    back: string
+    allCategories: string
+    progressLabel: string
   }
 }

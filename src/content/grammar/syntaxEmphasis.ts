@@ -1,0 +1,296 @@
+// Types
+import type { GrammarCategory } from '@/types/grammarTopic'
+
+export const syntaxEmphasis: GrammarCategory = {
+  id: 'syntax-emphasis',
+  title: 'Синтаксис та емфаза',
+  description:
+    'Інверсія, розщеплені речення, винесення членів на початок для акценту, а також три типи питань — інструменти, якими англійська підкреслює важливу інформацію чи створює драматичний ефект.',
+  topics: [
+    {
+      id: 'inversion',
+      title: 'Inversion for Emphasis (Never have I..., Here comes...)',
+      theory:
+        'Коли речення починається з негативного чи обмежувального прислівника (Never, Rarely, Seldom, Not only, No sooner, Under no circumstances, Little), порядок слів у головній частині інвертується, як у питанні: допоміжне дієслово виходить перед підметом — "Never have I seen such chaos" (замість "I have never seen"). Це створює формальний, драматичний або літературний ефект і типове для писемного стилю чи ораторської мови. Простіша інверсія трапляється й після прислівників місця чи напрямку (Here, There) з непідметовими займенниками: "Here comes the bus", "There goes our last chance" — тут інверсія лише зі звичайним іменником-підметом, а не з займенником (порівняйте: "Here it comes", без інверсії).',
+      examples: [
+        { en: 'Never have I seen such a beautiful sunset.', uk: 'Ніколи я не бачив такого красивого заходу сонця (формальна інверсія для емфази).' },
+        { en: "No sooner had we left than it started to rain.", uk: 'Щойно ми вийшли, як почався дощ.' },
+        { en: 'Here comes the train!', uk: 'Ось і потяг! (проста інверсія з іменником-підметом).' },
+      ],
+      exercises: [
+        {
+          id: 'inv-1',
+          type: 'multiple-choice',
+          prompt: 'Never ___ such a difficult exam before.',
+          options: ['I have taken', 'have I taken', 'I took', 'did I took'],
+          correctIndex: 1,
+          explanation: 'Never на початку речення вимагає інверсії: have + I + V3.',
+        },
+        {
+          id: 'inv-2',
+          type: 'multiple-choice',
+          prompt: 'Not only ___ late, but he also forgot the documents.',
+          options: ['he was', 'was he', 'he did', 'did he'],
+          correctIndex: 1,
+          explanation: 'Not only на початку речення вимагає інверсії з was.',
+        },
+        {
+          id: 'inv-3',
+          type: 'fill-blank',
+          prompt: "Under no circumstances ___ (should) you open that door.",
+          correctAnswers: ['should'],
+          explanation: 'Under no circumstances вимагає інверсії допоміжного should на початку.',
+        },
+        {
+          id: 'inv-4',
+          type: 'fill-blank',
+          prompt: '___ the bus! Quick, run! (simple inversion with a noun subject)',
+          correctAnswers: ['Here comes'],
+          explanation: 'Проста інверсія Here + дієслово + іменник-підмет.',
+        },
+        {
+          id: 'inv-5',
+          type: 'multiple-choice',
+          prompt: 'Choose the sentence with correct inversion.',
+          options: [
+            'Rarely we have seen such dedication.',
+            'Rarely have we seen such dedication.',
+            'Rarely we seen have such dedication.',
+            'We have rarely seen such dedication, is correct too but different style.',
+          ],
+          correctIndex: 1,
+          explanation: 'Rarely на початку вимагає повної інверсії: have + we + V3.',
+        },
+      ],
+    },
+    {
+      id: 'cleft-sentences',
+      title: 'Cleft Sentences (It is/was ... that, What ... is/was)',
+      theory:
+        'Розщеплені речення дозволяють виділити одну конкретну частину інформації, "розбиваючи" просте речення на дві частини. It-cleft: "It was John who broke the vase" підкреслює саме John (а не хтось інший). Wh-cleft (pseudo-cleft): "What I need is a holiday" підкреслює a holiday, виносячи предикат на початок через what-речення. Обидва типи типові, коли треба протиставити щось очікуваному ("It wasn\'t me who forgot the keys — it was you") або підкреслити найважливішу частину повідомлення.',
+      examples: [
+        { en: "It was Maria who solved the problem, not Tom.", uk: 'Саме Марія розв\'язала проблему, а не Том (it-cleft, наголос на Maria).' },
+        { en: "What surprised me most was his honesty.", uk: 'Що мене найбільше здивувало, то це його чесність (wh-cleft, наголос на his honesty).' },
+        { en: "It wasn't until midnight that they arrived.", uk: 'Лише опівночі вони приїхали (it-cleft для наголосу на часі).' },
+      ],
+      exercises: [
+        {
+          id: 'cs-1',
+          type: 'multiple-choice',
+          prompt: 'Rewrite for emphasis on "Tom": "Tom broke the window." → "It was ___ who broke the window."',
+          options: ['Tom', 'that Tom', 'Tom that', 'who Tom'],
+          correctIndex: 0,
+          explanation: 'It-cleft: It was + [emphasised element] + who/that + rest of sentence.',
+        },
+        {
+          id: 'cs-2',
+          type: 'multiple-choice',
+          prompt: 'Choose the correct wh-cleft for: "I really need a vacation."',
+          options: [
+            'What I need is a vacation.',
+            'It is a vacation what I need.',
+            'A vacation is what I need it.',
+            'What is I need a vacation.',
+          ],
+          correctIndex: 0,
+          explanation: 'Wh-cleft: What + clause + is + emphasised element.',
+        },
+        {
+          id: 'cs-3',
+          type: 'fill-blank',
+          prompt: 'It was the manager ___ approved the budget, not the accountant.',
+          correctAnswers: ['who'],
+          explanation: 'It-cleft для людей зазвичай використовує who (можливо і that).',
+        },
+        {
+          id: 'cs-4',
+          type: 'fill-blank',
+          prompt: '___ I really admire about her is her patience.',
+          correctAnswers: ['What'],
+          explanation: 'Wh-cleft починається з What для виділення предмета захоплення.',
+        },
+        {
+          id: 'cs-5',
+          type: 'multiple-choice',
+          prompt: 'What is the main purpose of a cleft sentence?',
+          options: [
+            'To make the sentence shorter.',
+            'To emphasise one specific piece of information.',
+            'To change the tense of the verb.',
+            'To turn a statement into a question.',
+          ],
+          correctIndex: 1,
+          explanation: 'Розщеплені речення виділяють одну конкретну частину інформації в реченні.',
+        },
+      ],
+    },
+    {
+      id: 'fronting',
+      title: 'Fronting',
+      theory:
+        'Fronting — це винесення другорядного члена речення (об\'єкта, додатка, обставини) на початок для емфази чи зв\'язку з попереднім контекстом, без повної граматичної інверсії підмета й дієслова, як буває в класичній інверсії. Наприклад: "A wonderful teacher she turned out to be" (замість "She turned out to be a wonderful teacher") — додаток винесений уперед, а підмет із дієсловом лишаються у звичному порядку. Fronting часто трапляється в розповідній і літературній мові, коли треба плавно перейти від попередньої думки до нової, або підкреслити щось несподіване.',
+      examples: [
+        { en: 'Strange, it seemed, that no one had noticed.', uk: 'Дивним здавалося, що ніхто не помітив (комплемент винесено на початок).' },
+        { en: 'A great deal of money, he spent on that car.', uk: 'Купу грошей він витратив на ту машину (об\'єкт винесено на початок для наголосу).' },
+        { en: 'This I cannot accept.', uk: 'Цього я не можу прийняти (об\'єкт this винесено на початок).' },
+      ],
+      exercises: [
+        {
+          id: 'fr-1',
+          type: 'multiple-choice',
+          prompt: 'Which sentence uses fronting for emphasis?',
+          options: [
+            'He spent a fortune on that painting.',
+            'A fortune he spent on that painting.',
+            'Did he spend a fortune on that painting?',
+            'A fortune was spent by him on that painting.',
+          ],
+          correctIndex: 1,
+          explanation: 'Об\'єкт "a fortune" винесений на початок речення для наголосу — це fronting.',
+        },
+        {
+          id: 'fr-2',
+          type: 'multiple-choice',
+          prompt: 'Fronting differs from full inversion because:',
+          options: [
+            'It always changes the tense of the verb.',
+            'The subject and verb keep their normal order after the fronted element.',
+            'It can only be used with negative adverbs.',
+            'It requires an auxiliary verb like "do".',
+          ],
+          correctIndex: 1,
+          explanation: 'При fronting підмет і дієслово лишаються у звичайному порядку, на відміну від повної інверсії.',
+        },
+        {
+          id: 'fr-3',
+          type: 'fill-blank',
+          prompt: '___ (this) I will never forget as long as I live.',
+          correctAnswers: ['This'],
+          explanation: 'Об\'єкт this винесений на початок речення для сильного наголосу.',
+        },
+        {
+          id: 'fr-4',
+          type: 'fill-blank',
+          prompt: 'A wonderful cook her grandmother ___ (be).',
+          correctAnswers: ['was'],
+          explanation: 'Комплемент "a wonderful cook" винесений уперед; підмет-дієслово в звичайному порядку (her grandmother was).',
+        },
+        {
+          id: 'fr-5',
+          type: 'multiple-choice',
+          prompt: 'Fronting is most typical of which style?',
+          options: ['Text messages between friends', 'Narrative or literary writing', 'Legal contracts only', 'Scientific formulas'],
+          correctIndex: 1,
+          explanation: 'Fronting типово трапляється в розповідному чи літературному стилі для плавного зв\'язку думок.',
+        },
+      ],
+    },
+    {
+      id: 'questions-general-special-subject',
+      title: 'General, Special, and Subject Questions',
+      theory:
+        'Загальні (yes/no) питання вимагають допоміжного дієслова перед підметом ("Do you like coffee?"). Спеціальні питання (wh-questions) починаються з питального слова, після якого йде та сама структура з допоміжним дієсловом ("Where do you live?"). Особливий випадок — питання до підмета, де питальне слово (who/what/which) саме є підметом речення: тоді допоміжне do/does/did НЕ додається, а порядок слів лишається як у стверджувальному реченні: "Who called you?" (не "*Who did call you?"), бо саме who виконує дію called.',
+      examples: [
+        { en: 'Do you speak Italian?', uk: 'Ти розмовляєш італійською? (загальне питання).' },
+        { en: 'Where did you buy that jacket?', uk: 'Де ти купив цю куртку? (спеціальне питання).' },
+        { en: 'Who broke the window?', uk: 'Хто розбив вікно? (питання до підмета, без do).' },
+      ],
+      exercises: [
+        {
+          id: 'qgs-1',
+          type: 'multiple-choice',
+          prompt: 'Choose the correct question for the answer: "Maria called me."',
+          options: ['Who did call you?', 'Who called you?', 'Who did you call?', 'Who calls you?'],
+          correctIndex: 1,
+          explanation: 'Питання до підмета (who = Maria) не потребує допоміжного did.',
+        },
+        {
+          id: 'qgs-2',
+          type: 'multiple-choice',
+          prompt: 'Choose the correct general question.',
+          options: ['You like tea?', 'Do you like tea?', 'You do like tea?', 'Like you tea?'],
+          correctIndex: 1,
+          explanation: 'Загальне питання вимагає допоміжного do перед підметом.',
+        },
+        {
+          id: 'qgs-3',
+          type: 'fill-blank',
+          prompt: '___ did you meet at the party? (asking about the object, not the subject)',
+          correctAnswers: ['Who', 'Whom'],
+          explanation: 'Питання до додатка (не підмета) вимагає допоміжного did.',
+        },
+        {
+          id: 'qgs-4',
+          type: 'fill-blank',
+          prompt: '___ happened here? (the question word is the subject)',
+          correctAnswers: ['What'],
+          explanation: 'What є підметом речення, тому допоміжне did не потрібне.',
+        },
+        {
+          id: 'qgs-5',
+          type: 'multiple-choice',
+          prompt: 'In a subject question, why is there no auxiliary "do/does/did"?',
+          options: [
+            'Because subject questions are always in the past tense.',
+            'Because the question word itself performs the action, replacing the subject.',
+            'Because subject questions are informal.',
+            'Auxiliary verbs are never used in questions.',
+          ],
+          correctIndex: 1,
+          explanation: 'Питальне слово саме є підметом, тому структура лишається як у стверджувальному реченні.',
+        },
+      ],
+    },
+    {
+      id: 'question-tags',
+      title: 'Question Tags',
+      theory:
+        'Розділові питання (tags) додаються в кінці речення, щоб підтвердити інформацію чи запросити згоду. Головне правило — протилежна полярність: стверджувальне речення отримує заперечний tag, а заперечне — стверджувальний ("She is nice, isn\'t she?" / "You don\'t smoke, do you?"). Tag використовує те саме допоміжне дієслово, що й головне речення (or does/do/did, якщо в реченні немає допоміжного). Є кілька особливих випадків: "I am" → "aren\'t I?" (не "amn\'t I"), наказовий спосіб → "will you?" ("Close the door, will you?"), пропозиція з Let\'s → "shall we?".',
+      examples: [
+        { en: "You're coming to the party, aren't you?", uk: 'Ти прийдеш на вечірку, чи не так?' },
+        { en: "She doesn't like spicy food, does she?", uk: 'Їй не подобається гостра їжа, правда?' },
+        { en: "Let's go for a walk, shall we?", uk: 'Ходімо прогуляємось, гаразд?' },
+      ],
+      exercises: [
+        {
+          id: 'qt-1',
+          type: 'multiple-choice',
+          prompt: 'He works in Vienna, ___?',
+          options: ["doesn't he", "does he", "isn't he", "didn't he"],
+          correctIndex: 0,
+          explanation: 'Стверджувальне речення без допоміжного дієслова → заперечний tag з does.',
+        },
+        {
+          id: 'qt-2',
+          type: 'multiple-choice',
+          prompt: "You haven't seen this movie, ___?",
+          options: ['haven\'t you', 'have you', 'did you', 'didn\'t you'],
+          correctIndex: 1,
+          explanation: 'Заперечне головне речення отримує стверджувальний tag: have you.',
+        },
+        {
+          id: 'qt-3',
+          type: 'fill-blank',
+          prompt: 'I am right, ___ I?',
+          correctAnswers: ["aren't"],
+          explanation: 'Особливий випадок: "I am" → tag "aren\'t I", не "amn\'t I".',
+        },
+        {
+          id: 'qt-4',
+          type: 'fill-blank',
+          prompt: "Open the window, ___ you?",
+          correctAnswers: ['will'],
+          explanation: 'Наказові речення отримують tag "will you?".',
+        },
+        {
+          id: 'qt-5',
+          type: 'multiple-choice',
+          prompt: 'Which question tag correctly follows: "Let\'s order pizza, ___?"',
+          options: ['do we', 'shall we', 'will we', "don't we"],
+          correctIndex: 1,
+          explanation: 'Пропозиції з Let\'s завжди отримують tag "shall we?".',
+        },
+      ],
+    },
+  ],
+}

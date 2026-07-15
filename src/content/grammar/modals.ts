@@ -1,0 +1,280 @@
+// Types
+import type { GrammarCategory } from '@/types/grammarTopic'
+
+export const modals: GrammarCategory = {
+  id: 'modals',
+  title: 'Модальні дієслова',
+  description:
+    'Ставлення мовця до дії — можливість, дозвіл, порада, обов\'язок і ступінь впевненості в здогаді — від базових модальних дієслів через їхні розмовні альтернативи до форм для минулого часу, жалю та звичок.',
+  topics: [
+    {
+      id: 'core-modals',
+      title: 'Core Modal Verbs (can, could, may, might, must, shall, should, will, would)',
+      theory:
+        'Модальні дієслова (can, could, may, might, must, shall, should, will, would) виражають не саму дію, а ставлення мовця до неї: можливість чи здатність (can/could), дозвіл (may/could), пораду (should), обов\'язок чи необхідність (must), припущення/здогад (must/might/could) або ступінь ввічливості у проханні/пропозиції (could/would/shall). Після модального дієслова завжди йде інфінітив без to (he can go, не he can to go), форма не змінюється за особами (he can, а не he cans), а заперечення й питання утворюються без допоміжного do. Той самий модальний вербіум часто має кілька значень залежно від контексту — must може означати і обов\'язок (You must wear a seatbelt), і впевнений здогад (She must be tired).',
+      examples: [
+        { en: 'I can swim, but I can\'t dive.', uk: 'Я вмію плавати, але не вмію пірнати (здатність).' },
+        { en: 'You must wear a helmet on a construction site.', uk: 'На будівельному майданчику ти зобов\'язаний носити каску (обов\'язок).' },
+        { en: 'Could you pass me the salt, please?', uk: 'Не могли б ви передати мені сіль? (ввічливе прохання)' },
+      ],
+      exercises: [
+        {
+          id: 'cm-1',
+          type: 'multiple-choice',
+          prompt: 'She ___ speak three languages fluently.',
+          options: ['can', 'must', 'should', 'may'],
+          correctIndex: 0,
+          explanation: 'Can виражає здатність/вміння щось робити.',
+        },
+        {
+          id: 'cm-2',
+          type: 'multiple-choice',
+          prompt: '___ I borrow your pen for a second?',
+          options: ['May', 'Must', 'Should', 'Will'],
+          correctIndex: 0,
+          explanation: 'May використовується, щоб ввічливо попросити дозволу.',
+        },
+        {
+          id: 'cm-3',
+          type: 'fill-blank',
+          prompt: 'You ___ (see) a doctor about that cough — it sounds serious.',
+          correctAnswers: ['should see'],
+          explanation: 'Should + інфінітив без to виражає пораду.',
+        },
+        {
+          id: 'cm-4',
+          type: 'multiple-choice',
+          prompt: 'All passengers ___ fasten their seatbelts before takeoff.',
+          options: ['can', 'might', 'must', 'could'],
+          correctIndex: 2,
+          explanation: 'Must виражає сувору необхідність/правило.',
+        },
+        {
+          id: 'cm-5',
+          type: 'fill-blank',
+          prompt: 'He hasn\'t touched his food and he\'s very quiet — he ___ (be) unwell.',
+          correctAnswers: ['must be'],
+          explanation: 'Must + інфінітив виражає впевнений здогад у теперішньому: логічний висновок з наявних доказів.',
+        },
+      ],
+    },
+    {
+      id: 'semi-modals',
+      title: 'Semi-Modals (have to, have got to, ought to, had better, need to, dare)',
+      theory:
+        'Have to й must обидва передають обов\'язок, але мають різне джерело: must — це обов\'язок, який мовець накладає сам на себе або вважає особисто важливим (внутрішній), тоді як have to описує правило чи вимогу, що йде ззовні — від закону, начальника, обставин (зовнішній обов\'язок). Have got to — розмовний варіант have to, типовий для британської англійської. Had better + інфінітив без to дає негайну пораду з прихованою погрозою наслідків, якщо їй не піти (You\'d better hurry, or...), і звучить різкіше за should. Need to — нейтральний, менш категоричний спосіб висловити необхідність, а заперечення don\'t need to означає, що дія не є обов\'язковою (на відміну від mustn\'t, яке забороняє).',
+      examples: [
+        { en: 'I have to wear a suit at work — it\'s the dress code.', uk: 'Я мушу носити костюм на роботі — таке дрес-код (зовнішня вимога).' },
+        { en: 'I must call my mother tonight, I miss her so much.', uk: 'Я мушу подзвонити мамі сьогодні, я так за нею скучив (особисте, внутрішнє відчуття обов\'язку).' },
+        { en: 'You\'d better take an umbrella — it\'s going to pour.', uk: 'Тобі краще взяти парасольку — буде злива (порада з натяком на наслідки).' },
+      ],
+      exercises: [
+        {
+          id: 'sm-1',
+          type: 'multiple-choice',
+          prompt: 'Employees ___ swipe their badge to enter the building — it\'s company policy.',
+          options: ['have to', 'must', 'should', 'might'],
+          correctIndex: 0,
+          explanation: 'Have to описує зовнішню вимогу (правило компанії), а не особисте переконання мовця.',
+        },
+        {
+          id: 'sm-2',
+          type: 'multiple-choice',
+          prompt: 'I ___ finish this painting tonight — I promised myself I would.',
+          options: ['have to', 'must', 'need', 'don\'t have to'],
+          correctIndex: 1,
+          explanation: 'Must передає внутрішній, особистий обов\'язок — тиск, який мовець ставить сам на себе.',
+        },
+        {
+          id: 'sm-3',
+          type: 'fill-blank',
+          prompt: 'You ___ (hurry), or you\'ll miss the train!',
+          correctAnswers: ['had better hurry', '\'d better hurry'],
+          explanation: 'Had better + інфінітив без to — негайна порада з натяком на неприємні наслідки, якщо її не послухати.',
+        },
+        {
+          id: 'sm-4',
+          type: 'multiple-choice',
+          prompt: 'I already printed the tickets, so you ___ print them again.',
+          options: ['don\'t need to', 'mustn\'t', 'shouldn\'t', 'have to'],
+          correctIndex: 0,
+          explanation: 'Don\'t need to означає, що дія не є необхідною (на відміну від mustn\'t, яке означає заборону).',
+        },
+        {
+          id: 'sm-5',
+          type: 'fill-blank',
+          prompt: 'We ___ (leave) right now if we want to catch the flight — informal necessity.',
+          correctAnswers: ['\'ve got to leave', 'have got to leave'],
+          explanation: 'Have got to — розмовний, типово британський варіант have to для вираження необхідності.',
+        },
+      ],
+    },
+    {
+      id: 'past-modals-deduction',
+      title: 'Past Modals of Deduction (must have, can\'t have, might have)',
+      theory:
+        'Щоб висловити здогад про минуле, до модального дієслова додають have + V3. Must have + V3 — впевнений позитивний висновок на основі доказів (щось точно сталося). Can\'t have + V3 — впевнений негативний висновок: мовець переконаний, що це неможливо. Might have / could have / may have + V3 — менш категоричне припущення, коли є лише часткова ймовірність, а не впевненість. Ці конструкції не пов\'язані з дозволом чи здатністю в минулому — тут модальне дієслово повністю переключається на функцію здогаду.',
+      examples: [
+        { en: 'The lights are off and the car is gone — they must have left already.', uk: 'Світло вимкнене, машини немає — вони, певно, вже поїхали (впевнений здогад).' },
+        { en: 'She can\'t have finished the report — she only started an hour ago.', uk: 'Вона не могла закінчити звіт — вона почала його лише годину тому (впевнена неможливість).' },
+        { en: 'He might have forgotten about the meeting — he\'s usually very punctual.', uk: 'Можливо, він забув про зустріч — зазвичай він дуже пунктуальний (менш впевнене припущення).' },
+      ],
+      exercises: [
+        {
+          id: 'pmd-1',
+          type: 'multiple-choice',
+          prompt: 'Look, the lights are off and the car\'s gone — they ___ out.',
+          options: ['must have gone', 'must go', 'must having gone', 'must went'],
+          correctIndex: 0,
+          explanation: 'Must have + V3 виражає впевнений здогад про минулу подію на основі наявних доказів.',
+        },
+        {
+          id: 'pmd-2',
+          type: 'multiple-choice',
+          prompt: 'Choose the sentence with the same meaning as: "It is impossible that he finished the marathon in an hour."',
+          options: [
+            'He can\'t have finished the marathon in an hour.',
+            'He mustn\'t have finished the marathon in an hour.',
+            'He might not have finished the marathon in an hour.',
+            'He shouldn\'t have finished the marathon in an hour.',
+          ],
+          correctIndex: 0,
+          explanation: 'Can\'t have + V3 виражає впевненість мовця, що щось у минулому було неможливим.',
+        },
+        {
+          id: 'pmd-3',
+          type: 'fill-blank',
+          prompt: 'I don\'t know why she didn\'t answer the phone — she ___ (be) asleep.',
+          correctAnswers: ['might have been', 'could have been'],
+          explanation: 'Might/could have + V3 — не категоричне припущення, лише одна з можливих причин.',
+        },
+        {
+          id: 'pmd-4',
+          type: 'fill-blank',
+          prompt: 'The keys aren\'t on the table anymore. Someone ___ (take) them.',
+          correctAnswers: ['must have taken'],
+          explanation: 'Must have + V3 — логічний, майже впевнений висновок з очевидних фактів.',
+        },
+        {
+          id: 'pmd-5',
+          type: 'multiple-choice',
+          prompt: 'A: I heard a noise in the kitchen last night. B: It ___ the cat — she wasn\'t even home.',
+          options: ['must have been', 'can\'t have been', 'might have been', 'should have been'],
+          correctIndex: 1,
+          explanation: 'Can\'t have been — упевнене заперечення можливості, адже кота не було вдома.',
+        },
+      ],
+    },
+    {
+      id: 'past-modals-regret',
+      title: 'Past Modals of Regret and Criticism (should have, could have, needn\'t have)',
+      theory:
+        'Should have + V3 виражає жаль за власну помилку в минулому (щось варто було зробити, але цього не сталося) або критику чужих дій (людина мала вчинити інакше). Could have + V3 вказує на можливість чи здатність, яку мовець мав у минулому, але не скористався нею, — часто з відтінком жалю за втраченою нагодою. Needn\'t have + V3 описує дію, яка була фактично виконана, хоча в ній не було потреби (на відміну від didn\'t need to, яке лише констатує відсутність необхідності, не уточнюючи, чи дія відбулась).',
+      examples: [
+        { en: 'I should have studied harder — I failed the exam.', uk: 'Мені варто було вчитися старанніше — я провалив іспит (жаль про власну помилку).' },
+        { en: 'You could have called me — I would have picked you up from the station.', uk: 'Ти міг би мені подзвонити — я б забрав тебе зі станції (втрачена можливість).' },
+        { en: 'I needn\'t have bought so much food — half the guests didn\'t come.', uk: 'Мені не варто було купувати стільки їжі — половина гостей не прийшла (зайва дія, яку я все-таки зробив).' },
+      ],
+      exercises: [
+        {
+          id: 'pmr-1',
+          type: 'fill-blank',
+          prompt: 'I ___ (study) harder — I failed the exam.',
+          correctAnswers: ['should have studied'],
+          explanation: 'Should have + V3 виражає жаль за тим, чого мовець не зробив у минулому.',
+        },
+        {
+          id: 'pmr-2',
+          type: 'multiple-choice',
+          prompt: 'You ___ shouted at him like that — it wasn\'t even his fault.',
+          options: ['shouldn\'t have', 'mustn\'t have', 'couldn\'t have', 'needn\'t have'],
+          correctIndex: 0,
+          explanation: 'Shouldn\'t have + V3 — критика чужої дії в минулому, яка була помилковою.',
+        },
+        {
+          id: 'pmr-3',
+          type: 'fill-blank',
+          prompt: 'You ___ (call) me — I would have picked you up from the station.',
+          correctAnswers: ['could have called'],
+          explanation: 'Could have + V3 вказує на можливість у минулому, якою не скористались, — жаль про втрачену нагоду.',
+        },
+        {
+          id: 'pmr-4',
+          type: 'multiple-choice',
+          prompt: 'I bought extra bread, but we ___ — there was already plenty at home.',
+          options: ['needn\'t have bought', 'didn\'t need to buy', 'mustn\'t have bought', 'shouldn\'t have bought'],
+          correctIndex: 0,
+          explanation: 'Needn\'t have + V3 — дія була виконана, хоча насправді не була потрібна.',
+        },
+        {
+          id: 'pmr-5',
+          type: 'fill-blank',
+          prompt: 'She ___ (bring) an umbrella — it didn\'t rain, so she carried it around all day for nothing.',
+          correctAnswers: ['needn\'t have brought', 'need not have brought'],
+          explanation: 'Needn\'t have + V3 підкреслює, що зроблена дія виявилась зайвою.',
+        },
+      ],
+    },
+    {
+      id: 'will-would-habits',
+      title: 'will / would for Habits and Characteristic Behaviour',
+      theory:
+        'Will + інфінітив використовується не лише для майбутнього, а й для опису типової, характерної поведінки в теперішньому — звички, які повторюються знову і знову (He\'ll sit there for hours). Would + інфінітив — той самий смисл, перенесений у минуле: повторювана дія-звичка (не стан!), яка вже не відбувається (When I was a child, we would visit our grandparents every weekend). Якщо will/would вимовляється з наголосом, речення набуває відтінку роздратування щодо чужої звички (She WILL leave her shoes in the hallway!). На відміну від used to, would не можна вживати зі статичними дієсловами (мати, любити, знати) для опису минулих станів — там потрібно used to.',
+      examples: [
+        { en: 'My cat will sit on the windowsill for hours, watching the birds.', uk: 'Мій кіт може годинами сидіти на підвіконні, спостерігаючи за птахами (типова поведінка).' },
+        { en: 'When I was young, we would spend every summer by the sea.', uk: 'Коли я був малим, ми зазвичай проводили кожне літо біля моря (повторювана звичка в минулому).' },
+        { en: 'She WILL leave her wet towel on the bed every single day!', uk: 'Вона ЗАВЖДИ кидає мокрий рушник на ліжко, щодня! (роздратування наголошеним will).' },
+      ],
+      exercises: [
+        {
+          id: 'wwh-1',
+          type: 'multiple-choice',
+          prompt: 'My grandfather ___ read the newspaper cover to cover every single morning.',
+          options: ['will', 'is', 'was', 'has'],
+          correctIndex: 0,
+          explanation: 'Will тут описує не майбутнє, а типову, характерну поведінку в теперішньому.',
+        },
+        {
+          id: 'wwh-2',
+          type: 'fill-blank',
+          prompt: 'When I was young, we ___ (spend) every summer by the sea.',
+          correctAnswers: ['would spend'],
+          explanation: 'Would + інфінітив описує повторювану дію-звичку в минулому, якої більше немає.',
+        },
+        {
+          id: 'wwh-3',
+          type: 'multiple-choice',
+          prompt: 'Choose the sentence that expresses irritation at a repeated habit.',
+          options: [
+            'She\'ll leave her wet towel on the bed every single day!',
+            'She leaves her wet towel on the bed.',
+            'She left her wet towel on the bed.',
+            'She\'s leaving her wet towel on the bed.',
+          ],
+          correctIndex: 0,
+          explanation: 'Наголошене will у поєднанні з описом повторюваної дії передає роздратування мовця.',
+        },
+        {
+          id: 'wwh-4',
+          type: 'fill-blank',
+          prompt: 'Every evening after dinner, my father ___ (tell) us stories about his childhood.',
+          correctAnswers: ['would tell'],
+          explanation: 'Would описує звичну повторювану дію в минулому, аналог used to для дій (не станів).',
+        },
+        {
+          id: 'wwh-5',
+          type: 'multiple-choice',
+          prompt: 'Which sentence is correct?',
+          options: [
+            'I would have a bike when I was a child.',
+            'I used to have a bike when I was a child.',
+            'I would having a bike when I was a child.',
+            'I would has a bike when I was a child.',
+          ],
+          correctIndex: 1,
+          explanation: 'Would не вживається зі статичними дієсловами (have у значенні володіти) для опису минулих станів — тільки used to.',
+        },
+      ],
+    },
+  ],
+}
