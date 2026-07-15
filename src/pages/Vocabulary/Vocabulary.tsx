@@ -7,6 +7,7 @@ import WordList from '@/pages/Vocabulary/WordList'
 // Hooks
 import { useLanguageStore } from '@/hooks/useLanguageStore'
 import { useWords } from '@/hooks/useWords'
+import { useStudyTimer } from '@/hooks/useStudyTimer'
 import { useTranslation } from '@/i18n/useTranslation'
 // Services
 import { wordsRepository } from '@/services/db/wordsRepository'
@@ -25,6 +26,7 @@ function Vocabulary() {
   const { t } = useTranslation()
   const activeLanguage = useLanguageStore((state) => state.activeLanguage)
   const { words, reload } = useWords(activeLanguage)
+  useStudyTimer(activeLanguage)
   const [editingWord, setEditingWord] = useState<WordRecord | null>(null)
   const [austrianOnly, setAustrianOnly] = useState(false)
 

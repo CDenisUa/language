@@ -21,8 +21,7 @@ const uk = {
   pages: {
     dashboard: {
       title: 'Панель',
-      description:
-        'Тут будуть години по кожній мові, баланс 70/30 та частота помилок (Задача 8).',
+      description: 'Години по кожній мові, баланс навчання та частота помилок за категорією.',
     },
     vocabulary: {
       title: 'Словник',
@@ -108,6 +107,19 @@ const uk = {
     pushUnsupported: 'Цей браузер не підтримує push-сповіщення.',
     pushEnable: 'Увімкнути сповіщення',
     pushDisable: 'Вимкнути сповіщення',
+    balanceHeading: 'Баланс навчання',
+    balanceTargetLabel: 'Цільова частка німецької, %',
+  },
+  dashboard: {
+    hoursHeading: 'Години навчання',
+    germanLabel: 'Німецька',
+    englishLabel: 'Англійська',
+    hoursUnit: 'год',
+    actualBalanceLabel: 'Фактичний баланс',
+    targetBalanceLabel: 'Ціль',
+    noActivity: 'Ще немає зафіксованої активності — попрацюйте зі словником чи шедовінгом.',
+    errorBreakdownHeading: 'Помилки за категорією',
+    noErrors: 'Записів про помилки ще немає.',
   },
   shadowing: {
     uploadHeading: 'Завантажити аудіо',
@@ -168,7 +180,7 @@ const ru = {
   pages: {
     dashboard: {
       title: 'Панель',
-      description: 'Здесь появятся часы по каждому языку, баланс 70/30 и частота ошибок (Задача 8).',
+      description: 'Часы по каждому языку, баланс обучения и частота ошибок по категориям.',
     },
     vocabulary: {
       title: 'Словарь',
@@ -253,6 +265,19 @@ const ru = {
     pushUnsupported: 'Этот браузер не поддерживает push-уведомления.',
     pushEnable: 'Включить уведомления',
     pushDisable: 'Выключить уведомления',
+    balanceHeading: 'Баланс обучения',
+    balanceTargetLabel: 'Целевая доля немецкого, %',
+  },
+  dashboard: {
+    hoursHeading: 'Часы обучения',
+    germanLabel: 'Немецкий',
+    englishLabel: 'Английский',
+    hoursUnit: 'ч',
+    actualBalanceLabel: 'Фактический баланс',
+    targetBalanceLabel: 'Цель',
+    noActivity: 'Пока нет зафиксированной активности — позанимайтесь со словарём или шедоуингом.',
+    errorBreakdownHeading: 'Ошибки по категориям',
+    noErrors: 'Записей об ошибках пока нет.',
   },
   shadowing: {
     uploadHeading: 'Загрузить аудио',

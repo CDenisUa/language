@@ -89,6 +89,19 @@ export interface TranslationDictionary {
     pushUnsupported: string
     pushEnable: string
     pushDisable: string
+    balanceHeading: string
+    balanceTargetLabel: string
+  }
+  dashboard: {
+    hoursHeading: string
+    germanLabel: string
+    englishLabel: string
+    hoursUnit: string
+    actualBalanceLabel: string
+    targetBalanceLabel: string
+    noActivity: string
+    errorBreakdownHeading: string
+    noErrors: string
   }
   shadowing: {
     uploadHeading: string

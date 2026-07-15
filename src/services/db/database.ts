@@ -31,6 +31,10 @@ export function getDatabase(): Promise<IDBPDatabase<SprachlaborDBSchema>> {
           const errorJournalStore = db.createObjectStore('errorJournalEntries', { keyPath: 'id' })
           errorJournalStore.createIndex('by-language', 'language')
         }
+        if (!db.objectStoreNames.contains('vocabularyStudySessions')) {
+          const vocabularyStudySessionsStore = db.createObjectStore('vocabularyStudySessions', { keyPath: 'id' })
+          vocabularyStudySessionsStore.createIndex('by-language', 'language')
+        }
       },
     })
   }

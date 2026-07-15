@@ -382,3 +382,30 @@ Three scope decisions for Task 7, made with the user directly (each had a real a
 **Why:** Keeping the link as an unenforced reference (rather than a real relational constraint IndexedDB doesn't have anyway) means deleting a linked word or track later doesn't need any cascade/cleanup logic — `resolveLinkLabel` just returns `null` and the entry silently stops showing a link. This matches the project's broader local-first/no-heavy-relational-integrity posture.
 
 **How to apply:** If a linked word/track is deleted, its error-journal entries are *not* cleaned up or unlinked — the stale `linkedRecordId` stays on the record but simply resolves to no visible link. Don't add cascade-delete logic for this without a fresh decision; it hasn't come up as a problem yet since Vocabulary/Shadowing deletion is infrequent and low-stakes.
+
+---
+
+### 2026-07-15 — Dashboard time tracking: automatic visibility-based timer, actual activity only, reuse Shadowing's existing duration
+
+**Status:** accepted
+
+Two scope decisions for Task 8, made with the user directly before implementation:
+
+1. **Automatic timer, not manual start/stop, not a discrete-action proxy**: `useStudyTimer(language)` starts accruing time as soon as the Vocabulary page mounts and the tab is visible — no "start studying" button. Pausing/resuming is driven by the Page Visibility API (`visibilitychange`), not mouse/keyboard idle-detection — simpler, and directly addresses the main accuracy concern (time while tabbed away) without extra complexity for a single-user app.
+2. **Only actual logged activity counts toward the 70/30 balance, not Scheduler's planned blocks**: Dashboard sums `vocabularyStudySessions` (new, Vocabulary-only) plus Shadowing's already-existing `shadowingSessions.practiceDurationSeconds` — Scheduler stays a pure planning tool with no analytics role. Shadowing didn't get its own copy of `useStudyTimer`; it already records accurate per-session duration from `audio.currentTime` (see the Task 6 decision above), which is more precise than a generic mount-visibility timer would be for that page, so Dashboard just reads it directly.
+
+**Why:** A manual timer only works if the user remembers to press it, and a discrete-action proxy (word/session counts) doesn't answer "how many hours" the roadmap actually asked for. Visibility-based automatic tracking gets real elapsed time with no user action required. Keeping Scheduler out of the balance calculation avoids reconciling "planned vs. actual," which the user didn't ask for and which would need its own design pass.
+
+---
+
+### 2026-07-15 — Study timer persists per visibility-hidden transition, not only on unmount
+
+**Status:** accepted
+
+`useStudyTimer`'s first implementation accumulated elapsed time in a local variable and only called `vocabularyStudySessionsRepository.save()` in the `useEffect` cleanup (i.e., on unmount). Manual Playwright verification caught a real bug this caused: navigating with `page.goto()` — a hard browser navigation — tears down the page without ever running React's cleanup, so the accumulated time was silently lost. This isn't a testing artifact — it's exactly what happens for a real user who closes the tab, quits the browser, or does anything short of an in-app client-side route change while on the Vocabulary page.
+
+The fix: persist immediately on every `visibilitychange` to `'hidden'`, not just accumulate locally — `visibilitychange` reliably fires on tab close per the Page Lifecycle API, unlike `beforeunload`/a React cleanup. `useStudyTimer` now saves one session record per hidden-transition (plus a final one on actual unmount for any remaining visible time), rather than one lump-sum record per mount.
+
+**Why:** Confirmed by direct test (`useStudyTimer.test.ts`'s "does not lose time when the tab is closed without an unmount" case, which asserts a save happens on a bare `visibilitychange` to hidden with no unmount at all) that the fix closes the gap the original design had.
+
+**How to apply:** A single Vocabulary visit can now produce multiple `vocabularyStudySessions` records if the user tabs away and back more than once — this is expected and fine, since Dashboard aggregates by summing all records per language rather than expecting one record per visit. Don't "simplify" this back to accumulate-then-save-on-unmount without re-confirming the tab-close case still works.
