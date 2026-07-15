@@ -30,6 +30,7 @@ function NavBar() {
     { to: ROUTES.shadowing, label: t.nav.shadowing },
     { to: ROUTES.errorJournal, label: t.nav.errorJournal },
     { to: ROUTES.textAnalyzer, label: t.nav.textAnalyzer },
+    { to: ROUTES.grammar, label: t.nav.grammar },
     { to: ROUTES.settings, label: t.nav.settings },
   ]
 

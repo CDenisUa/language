@@ -466,3 +466,44 @@ Three implementation decisions made while building the Text Analyzer, each a nat
 3. **Clicking a flagged word reuses `WordForm` directly** (from `src/pages/Vocabulary/WordForm.tsx`) rather than building a second add-word UI. `WordForm` gained one new optional prop, `initialFront`, that pre-fills the front field when there's no `editingWord` — a small additive change (Vocabulary's own usage is unaffected, since it never passes this prop) rather than forking the component. The Cancel button's visibility condition was also loosened from `editingWord` to `editingWord || initialFront`, so the Text Analyzer's inline form can be dismissed without saving.
 
 **Why:** All three keep the feature's real complexity (tokenization, frequency lookup, offline data) without adding speculative complexity (a WASM stemmer, a second word-entry form) that the frequency-based design doesn't actually need.
+
+---
+
+### 2026-07-15 — Grammar module: English-only, explanations in Ukrainian, auto-checked exercises, all 8 categories built together
+
+**Status:** accepted
+
+A new, large, previously-unplanned feature (not on the original roadmap), so — consistent with this project's standing pattern of clarifying scope before building rather than guessing — four scope questions were put to the user directly before any code was written:
+
+1. **Where it lives**: a new in-app module (`/grammar`, 8th nav item), not standalone markdown files or an external document. This keeps it inside the same offline-first PWA/IndexedDB architecture as everything else, rather than being a second, disconnected artifact.
+2. **Exercise type**: auto-checked (multiple-choice / fill-blank), not open self-graded questions. The app validates the answer itself and shows immediate feedback + an explanation, rather than a "click to reveal the answer" pattern.
+3. **Scope of the first pass**: all 8 grammar categories the user listed (Tenses & Aspects, Modals, Conditionals, Voice & Causatives, Verb Patterns, Syntax & Emphasis, Parts of Speech, Cohesion) built together in one feature branch, rather than one category first as a format pilot — the user's explicit choice over the more incremental alternative offered.
+4. **Explanation language**: Ukrainian, for the theory/example-translation/exercise-explanation text. The grammar being taught (English) is separate from the language explanations are written in (Ukrainian) — a third axis distinct from both the DE/EN study-language switch and the uk/ru interface-locale switch.
+
+**Why:** This mirrors the same reasoning as the 2026-07-14 "UI localization is Ukrainian/Russian, separate from card translations" decision — three genuinely independent language axes exist in this app (interface chrome, DE/EN study content, and now English-grammar-explained-in-Ukrainian), and conflating any two of them would make one axis silently follow another in a way that doesn't match how the user actually wants to study. The module is therefore **not** wired to `useLanguageStore` (the DE/EN study switch) at all — it always teaches English grammar, regardless of which study language is currently active — and its content text does **not** change when the uk/ru interface locale is toggled, unlike every other page's chrome.
+
+**How to apply:** If German grammar content is ever wanted, that's a new, separate content set (its own category namespace or a language-scoped split of `GRAMMAR_CATEGORIES`), not a retrofit of the existing English-only data — don't assume `GrammarCategory`/`GrammarTopic` implicitly generalizes across study languages without a fresh decision.
+
+---
+
+### 2026-07-15 — Grammar content is static bundled TypeScript data, not fetched JSON
+
+**Status:** accepted
+
+Unlike the Text Analyzer's frequency wordlists (`public/data/frequency-{de,en}.json`, fetched at runtime and precached by the service worker), Grammar's theory/examples/exercises (`src/content/grammar/*.ts`, one file per category, aggregated by `src/content/grammar/index.ts`) are plain TypeScript modules imported directly and bundled into the app's main JS, typed against `GrammarCategory`/`GrammarTopic`/`GrammarExercise` (`src/types/grammarTopic.ts`).
+
+**Why:** The frequency wordlists are large (~500KB each) externally-sourced data with an open license that needed attribution; Grammar's content is authored specifically for this app, gets full compile-time type-checking against the shared interfaces (a malformed exercise — e.g. a `correctIndex` out of range, or a missing `explanation` — is a build error, not a silent runtime bug), and needs no separate fetch/precache-registration step. The tradeoff is a bigger main JS bundle (confirmed via `npm run build`: ~685KB uncompressed / ~203KB gzipped, over Vite's 500KB chunk-size-warning threshold) — accepted for now since this is a single-user offline PWA where a one-time larger initial download isn't a meaningful cost, consistent with this project's "don't add complexity ahead of an actual problem" posture elsewhere (e.g. the CI-auto-deploy and cross-device-sync deferrals).
+
+**How to apply:** If bundle size becomes a real problem later (e.g. if more large content sets are added on top of this), splitting Grammar's content into a dynamically-`import()`-ed chunk per category is the natural fix — don't reach for it preemptively without that being an actual, observed problem.
+
+---
+
+### 2026-07-15 — Grammar progress: one record per exercise, deterministic id for upsert, category/topic-level rollups computed client-side from a single full read
+
+**Status:** accepted
+
+A new `grammarProgress` IndexedDB store (schema v6, `src/types/grammarProgress.ts`, indexed `by-topic`) holds one record per answered exercise: `{ id: "<topicId>:<exerciseId>", topicId, exerciseId, correct }`. The deterministic, composite `id` means re-answering the same exercise calls `grammarProgressRepository.save()` with the same `id` again, which the existing generic repository (`createRepository`) already treats as an update-in-place (matching id → same record, `createdAt` preserved, `updatedAt` bumped) rather than a new row — no new upsert logic needed beyond what Task 2's repository factory already provides. `useGrammarProgress()` reads the *entire* store once per page load (not scoped per topic/category), and `Grammar.tsx` filters that in-memory array client-side to compute both the topic-list progress badges (e.g. "2/5") and the category-grid rollup (e.g. "2/45") — one IndexedDB read instead of up to 50 scoped index queries.
+
+**Why:** With only 250 exercises total across the whole module, one full-store read is cheap and simple, and avoids either a second per-topic hook (extra round trips when browsing the topic list) or a denormalized rollup counter that would need separate invalidation logic. This is the same "read once, derive the rest in memory" shape already used by Dashboard's error/hours breakdown.
+
+**How to apply:** If the exercise count grows by an order of magnitude and a full-store read becomes a real cost, category/topic-level counts could be pre-aggregated instead — not a concern at the current content size, so not built now.

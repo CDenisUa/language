@@ -10,6 +10,7 @@ const uk = {
     shadowing: 'Шедовінг',
     errorJournal: 'Помилки',
     textAnalyzer: 'Аналіз тексту',
+    grammar: 'Граматика',
     settings: 'Налаштування',
     menuToggle: 'Меню',
   },
@@ -43,6 +44,10 @@ const uk = {
     textAnalyzer: {
       title: 'Аналіз тексту',
       description: "Встав текст — складні слова підсвітяться, додай їх у словник одним кліком.",
+    },
+    grammar: {
+      title: 'Граматика',
+      description: "Теорія та вправи з граматики англійської мови — 8 розділів від системи часів до зв'язності тексту.",
     },
     settings: {
       title: 'Налаштування',
@@ -188,6 +193,15 @@ const uk = {
     dataCredit:
       'Рівні складності — приблизна оцінка за частотою вживання, а не офіційний список CEFR (німецька мова не має відкритого списку для C1–C2 — див. DECISIONS.md). Дані: FrequencyWords, Hermit Dave (OpenSubtitles2018), CC BY-SA 4.0.',
   },
+  grammar: {
+    exercisesHeading: 'Вправи',
+    check: 'Перевірити',
+    correct: 'Правильно',
+    incorrect: 'Неправильно',
+    back: '←',
+    allCategories: 'усі розділи',
+    progressLabel: 'правильних відповідей',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -198,6 +212,7 @@ const ru = {
     shadowing: 'Шедоуинг',
     errorJournal: 'Ошибки',
     textAnalyzer: 'Анализ текста',
+    grammar: 'Грамматика',
     settings: 'Настройки',
     menuToggle: 'Меню',
   },
@@ -231,6 +246,10 @@ const ru = {
     textAnalyzer: {
       title: 'Анализ текста',
       description: 'Вставь текст — сложные слова подсветятся, добавляй их в словарь одним кликом.',
+    },
+    grammar: {
+      title: 'Грамматика',
+      description: 'Теория и упражнения по грамматике английского языка — 8 разделов от системы времён до связности текста.',
     },
     settings: {
       title: 'Настройки',
@@ -375,6 +394,15 @@ const ru = {
     alreadyInVocabulary: 'уже в словаре',
     dataCredit:
       'Уровни сложности — приблизительная оценка по частоте употребления, а не официальный список CEFR (у немецкого языка нет открытого списка для C1–C2 — см. DECISIONS.md). Данные: FrequencyWords, Hermit Dave (OpenSubtitles2018), CC BY-SA 4.0.',
+  },
+  grammar: {
+    exercisesHeading: 'Упражнения',
+    check: 'Проверить',
+    correct: 'Правильно',
+    incorrect: 'Неправильно',
+    back: '←',
+    allCategories: 'все разделы',
+    progressLabel: 'правильных ответов',
   },
 } satisfies TranslationDictionary
 
