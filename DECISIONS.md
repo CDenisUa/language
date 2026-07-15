@@ -318,3 +318,23 @@ The "English unblocked" reminder (`shouldFireUnblockNudge()`) is detected as a b
 Task 5b's automated verification covers: the Worker's HTTP routes and D1 persistence (confirmed via direct `curl` requests with real CORS headers), the cron/reminder logic (unit-tested pure functions, reused as-is), the `zonedNow()` timezone compensation (unit-tested), and service worker registration in a real production build (`vite preview`). It does *not* cover an actual granted `Notification.requestPermission()` call or a real push notification arriving on a device — confirmed by direct test that `Notification.requestPermission()` hangs indefinitely in this environment's automated browser (no permission-grant capability available here), rather than resolving either way.
 
 **Why:** This is a hard platform boundary, not a gap in test coverage that more effort would close — granting a notification permission is deliberately gated behind a real user gesture in every browser, and no automation hook for it was available in this session's toolset. The user needs to manually enable notifications from the Settings page on an actual device/browser to confirm the last mile of the pipeline.
+
+---
+
+### 2026-07-15 — NavBar collapses into a hamburger dropdown below 768px, rather than a bottom tab bar
+**Status:** accepted
+
+Below a 768px `min-width` breakpoint, `NavBar`'s six nav links plus locale switch plus language switch collapse into a single hamburger-triggered dropdown panel (`nav-bar__menu--open`), rendered as an absolutely-positioned panel below a sticky header. At 768px+, the same markup renders as the original horizontal row via a media query, so there's one component, not two parallel mobile/desktop implementations.
+
+**Why:** The app was fully broken on mobile before this — the flex row wrapped its links into a vertical stack that visually overlapped the brand name and pushed the language switch off-screen. A bottom tab bar (the other common mobile-app nav pattern) was rejected because six destinations plus two switches don't fit a tab bar's ~5-item comfort limit without either cutting a destination or still needing an overflow menu for the switches — the hamburger drawer handles an arbitrary number of items and switches in one place without that compromise.
+
+---
+
+### 2026-07-15 — Scheduler's calendar scrolls horizontally on mobile; toolbar deliberately excluded from that scroll region
+**Status:** accepted
+
+Only `.rbc-time-header`/`.rbc-time-content` (the day-header row and the time grid) get `overflow-x: auto` and a 640px min-width on mobile. `react-big-calendar`'s toolbar (Today/Back/Next + the date-range label) is a sibling at the `.rbc-time-view` level and is left alone, so it stays fully visible without needing to scroll first.
+
+**Why:** An earlier version of this fix scoped the scroll container one level too high (`.rbc-time-view`, which contains the toolbar too), and confirmed by testing that this dragged the toolbar out of view along with the grid — a user would've had to swipe right just to find the "Next" button. Scoping the scroll to only the grid keeps navigation controls reachable at all times, which matters more for actual usability than a technically-simpler one-line fix.
+
+A sticky time-gutter column (hour labels staying pinned while day columns scroll) was also attempted and reverted — confirmed via `getBoundingClientRect()` that `position: sticky` on `.rbc-time-gutter` doesn't take effect, because `react-big-calendar`'s internal header/content scroll-sync mechanism applies a CSS transform to an intermediate ancestor, which establishes a new containing block and defeats sticky positioning relative to the actual scroll container. Not worth vendoring a patched version of the library's scroll-sync just for this; losing the time-of-day label while mid-swipe is a minor rough edge, not a blocker.

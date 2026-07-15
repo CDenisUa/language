@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-07-14_
+_Last updated: 2026-07-15_
 
 ## PWA icons
 
@@ -13,6 +13,7 @@ This is the daily source of truth for what's actually built. If this disagrees w
 - **Project scaffold** — Vite + React 19 + TypeScript, `vite-plugin-pwa` configured (unique manifest `id: /sprachlabor`, icons, apple meta tags, offline app-shell caching via Workbox).
 - **Routing shell** — six placeholder pages wired up via `react-router-dom`: Dashboard, Vocabulary, Scheduler, Shadowing, Error Journal, Settings.
 - **Two-language theming** — `zustand` store (`useLanguageStore`) drives a `data-language` attribute on the app root; CSS custom property `--color-accent` switches red (German) / blue (English) app-wide.
+- **Mobile responsive layout** — `NavBar` is mobile-first: below 768px, the six nav links + locale switch + language switch collapse into a hamburger-triggered dropdown (backdrop, animated icon, closes on link click); at 768px+ a `min-width` media query restores the original horizontal row. The header is `position: sticky` so the toggle stays reachable while scrolling. `ScheduleCalendar`'s week grid scrolls horizontally on narrow screens with a 640px min-width so day headers stay legible, while the toolbar (Today/Back/Next) is deliberately kept outside that scrolling region so it's never out of reach. `ScheduleForm`'s day-of-week picker uses a `repeat(auto-fit, minmax(3.5rem, 1fr))` grid instead of flex-wrap for an even wrap on narrow screens. Verified with Playwright at 320px/390px (no horizontal overflow on any of the six pages) and 1280px (desktop layout unchanged).
 - **Branding** — `ChepioTechFooter` component wired in, per global project convention.
 - **UI localization (i18n)** — interface text switches between Ukrainian (default) and Russian via `useLocaleStore` (zustand, persisted to `localStorage`), independent of the DE/EN study-language switch. Translation dictionaries live in `src/i18n/translations.ts`; `useTranslation()` is the access hook. Card content (word translations) is a separate, not-yet-built concern.
 - **IndexedDB data layer** (`src/services/db/`) — `getDatabase()` singleton via `idb`, schema-typed against `SprachlaborDBSchema` (v2: `words` indexed `by-language`, plus `scheduleEvents`). A generic `createRepository(storeName)` factory gives every store `getAll/getById/put/remove/clear/save`, with `save()` auto-stamping `id`/`createdAt`/`updatedAt` per the sync-readiness convention in `DECISIONS.md` — its type now uses a distributive `Omit` so `save()` still works correctly for discriminated-union stores like `scheduleEvents`. `wordsRepository` adds `getByLanguage()`. `WordRecord` (`src/types/word.ts`) embeds `ts-fsrs`'s own `Card` type directly rather than redefining FSRS fields.
