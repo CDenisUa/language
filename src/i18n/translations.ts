@@ -41,8 +41,7 @@ const uk = {
     },
     settings: {
       title: 'Налаштування',
-      description:
-        "Цільовий баланс навчання, налаштування сповіщень та експорт/імпорт JSON з'являться тут.",
+      description: 'Цільовий баланс навчання, push-сповіщення та резервна копія даних у форматі JSON.',
     },
   },
   vocabulary: {
@@ -109,6 +108,18 @@ const uk = {
     pushDisable: 'Вимкнути сповіщення',
     balanceHeading: 'Баланс навчання',
     balanceTargetLabel: 'Цільова частка німецької, %',
+    backupHeading: 'Резервна копія',
+    exportButton: 'Експортувати дані (JSON)',
+    importButton: 'Обрати файл для відновлення',
+    importConfirmMessage:
+      'Це замінить усі поточні дані (слова, розклад, спроби шедовінгу, журнал помилок) даними з файлу. Аудіозаписи шедовінгу це не торкнеться. Продовжити?',
+    importConfirm: 'Так, відновити',
+    importCancel: 'Скасувати',
+    importInvalidFile: 'Це не схоже на файл резервної копії Sprachlabor.',
+    importSuccessMessage: 'Дані відновлено.',
+    importSkippedTracksNote:
+      'аудіозаписів шедовінгу не входило до резервної копії — за потреби завантажте їх повторно.',
+    importReloadButton: 'Оновити сторінку',
   },
   dashboard: {
     hoursHeading: 'Години навчання',
@@ -200,7 +211,7 @@ const ru = {
     },
     settings: {
       title: 'Настройки',
-      description: 'Целевой баланс обучения, настройки уведомлений и экспорт/импорт JSON появятся здесь.',
+      description: 'Целевой баланс обучения, push-уведомления и резервная копия данных в формате JSON.',
     },
   },
   vocabulary: {
@@ -267,6 +278,18 @@ const ru = {
     pushDisable: 'Выключить уведомления',
     balanceHeading: 'Баланс обучения',
     balanceTargetLabel: 'Целевая доля немецкого, %',
+    backupHeading: 'Резервная копия',
+    exportButton: 'Экспортировать данные (JSON)',
+    importButton: 'Выбрать файл для восстановления',
+    importConfirmMessage:
+      'Это заменит все текущие данные (слова, расписание, попытки шедоуинга, журнал ошибок) данными из файла. Аудиозаписи шедоуинга это не затронет. Продолжить?',
+    importConfirm: 'Да, восстановить',
+    importCancel: 'Отмена',
+    importInvalidFile: 'Это не похоже на файл резервной копии Sprachlabor.',
+    importSuccessMessage: 'Данные восстановлены.',
+    importSkippedTracksNote:
+      'аудиозаписей шедоуинга не входило в резервную копию — при необходимости загрузите их заново.',
+    importReloadButton: 'Обновить страницу',
   },
   dashboard: {
     hoursHeading: 'Часы обучения',

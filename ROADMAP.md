@@ -24,8 +24,9 @@ Task-by-task plan for Sprachlabor, in execution order. This is the checklist of 
 - [x] **Task 6 — Shadowing Lab**: personal audio upload only (no RSS/URL fetching, per the copyright decision), real-time play-along practice (not a segment drill), self-rating only (1–5 stars, no transcript/auto-scoring — see `DECISIONS.md`), live `SpeechRecognition` feedback on Chrome/Android and a graceful "unsupported" message on Safari/iOS, nothing recorded/stored beyond the uploaded track itself. Own IndexedDB store (schema v3): `shadowingTracks` + `shadowingSessions`.
 - [x] **Task 7 — Error journal**: manual entry only (mistake + correction + category — grammar/vocabulary/pronunciation/other — + optional note), no automatic grammar-checking. Entries can optionally link to one existing Vocabulary word or Shadowing track via a picker; full edit/delete like Vocabulary. Own IndexedDB store (schema v4): `errorJournalEntries`.
 - [x] **Task 8 — Dashboard analytics**: hours per language sums a new automatic Vocabulary session timer (`useStudyTimer`, visibility-based, own `vocabularyStudySessions` store — schema v5) plus Shadowing's already-existing `practiceDurationSeconds`; Scheduler's planned blocks deliberately don't count (see `DECISIONS.md`). Target balance is a configurable Settings value (`useStudyBalanceStore`, default 70% German, persisted like the locale/language switches), not hardcoded. Error-frequency breakdown reads directly from Task 7's `errorJournalEntries`, grouped by category.
-- [ ] **Task 9 — Export/Import JSON backup**
-  - Manual full-database export/import in Settings — the safety net for being local-first with no sync yet.
+- [x] **Task 9 — Export/Import JSON backup**: Settings gets a manual "download a JSON file" export and a "pick a file, confirm, replace everything" import (`src/services/backup/backupService.ts`), covering `words`/`scheduleEvents`/`shadowingSessions`/`errorJournalEntries`/`vocabularyStudySessions`. Shadowing tracks back up as metadata only (no audio Blob) and are intentionally *not* restored on import — see `DECISIONS.md`. Import always confirms before wiping existing data.
+
+All nine roadmap tasks are done — the core daily-use loop (Vocabulary, Scheduler, Shadowing, Error Journal, Dashboard, Settings/backup) is complete. What's left lives in "Deferred / not scheduled" below.
 
 ## Deferred / not scheduled
 

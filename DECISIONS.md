@@ -409,3 +409,30 @@ The fix: persist immediately on every `visibilitychange` to `'hidden'`, not just
 **Why:** Confirmed by direct test (`useStudyTimer.test.ts`'s "does not lose time when the tab is closed without an unmount" case, which asserts a save happens on a bare `visibilitychange` to hidden with no unmount at all) that the fix closes the gap the original design had.
 
 **How to apply:** A single Vocabulary visit can now produce multiple `vocabularyStudySessions` records if the user tabs away and back more than once — this is expected and fine, since Dashboard aggregates by summing all records per language rather than expecting one record per visit. Don't "simplify" this back to accumulate-then-save-on-unmount without re-confirming the tab-close case still works.
+
+---
+
+### 2026-07-15 — Backup export/import: shadowing audio excluded, import fully replaces existing data
+
+**Status:** accepted
+
+Two scope decisions for Task 9, made with the user directly before implementation:
+
+1. **Shadowing tracks back up as metadata only — the audio `Blob` is excluded from the export.** `createBackup()` strips `audioBlob` off every `ShadowingTrackRecord` before serializing (`ShadowingTrackBackupRecord = Omit<ShadowingTrackRecord, 'audioBlob'>`). Since a restored track without its audio is a broken, non-functional record in this app (Shadowing practice requires playing the audio back), `restoreBackup()` goes one step further and doesn't write `shadowingTracks` to IndexedDB at all on import — the field only exists in the exported JSON for reference (so the user can see what titles they had). The `shadowingTracks` store is left completely untouched by an import: not cleared, not restored. `shadowingSessions` (which reference a `trackId`) *are* still exported/restored normally, since nothing currently resolves or displays that reference — Dashboard just sums `practiceDurationSeconds`, so a session outliving its original track is harmless.
+2. **Import fully replaces existing data, after an explicit confirmation step.** `restoreBackup()` clears `words`/`scheduleEvents`/`shadowingSessions`/`errorJournalEntries`/`vocabularyStudySessions` before writing the imported records — a true "restore to this backup" rather than an additive merge. The Settings UI never calls `restoreBackup()` directly off a file selection; it first parses and validates the file into a `pendingImport` state and shows a confirm/cancel prompt, matching this project's pattern for other destructive actions.
+
+**Why:** Base64-encoding audio would inflate export size by ~33% and add real complexity (encode on export, decode + re-blob on import) for a personal single-user app where the original audio file still exists on the user's device — a manual re-upload is a trivial ask. A merge-on-import semantics was rejected because its behavior is harder to predict (e.g. a deleted word could silently reappear from an old backup) and doesn't match what "restore a backup" means to most users.
+
+**How to apply:** `restoreBackup()`'s return value (`ImportResult.skippedShadowingTracksCount`) exists specifically so the Settings UI can tell the user "N shadowing tracks weren't restored" rather than silently dropping that data with no explanation. If shadowing audio backup is ever wanted, it's a new decision (base64 in the JSON, or a separate binary export format) — don't quietly bolt it onto this JSON export.
+
+---
+
+### 2026-07-15 — Backup import revives `WordRecord.fsrs` Date fields explicitly
+
+**Status:** accepted
+
+`ts-fsrs`'s `Card` type (embedded as `WordRecord.fsrs`) has real `due: Date` and `last_review?: Date` fields. `JSON.stringify` serializes a `Date` to an ISO string automatically, but `JSON.parse` does *not* revive it back into a `Date` — after a real export→import round-trip, `word.fsrs.due` would be a plain string. `restoreBackup()`'s `reviveWordDates()` explicitly reconstructs both fields with `new Date(...)` before writing to IndexedDB.
+
+**Why:** Without this, the very next visit to the Vocabulary page would call `isDue(word.fsrs)`, which does `word.fsrs.due.getTime()` — a `TypeError` on a string, crashing the review queue for every imported word. Confirmed the fix actually works (not just in a unit test that could itself get the mock wrong) by running a real file through the browser: exported, edited the file on disk, re-imported via the actual file input, and confirmed the restored word still appeared correctly in the FSRS review queue rather than crashing the page.
+
+**How to apply:** If a future field is added to `WordRecord` (or any other record type) that holds a real `Date` instance rather than an ISO string, it needs the same explicit revival treatment in `backupService.ts` — JSON round-tripping is silent about this, so it won't fail loudly during development, only later when a real word happens to hit the broken code path.
