@@ -5,6 +5,7 @@ import type { WordRecord } from '@/types/word'
 import type { ScheduleEventRecord } from '@/types/scheduleEvent'
 import type { ShadowingTrackRecord } from '@/types/shadowingTrack'
 import type { ShadowingSessionRecord } from '@/types/shadowingSession'
+import type { ErrorJournalEntryRecord } from '@/types/errorJournalEntry'
 
 export interface SprachlaborDBSchema extends DBSchema {
   words: {
@@ -26,7 +27,12 @@ export interface SprachlaborDBSchema extends DBSchema {
     value: ShadowingSessionRecord
     indexes: { 'by-track': string }
   }
+  errorJournalEntries: {
+    key: string
+    value: ErrorJournalEntryRecord
+    indexes: { 'by-language': Language }
+  }
 }
 
 export const DB_NAME = 'sprachlabor'
-export const DB_VERSION = 3
+export const DB_VERSION = 4

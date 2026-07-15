@@ -36,4 +36,13 @@ describe('getDatabase', () => {
     const tx = db.transaction('shadowingSessions', 'readonly')
     expect(tx.store.indexNames.contains('by-track')).toBe(true)
   })
+
+  it('creates the errorJournalEntries store with a by-language index', async () => {
+    const db = await getDatabase()
+
+    expect(db.objectStoreNames.contains('errorJournalEntries')).toBe(true)
+
+    const tx = db.transaction('errorJournalEntries', 'readonly')
+    expect(tx.store.indexNames.contains('by-language')).toBe(true)
+  })
 })
