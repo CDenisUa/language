@@ -12,6 +12,7 @@ export interface TranslationDictionary {
     errorJournal: string
     textAnalyzer: string
     grammar: string
+    wordLevels: string
     settings: string
     menuToggle: string
   }
@@ -29,6 +30,7 @@ export interface TranslationDictionary {
     errorJournal: TranslatedPage
     textAnalyzer: TranslatedPage
     grammar: TranslatedPage
+    wordLevels: TranslatedPage
     settings: TranslatedPage
   }
   vocabulary: {
@@ -177,5 +179,15 @@ export interface TranslationDictionary {
     progressLabel: string
     dueForReviewHeading: string
     watchOnEngVid: string
+  }
+  wordLevels: {
+    allLevels: string
+    knownCountSuffix: string
+    know: string
+    dontKnow: string
+    noMoreWords: string
+    roundSummaryPrefix: string
+    roundSummarySuffix: string
+    nextRound: string
   }
 }

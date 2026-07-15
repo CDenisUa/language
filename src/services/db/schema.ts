@@ -9,6 +9,7 @@ import type { ErrorJournalEntryRecord } from '@/types/errorJournalEntry'
 import type { VocabularyStudySessionRecord } from '@/types/vocabularyStudySession'
 import type { GrammarProgressRecord } from '@/types/grammarProgress'
 import type { GrammarTopicReviewRecord } from '@/types/grammarTopicReview'
+import type { KnownWordRecord } from '@/types/knownWord'
 
 export interface SprachlaborDBSchema extends DBSchema {
   words: {
@@ -49,7 +50,12 @@ export interface SprachlaborDBSchema extends DBSchema {
     key: string
     value: GrammarTopicReviewRecord
   }
+  knownWords: {
+    key: string
+    value: KnownWordRecord
+    indexes: { 'by-language': Language }
+  }
 }
 
 export const DB_NAME = 'sprachlabor'
-export const DB_VERSION = 7
+export const DB_VERSION = 8
