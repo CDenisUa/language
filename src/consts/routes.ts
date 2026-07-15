@@ -4,5 +4,6 @@ export const ROUTES = {
   scheduler: '/scheduler',
   shadowing: '/shadowing',
   errorJournal: '/error-journal',
+  textAnalyzer: '/text-analyzer',
   settings: '/settings',
 } as const

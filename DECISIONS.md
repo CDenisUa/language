@@ -34,7 +34,7 @@ Shadowing Lab uses `SpeechSynthesis` (TTS) everywhere. `SpeechRecognition` (spee
 ---
 
 ### 2026-07-14 — CEFR word-difficulty parser (Roadmap Stage 3) deferred
-**Status:** accepted
+**Status:** superseded — see 2026-07-15 "Text Analyzer" entries below
 
 The text-parser feature that auto-tags C1–C2 vocabulary from pasted articles is out of scope until the core review/scheduling loop is validated. When built, it will use local/offline frequency+CEFR wordlists rather than a cloud LLM call, to stay consistent with the offline-first/local-data decision above.
 
@@ -436,3 +436,33 @@ Two scope decisions for Task 9, made with the user directly before implementatio
 **Why:** Without this, the very next visit to the Vocabulary page would call `isDue(word.fsrs)`, which does `word.fsrs.due.getTime()` — a `TypeError` on a string, crashing the review queue for every imported word. Confirmed the fix actually works (not just in a unit test that could itself get the mock wrong) by running a real file through the browser: exported, edited the file on disk, re-imported via the actual file input, and confirmed the restored word still appeared correctly in the FSRS review queue rather than crashing the page.
 
 **How to apply:** If a future field is added to `WordRecord` (or any other record type) that holds a real `Date` instance rather than an ISO string, it needs the same explicit revival treatment in `backupService.ts` — JSON round-tripping is silent about this, so it won't fail loudly during development, only later when a real word happens to hit the broken code path.
+
+---
+
+### 2026-07-15 — Text Analyzer uses word-frequency rank, not a real CEFR wordlist — supersedes the 2026-07-14 CEFR-parser deferral
+
+**Status:** accepted
+
+Before building this (deferred "Stage 3" feature, picked up once the core loop was done), a real gap was found by research: English has a genuinely good open academic CEFR-tagged wordlist (CEFR-J A1–B2 + the Octanove C1/C2 extension, CC BY-SA 4.0). **German does not** — the only German CEFR-tagged lists findable are community scrapes of the Goethe-Institut's own exam word lists (unclear/likely non-permissive licensing), and even those mostly stop at B1/B2; advanced German levels generally aren't published as fixed word lists at all. Since German is the user's primary, intensive-study language, a "real CEFR" approach would have been strong for English and weak-to-nonexistent for the language that matters most here — the opposite of useful.
+
+Decided with the user directly: use word **frequency rank** as a difficulty proxy instead, sourced from `FrequencyWords` by Hermit Dave (https://github.com/hermitdave/FrequencyWords, OpenSubtitles2018 corpus, CC BY-SA 4.0) — the same methodology and license for both German and English, avoiding the asymmetry entirely. Rare words get flagged; the flagging is bucketed into rough CEFR-*like* tiers, not real CEFR labels (see the next entry for the exact cutoffs). Two other real alternatives were explicitly rejected: real-CEFR-for-English-only (drops German from the feature entirely) and a mixed approach (real CEFR for English, frequency for German — rejected for having two different underlying methodologies/label meanings between the two languages, more complexity for a personal app).
+
+**Why:** A uniform, cleanly-licensed method across both study languages was judged more valuable than a technically-more-accurate label system that would only really work for the less-studied language.
+
+**License/attribution:** CC BY-SA 4.0 requires attribution. Credited via a visible footer note on the Text Analyzer page itself (both uk/ru locales, `t.textAnalyzer.dataCredit`) plus here. The two source files (`de_50k.txt`/`en_50k.txt`, top-50k words per language) were reformatted into rank-ordered JSON arrays (word only, frequency counts dropped since only rank position is used) and committed as static assets at `public/data/frequency-{de,en}.json` (~500KB each), not fetched from a CDN at runtime — keeps the feature fully offline-capable and avoids a runtime dependency on an external host.
+
+**How to apply:** If a comparably open, full-range (A1–C2) German CEFR wordlist ever turns up, switching to real CEFR labels is a new decision, not a silent upgrade — it would need the same "how do B2/C1/C2 buckets work" design pass as the frequency-rank approach got.
+
+---
+
+### 2026-07-15 — Text Analyzer: tier cutoffs, no lemmatization, click-to-add reuses WordForm
+
+**Status:** accepted
+
+Three implementation decisions made while building the Text Analyzer, each a natural consequence of the frequency-rank approach above rather than something requiring a separate user decision:
+
+1. **Tier cutoffs** (`src/consts/frequency.ts`): rank ≤3000 → `common` (rendered as plain, unstyled text — only genuinely advanced words visually stand out), ≤6000 → `B2`, ≤15000 → `C1`, ≤50000 → `C2`, not in the top 50k at all → `unranked` (shown distinctly from C2 — could be a proper noun, typo, or genuinely rare word, not confidently "advanced vocabulary"). Chosen as a reasonable-looking split by inspecting real output on real German/English paragraphs (see `CURRENT_STATE.md` for the specific examples checked); these are a judgment call, easy to retune later since `getDifficultyTier()` is a small pure function with its own tests.
+2. **No lemmatizer/stemmer dependency.** German is highly inflected (a naive wordlist lookup would miss "gegangen" if only "gehen" were listed), which would normally argue for adding a stemming library. Skipped because the frequency data is built from *real corpus usage* (OpenSubtitles dialogue), not dictionary lemmas — common inflected forms are themselves frequent enough to appear directly in the top-50k list. Confirmed acceptable quality via the same real-paragraph manual testing, not just assumed.
+3. **Clicking a flagged word reuses `WordForm` directly** (from `src/pages/Vocabulary/WordForm.tsx`) rather than building a second add-word UI. `WordForm` gained one new optional prop, `initialFront`, that pre-fills the front field when there's no `editingWord` — a small additive change (Vocabulary's own usage is unaffected, since it never passes this prop) rather than forking the component. The Cancel button's visibility condition was also loosened from `editingWord` to `editingWord || initialFront`, so the Text Analyzer's inline form can be dismissed without saving.
+
+**Why:** All three keep the feature's real complexity (tokenization, frequency lookup, offline data) without adding speculative complexity (a WASM stemmer, a second word-entry form) that the frequency-based design doesn't actually need.

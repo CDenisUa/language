@@ -29,6 +29,7 @@ function NavBar() {
     { to: ROUTES.scheduler, label: t.nav.scheduler },
     { to: ROUTES.shadowing, label: t.nav.shadowing },
     { to: ROUTES.errorJournal, label: t.nav.errorJournal },
+    { to: ROUTES.textAnalyzer, label: t.nav.textAnalyzer },
     { to: ROUTES.settings, label: t.nav.settings },
   ]
 

@@ -1,0 +1,43 @@
+.analyzed-text {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  line-height: 1.9;
+  font-size: 1.0625rem;
+  white-space: pre-wrap;
+}
+
+.analyzed-text__word {
+  appearance: none;
+  border: none;
+  font: inherit;
+  padding: 0.0625rem 0.1875rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.analyzed-text__word--B2 {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+}
+
+.analyzed-text__word--C1 {
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+}
+
+.analyzed-text__word--C2 {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.analyzed-text__word--unranked {
+  background: rgba(161, 161, 170, 0.2);
+  color: var(--color-text-muted);
+}
+
+.analyzed-text__word--known {
+  cursor: default;
+  opacity: 0.6;
+}

@@ -9,6 +9,7 @@ const uk = {
     scheduler: 'Розклад',
     shadowing: 'Шедовінг',
     errorJournal: 'Помилки',
+    textAnalyzer: 'Аналіз тексту',
     settings: 'Налаштування',
     menuToggle: 'Меню',
   },
@@ -38,6 +39,10 @@ const uk = {
     errorJournal: {
       title: 'Журнал помилок',
       description: 'Фіксуйте власні помилки вручну — граматика, лексика, вимова — з посиланням на слово чи аудіозапис.',
+    },
+    textAnalyzer: {
+      title: 'Аналіз тексту',
+      description: "Встав текст — складні слова підсвітяться, додай їх у словник одним кліком.",
     },
     settings: {
       title: 'Налаштування',
@@ -170,6 +175,19 @@ const uk = {
     entriesHeading: 'Записи',
     emptyEntries: 'Поки немає жодного запису — додайте перший.',
   },
+  textAnalyzer: {
+    placeholder: 'Встав сюди текст німецькою чи англійською...',
+    analyzeButton: 'Аналізувати',
+    emptyResult: 'Складних слів не знайдено — текст складається переважно з поширеної лексики.',
+    legendB2: 'B2',
+    legendC1: 'C1',
+    legendC2: 'C2',
+    legendUnranked: 'рідкісне/невідоме',
+    wordAdded: 'Слово додано до словника.',
+    alreadyInVocabulary: 'вже у словнику',
+    dataCredit:
+      'Рівні складності — приблизна оцінка за частотою вживання, а не офіційний список CEFR (німецька мова не має відкритого списку для C1–C2 — див. DECISIONS.md). Дані: FrequencyWords, Hermit Dave (OpenSubtitles2018), CC BY-SA 4.0.',
+  },
 } satisfies TranslationDictionary
 
 const ru = {
@@ -179,6 +197,7 @@ const ru = {
     scheduler: 'Расписание',
     shadowing: 'Шедоуинг',
     errorJournal: 'Ошибки',
+    textAnalyzer: 'Анализ текста',
     settings: 'Настройки',
     menuToggle: 'Меню',
   },
@@ -208,6 +227,10 @@ const ru = {
     errorJournal: {
       title: 'Журнал ошибок',
       description: 'Фиксируйте свои ошибки вручную — грамматика, лексика, произношение — со ссылкой на слово или аудиозапись.',
+    },
+    textAnalyzer: {
+      title: 'Анализ текста',
+      description: 'Вставь текст — сложные слова подсветятся, добавляй их в словарь одним кликом.',
     },
     settings: {
       title: 'Настройки',
@@ -339,6 +362,19 @@ const ru = {
     delete: 'Удалить',
     entriesHeading: 'Записи',
     emptyEntries: 'Пока нет ни одной записи — добавьте первую.',
+  },
+  textAnalyzer: {
+    placeholder: 'Вставь сюда текст на немецком или английском...',
+    analyzeButton: 'Анализировать',
+    emptyResult: 'Сложных слов не найдено — текст состоит преимущественно из распространённой лексики.',
+    legendB2: 'B2',
+    legendC1: 'C1',
+    legendC2: 'C2',
+    legendUnranked: 'редкое/неизвестное',
+    wordAdded: 'Слово добавлено в словарь.',
+    alreadyInVocabulary: 'уже в словаре',
+    dataCredit:
+      'Уровни сложности — приблизительная оценка по частоте употребления, а не официальный список CEFR (у немецкого языка нет открытого списка для C1–C2 — см. DECISIONS.md). Данные: FrequencyWords, Hermit Dave (OpenSubtitles2018), CC BY-SA 4.0.',
   },
 } satisfies TranslationDictionary
 

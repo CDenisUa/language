@@ -27,11 +27,13 @@ const EMPTY_VALUES: WordFormValues = {
 interface WordFormProps {
   language: Language
   editingWord: WordRecord | null
+  /** Pre-fills the front field for a fresh (non-editing) form — e.g. from the Text Analyzer. */
+  initialFront?: string
   onSave: (values: WordFormValues) => void
   onCancelEdit: () => void
 }
 
-function WordForm({ language, editingWord, onSave, onCancelEdit }: WordFormProps) {
+function WordForm({ language, editingWord, initialFront, onSave, onCancelEdit }: WordFormProps) {
   const { t } = useTranslation()
   const [values, setValues] = useState<WordFormValues>(EMPTY_VALUES)
 
@@ -45,9 +47,9 @@ function WordForm({ language, editingWord, onSave, onCancelEdit }: WordFormProps
         austrianVariant: editingWord.austrianVariant ?? '',
       })
     } else {
-      setValues(EMPTY_VALUES)
+      setValues({ ...EMPTY_VALUES, front: initialFront ?? '' })
     }
-  }, [editingWord])
+  }, [editingWord, initialFront])
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
@@ -109,7 +111,7 @@ function WordForm({ language, editingWord, onSave, onCancelEdit }: WordFormProps
         <button type="submit" className="word-form__submit">
           {t.vocabulary.save}
         </button>
-        {editingWord && (
+        {(editingWord || initialFront) && (
           <button type="button" className="word-form__cancel" onClick={onCancelEdit}>
             {t.vocabulary.cancel}
           </button>
