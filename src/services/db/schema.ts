@@ -8,6 +8,7 @@ import type { ShadowingSessionRecord } from '@/types/shadowingSession'
 import type { ErrorJournalEntryRecord } from '@/types/errorJournalEntry'
 import type { VocabularyStudySessionRecord } from '@/types/vocabularyStudySession'
 import type { GrammarProgressRecord } from '@/types/grammarProgress'
+import type { GrammarTopicReviewRecord } from '@/types/grammarTopicReview'
 
 export interface SprachlaborDBSchema extends DBSchema {
   words: {
@@ -44,7 +45,11 @@ export interface SprachlaborDBSchema extends DBSchema {
     value: GrammarProgressRecord
     indexes: { 'by-topic': string }
   }
+  grammarTopicReviews: {
+    key: string
+    value: GrammarTopicReviewRecord
+  }
 }
 
 export const DB_NAME = 'sprachlabor'
-export const DB_VERSION = 6
+export const DB_VERSION = 7
