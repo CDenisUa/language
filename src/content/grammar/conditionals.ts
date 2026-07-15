@@ -3,6 +3,7 @@ import type { GrammarCategory } from '@/types/grammarTopic'
 
 export const conditionals: GrammarCategory = {
   id: 'conditionals',
+  language: 'en',
   title: 'Умовні речення та умовний спосіб',
   description:
     'Чотири базові типи умовних речень, їхні змішані варіанти, формальна інверсія замість if, а також бажання, жаль і сослагательний спосіб — усе, що описує нереальні, гіпотетичні чи умовні ситуації.',
@@ -13,9 +14,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Zero Conditional (if + Present Simple, Present Simple) описує загальні істини та закономірності, що завжди правдиві — науковий факт чи логічний наслідок, де if можна замінити на when без зміни змісту. First Conditional (if + Present Simple, will + інфінітив) описує реальну, цілком імовірну ситуацію в майбутньому та її наслідок. У обох типах after if вживається Present Simple, а не will, навіть коли йдеться про майбутнє — це типова помилка українських мовців, що калькують "якщо буде".',
       examples: [
-        { en: 'If you heat ice, it melts.', uk: 'Якщо нагріти лід, він тане (загальна істина).' },
-        { en: "If it rains tomorrow, we'll stay at home.", uk: 'Якщо завтра піде дощ, ми залишимось вдома (реальна майбутня умова).' },
-        { en: "If you don't water plants, they die.", uk: 'Якщо не поливати рослини, вони гинуть (закономірність).' },
+        { target: 'If you heat ice, it melts.', uk: 'Якщо нагріти лід, він тане (загальна істина).' },
+        { target: "If it rains tomorrow, we'll stay at home.", uk: 'Якщо завтра піде дощ, ми залишимось вдома (реальна майбутня умова).' },
+        { target: "If you don't water plants, they die.", uk: 'Якщо не поливати рослини, вони гинуть (закономірність).' },
       ],
       exercises: [
         {
@@ -69,9 +70,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Second Conditional (if + Past Simple, would + інфінітив) описує гіпотетичну, нереальну або малоймовірну ситуацію в теперішньому чи майбутньому — те, чого немає зараз, або те, що малоймовірне. Минулий час тут не означає минулий момент, а лише сигналізує нереальність. У формальному стилі для всіх осіб (включно з I/he/she) прийнято вживати were замість was: "If I were you, I would apologise."',
       examples: [
-        { en: 'If I won the lottery, I would buy a house.', uk: 'Якби я виграв лотерею, я б купив будинок (гіпотетично, малоймовірно).' },
-        { en: 'If I were you, I would apologise.', uk: 'На твоєму місці я б вибачився (were для всіх осіб у формальному стилі).' },
-        { en: "If she spoke German, she'd get the job.", uk: 'Якби вона розмовляла німецькою, вона отримала б цю роботу (зараз не розмовляє).' },
+        { target: 'If I won the lottery, I would buy a house.', uk: 'Якби я виграв лотерею, я б купив будинок (гіпотетично, малоймовірно).' },
+        { target: 'If I were you, I would apologise.', uk: 'На твоєму місці я б вибачився (were для всіх осіб у формальному стилі).' },
+        { target: "If she spoke German, she'd get the job.", uk: 'Якби вона розмовляла німецькою, вона отримала б цю роботу (зараз не розмовляє).' },
       ],
       exercises: [
         {
@@ -125,9 +126,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Third Conditional (if + Past Perfect, would have + V3) описує нереальну ситуацію в минулому та її нереальний наслідок — те, чого насправді не сталося. Використовується для жалю чи розмірковувань "а що якби": подія в if-частині вже відбулася (чи не відбулася) остаточно, і змінити це неможливо.',
       examples: [
-        { en: "If I had known about the traffic, I would have left earlier.", uk: 'Якби я знав про затори, я виїхав би раніше (але не знав, тому запізнився).' },
-        { en: "If she had studied medicine, she would have become a doctor.", uk: 'Якби вона вивчала медицину, вона стала б лікарем (не вивчала).' },
-        { en: "We wouldn't have missed the flight if we had left on time.", uk: 'Ми не запізнилися б на рейс, якби виїхали вчасно (запізнились).' },
+        { target: "If I had known about the traffic, I would have left earlier.", uk: 'Якби я знав про затори, я виїхав би раніше (але не знав, тому запізнився).' },
+        { target: "If she had studied medicine, she would have become a doctor.", uk: 'Якби вона вивчала медицину, вона стала б лікарем (не вивчала).' },
+        { target: "We wouldn't have missed the flight if we had left on time.", uk: 'Ми не запізнилися б на рейс, якби виїхали вчасно (запізнились).' },
       ],
       exercises: [
         {
@@ -181,9 +182,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Змішані умовні речення поєднують часові плани, коли причина й наслідок стосуються різних періодів. Найпоширеніший тип: минула нереальна причина → теперішній нереальний результат (if + Past Perfect, would + інфінітив): "If I had studied medicine, I would be a doctor now" — рішення в минулому досі впливає на теперішнє. Рідше трапляється й зворотний варіант: загальна/теперішня нереальна риса → минулий нереальний результат (if + Past Simple, would have + V3): "If she weren\'t so shy, she would have spoken up yesterday" — її характер (постійна риса) вплинув на конкретну минулу подію.',
       examples: [
-        { en: "If I had studied medicine, I would be a doctor now.", uk: 'Якби я вивчав медицину, я був би зараз лікарем (минуле рішення → теперішній результат).' },
-        { en: "If she weren't so shy, she would have spoken up at the meeting yesterday.", uk: 'Якби вона не була такою сором\'язливою, вона висловилась би на вчорашній зустрічі (постійна риса → минулий результат).' },
-        { en: "If he hadn't missed the flight, he would be here with us now.", uk: 'Якби він не запізнився на рейс, він був би зараз тут з нами.' },
+        { target: "If I had studied medicine, I would be a doctor now.", uk: 'Якби я вивчав медицину, я був би зараз лікарем (минуле рішення → теперішній результат).' },
+        { target: "If she weren't so shy, she would have spoken up at the meeting yesterday.", uk: 'Якби вона не була такою сором\'язливою, вона висловилась би на вчорашній зустрічі (постійна риса → минулий результат).' },
+        { target: "If he hadn't missed the flight, he would be here with us now.", uk: 'Якби він не запізнився на рейс, він був би зараз тут з нами.' },
       ],
       exercises: [
         {
@@ -237,9 +238,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Кілька виразів заміняють if, додаючи нюанс. As long as / provided (that) / providing (that) означають "за умови, що" й підкреслюють обов\'язкову умову, часто у формальному стилі. Unless означає "якщо не" (= if...not), але не завжди взаємозамінне з усіма запереченнями: unless вживають для єдиної винятковiї умови, а не для гіпотетичного заперечення (порівняйте: "I\'ll come unless it rains" природно, але "*I would help unless you asked" звучить дивно — тут потрібне if...didn\'t). In case вводить запобіжний захід ("про всяк випадок"), а не умову: "Take an umbrella in case it rains" означає взяти парасольку заздалегідь, незалежно від того, піде дощ чи ні — це не те саме, що "if it rains". But for + іменник означає "якби не" і вказує на єдину причину, що змінила б результат.',
       examples: [
-        { en: "You can borrow my car as long as you fill up the tank.", uk: 'Можеш взяти мою машину за умови, що заправиш бак.' },
-        { en: "I'll be there unless something urgent comes up.", uk: 'Я буду там, якщо не станеться щось термінове.' },
-        { en: "Take your phone in case you get lost.", uk: 'Візьми телефон про всяк випадок, якщо загубишся (запобіжний захід, не умова).' },
+        { target: "You can borrow my car as long as you fill up the tank.", uk: 'Можеш взяти мою машину за умови, що заправиш бак.' },
+        { target: "I'll be there unless something urgent comes up.", uk: 'Я буду там, якщо не станеться щось термінове.' },
+        { target: "Take your phone in case you get lost.", uk: 'Візьми телефон про всяк випадок, якщо загубишся (запобіжний захід, не умова).' },
       ],
       exercises: [
         {
@@ -293,9 +294,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'У формальному чи літературному стилі if можна опустити, переставивши допоміжне дієслово на початок речення (інверсія). Had + підмет + V3 замінює third conditional if-частину: "Had I known, I would have called." Were + підмет замінює second conditional з were: "Were I you, I would apologise." Should + підмет + інфінітив замінює first conditional для малоймовірної, гіпотетичної умови: "Should you need anything, let me know." Ця конструкція типова для офіційних листів, договорів і літературного стилю.',
       examples: [
-        { en: "Had I known about the meeting, I would have attended.", uk: 'Якби я знав про зустріч, я б прийшов (формальна інверсія замість if I had known).' },
-        { en: "Were I you, I would think twice.", uk: 'На твоєму місці я б подумав двічі (замість if I were you).' },
-        { en: "Should you need any assistance, please contact us.", uk: 'Якщо вам знадобиться допомога, звертайтесь до нас (офіційний тон).' },
+        { target: "Had I known about the meeting, I would have attended.", uk: 'Якби я знав про зустріч, я б прийшов (формальна інверсія замість if I had known).' },
+        { target: "Were I you, I would think twice.", uk: 'На твоєму місці я б подумав двічі (замість if I were you).' },
+        { target: "Should you need any assistance, please contact us.", uk: 'Якщо вам знадобиться допомога, звертайтесь до нас (офіційний тон).' },
       ],
       exercises: [
         {
@@ -354,9 +355,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Wish/if only + Past Simple виражає бажання змінити теперішню ситуацію (нереальний теперішній стан): "I wish I spoke French" (я не розмовляю французькою зараз). Wish/if only + Past Perfect виражає жаль за минулим: "I wish I had studied harder" (я не вчився старанно тоді). Wish + would + інфінітив висловлює роздратування чужою поведінкою чи бажання, щоб ситуація змінилась (не про самого мовця): "I wish you would stop smoking." If only звучить емоційнішим і сильнішим за wish, часто зі знаком оклику.',
       examples: [
-        { en: "I wish I spoke German fluently.", uk: 'Шкода, що я не розмовляю вільно німецькою (нереальний теперішній стан).' },
-        { en: "I wish I had visited Paris when I had the chance.", uk: 'Шкода, що я не відвідав Париж, коли мав таку можливість (жаль про минуле).' },
-        { en: "I wish you would stop interrupting me!", uk: 'Хотів би я, щоб ти перестав мене перебивати! (роздратування чужою поведінкою).' },
+        { target: "I wish I spoke German fluently.", uk: 'Шкода, що я не розмовляю вільно німецькою (нереальний теперішній стан).' },
+        { target: "I wish I had visited Paris when I had the chance.", uk: 'Шкода, що я не відвідав Париж, коли мав таку можливість (жаль про минуле).' },
+        { target: "I wish you would stop interrupting me!", uk: 'Хотів би я, щоб ти перестав мене перебивати! (роздратування чужою поведінкою).' },
       ],
       exercises: [
         {
@@ -410,9 +411,9 @@ export const conditionals: GrammarCategory = {
       theory:
         "Деякі вирази вимагають форми минулого часу для опису чогось умовно теперішнього чи гіпотетичного, а не реального минулого. It's time + Past Simple (не інфінітив) означає, що щось давно пора зробити зараз: \"It's time we left\" (нам уже час іти). Would rather + Past Simple описує бажання, щоб хтось інший зробив/не зробив щось саме зараз: \"I'd rather you didn't tell him\" (коли підмети різні; якщо підмет той самий — просто would rather + bare infinitive: I'd rather stay). As if / as though + Past Simple (чи Past Perfect для ще ранішого) вводить нереальне порівняння: \"She talks as if she owned the place\" (насправді не володіє).",
       examples: [
-        { en: "It's time we left — the film starts in ten minutes.", uk: 'Нам уже час іти — фільм починається за десять хвилин.' },
-        { en: "I'd rather you didn't tell him about this.", uk: 'Я б хотів, щоб ти йому про це не розповідав.' },
-        { en: "He talks as if he knew everything.", uk: 'Він говорить так, ніби знає все (насправді не знає).' },
+        { target: "It's time we left — the film starts in ten minutes.", uk: 'Нам уже час іти — фільм починається за десять хвилин.' },
+        { target: "I'd rather you didn't tell him about this.", uk: 'Я б хотів, щоб ти йому про це не розповідав.' },
+        { target: "He talks as if he knew everything.", uk: 'Він говорить так, ніби знає все (насправді не знає).' },
       ],
       exercises: [
         {
@@ -466,9 +467,9 @@ export const conditionals: GrammarCategory = {
       theory:
         'Сослагательний спосіб (mandative subjunctive) вживається після дієслів-наказів/пропозицій (suggest, recommend, insist, demand, propose) і прикметників необхідності (essential, vital, important, necessary) у конструкції that + підмет + базова форма дієслова, незалежно від особи чи часу: "I suggest that he be more careful" (не "is"), "It is essential that she attend the meeting" (не "attends"). Це особливо поширено в американській та формальній англійській; у британській розмовній мові частіше вживають альтернативу з should: "I suggest that he should be more careful."',
       examples: [
-        { en: 'The doctor recommended that he rest for a week.', uk: 'Лікар порадив, щоб він відпочивав тиждень (базова форма rest, не rests).' },
-        { en: 'It is essential that every student attend the lecture.', uk: 'Важливо, щоб кожен студент відвідав лекцію.' },
-        { en: 'She insisted that he apologise immediately.', uk: 'Вона наполягла, щоб він негайно вибачився.' },
+        { target: 'The doctor recommended that he rest for a week.', uk: 'Лікар порадив, щоб він відпочивав тиждень (базова форма rest, не rests).' },
+        { target: 'It is essential that every student attend the lecture.', uk: 'Важливо, щоб кожен студент відвідав лекцію.' },
+        { target: 'She insisted that he apologise immediately.', uk: 'Вона наполягла, щоб він негайно вибачився.' },
       ],
       exercises: [
         {

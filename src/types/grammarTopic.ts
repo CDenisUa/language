@@ -1,3 +1,6 @@
+// Types
+import type { Language } from '@/types/language'
+
 export type GrammarCategoryId =
   | 'tenses-aspects'
   | 'modals'
@@ -7,9 +10,21 @@ export type GrammarCategoryId =
   | 'syntax-emphasis'
   | 'parts-of-speech'
   | 'cohesion'
+  | 'de-kasus'
+  | 'de-genus-artikel'
+  | 'de-wortstellung'
+  | 'de-verbformen-zeiten'
+  | 'de-modalverben'
+  | 'de-trennbare-verben'
+  | 'de-konjunktiv'
+  | 'de-passiv'
+  | 'de-praepositionen'
+  | 'de-adjektivdeklination'
+  | 'de-nebensaetze'
 
 export interface GrammarExample {
-  en: string
+  /** The example sentence in the language being taught (English or German, depending on the category). */
+  target: string
   uk: string
 }
 
@@ -42,6 +57,7 @@ export interface GrammarTopic {
 
 export interface GrammarCategory {
   id: GrammarCategoryId
+  language: Language
   title: string
   description: string
   topics: GrammarTopic[]

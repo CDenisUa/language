@@ -3,6 +3,7 @@ import type { GrammarCategory } from '@/types/grammarTopic'
 
 export const verbPatterns: GrammarCategory = {
   id: 'verb-patterns',
+  language: 'en',
   title: 'Неособові форми дієслова',
   description:
     'Інфінітив із to й без нього, герундій та дієслова, чиє значення змінюється залежно від того, який патерн іде далі, а також дієприкметникові звороти для елегантнішого стилю.',
@@ -13,9 +14,9 @@ export const verbPatterns: GrammarCategory = {
       theory:
         'Більшість дієслів (want, decide, agree, hope, promise, refuse) вимагають після себе інфінітив із to. Проте після модальних дієслів (can, must, should) і після make/let (у значенні "змушувати/дозволяти") вживається "голий" інфінітив без to: "She made him apologise", "Let me help you". Дієслова сприйняття (see, hear, watch, feel) + object + bare infinitive описують дію, яку побачили/почули від початку до кінця повністю ("I saw him cross the street"), тоді як той самий патерн з -ing описує дію в процесі, спостережену частково ("I saw him crossing the street" — я побачив, як він переходив, можливо не до кінця).',
       examples: [
-        { en: 'She decided to leave early.', uk: 'Вона вирішила поїхати раніше (to-infinitive після decide).' },
-        { en: 'My parents let me stay out late.', uk: 'Батьки дозволили мені гуляти допізна (bare infinitive після let).' },
-        { en: 'I saw him cross the street.', uk: 'Я побачив, як він перейшов вулицю (повна дія, bare infinitive).' },
+        { target: 'She decided to leave early.', uk: 'Вона вирішила поїхати раніше (to-infinitive після decide).' },
+        { target: 'My parents let me stay out late.', uk: 'Батьки дозволили мені гуляти допізна (bare infinitive після let).' },
+        { target: 'I saw him cross the street.', uk: 'Я побачив, як він перейшов вулицю (повна дія, bare infinitive).' },
       ],
       exercises: [
         {
@@ -69,9 +70,9 @@ export const verbPatterns: GrammarCategory = {
       theory:
         'Герундій (-ing форма дієслова) поводиться як іменник: може бути підметом речення ("Swimming is great exercise"), вживається після прийменників ("interested in learning", "good at cooking") і після певного списку дієслів, що вимагають саме -ing, а не to-infinitive: enjoy, avoid, finish, suggest, mind, admit, deny, practise, risk, imagine. На відміну від інфінітива, який часто описує намір чи мету, герундій зазвичай описує дію як загальну концепцію, звичну активність або вже здійснений факт.',
       examples: [
-        { en: 'Swimming is my favourite way to relax.', uk: 'Плавання — мій улюблений спосіб розслабитись (герундій як підмет).' },
-        { en: "I'm not interested in watching TV tonight.", uk: 'Мені не цікаво дивитись телевізор сьогодні (герундій після прийменника in).' },
-        { en: 'She suggested going for a walk.', uk: 'Вона запропонувала прогулятись (suggest вимагає герундій).' },
+        { target: 'Swimming is my favourite way to relax.', uk: 'Плавання — мій улюблений спосіб розслабитись (герундій як підмет).' },
+        { target: "I'm not interested in watching TV tonight.", uk: 'Мені не цікаво дивитись телевізор сьогодні (герундій після прийменника in).' },
+        { target: 'She suggested going for a walk.', uk: 'Вона запропонувала прогулятись (suggest вимагає герундій).' },
       ],
       exercises: [
         {
@@ -120,9 +121,9 @@ export const verbPatterns: GrammarCategory = {
       theory:
         'Кілька дієслів кардинально змінюють значення залежно від того, чи йде після них to-infinitive, чи -ing. Remember/forget + to-infinitive стосується завдання, яке треба (не) забути зробити ("Remember to lock the door" — не забудь замкнути); + -ing стосується спогаду про подію в минулому ("I remember locking the door" — я пам\'ятаю, як замикав). Stop + to-infinitive означає перервати одну дію, щоб зробити іншу ("He stopped to smoke" — зупинився, щоб покурити); + -ing означає припинити саму дію ("He stopped smoking" — кинув курити). Try + to-infinitive означає докласти зусиль, часто безуспішно ("Try to open the door" — спробуй, доклавши зусиль); + -ing означає поекспериментувати з методом ("Try opening the door with this key" — спробуй цей спосіб). Regret + to-infinitive — формальне повідомлення поганої новини ("We regret to inform you..."); + -ing — жаль за вже зробленою дією ("I regret telling him that").',
       examples: [
-        { en: 'I remember locking the door — I clearly recall doing it.', uk: 'Я пам\'ятаю, як замикав двері — чітко пригадую цю дію (спогад).' },
-        { en: 'Please remember to lock the door before you leave.', uk: 'Будь ласка, не забудь замкнути двері, коли підеш (завдання на майбутнє).' },
-        { en: 'He stopped smoking two years ago.', uk: 'Він кинув курити два роки тому (припинив дію).' },
+        { target: 'I remember locking the door — I clearly recall doing it.', uk: 'Я пам\'ятаю, як замикав двері — чітко пригадую цю дію (спогад).' },
+        { target: 'Please remember to lock the door before you leave.', uk: 'Будь ласка, не забудь замкнути двері, коли підеш (завдання на майбутнє).' },
+        { target: 'He stopped smoking two years ago.', uk: 'Він кинув курити два роки тому (припинив дію).' },
       ],
       exercises: [
         {
@@ -176,13 +177,13 @@ export const verbPatterns: GrammarCategory = {
       theory:
         'Дієприкметникові звороти дозволяють об\'єднати два речення в одне елегантніше, типове для формального чи літературного стилю. Present participle (-ing) виражає одночасну дію чи причину: "Feeling tired, she went to bed early" (= Because she felt tired...). Past participle (V3) має пасивне значення й часто виражає причину чи умову: "Seen from above, the city looks like a maze" (= When it is seen from above...). Perfect participle (having + V3) підкреслює, що дія в звороті завершилась ДО дії в головному реченні: "Having finished his homework, he went out to play" (= After he had finished...). Підмет дієприкметникового звороту має збігатися з підметом головного речення — інакше вийде "звисаючий дієприкметник" (dangling participle), типова помилка.',
       examples: [
-        { en: 'Having finished the report, she left the office.', uk: 'Закінчивши звіт, вона пішла з офісу (дія в звороті сталась раніше).' },
-        { en: 'Seen from the plane, the island looked tiny.', uk: 'Побачений з літака, острів здавався крихітним (пасивне значення).' },
-        { en: 'Not knowing what to say, he just smiled.', uk: 'Не знаючи, що сказати, він просто усміхнувся (причина/одночасна дія).' },
+        { target: 'Having finished the report, she left the office.', uk: 'Закінчивши звіт, вона пішла з офісу (дія в звороті сталась раніше).' },
+        { target: 'Seen from the plane, the island looked tiny.', uk: 'Побачений з літака, острів здавався крихітним (пасивне значення).' },
+        { target: 'Not knowing what to say, he just smiled.', uk: 'Не знаючи, що сказати, він просто усміхнувся (причина/одночасна дія).' },
       ],
       exercises: [
         {
-          id: 'pc-1',
+          id: 'partc-1',
           type: 'multiple-choice',
           prompt: '___ his keys, he had to call a locksmith.',
           options: ['Lose', 'Losing', 'Having lost', 'Lost'],
@@ -190,7 +191,7 @@ export const verbPatterns: GrammarCategory = {
           explanation: 'Having lost (perfect participle) — дія завершилась до дії в головному реченні.',
         },
         {
-          id: 'pc-2',
+          id: 'partc-2',
           type: 'multiple-choice',
           prompt: 'Choose the correct combination for: "The bridge, ___ in 1930, is now a historic landmark."',
           options: ['building', 'having built', 'built', 'build'],
@@ -198,21 +199,21 @@ export const verbPatterns: GrammarCategory = {
           explanation: 'Past participle (built) виражає пасивне значення — міст був збудований.',
         },
         {
-          id: 'pc-3',
+          id: 'partc-3',
           type: 'fill-blank',
           prompt: '___ (feel) exhausted, she decided to skip the gym.',
           correctAnswers: ['Feeling'],
           explanation: 'Present participle виражає причину, одночасну з головною дією.',
         },
         {
-          id: 'pc-4',
+          id: 'partc-4',
           type: 'fill-blank',
           prompt: '___ (finish) their meal, they asked for the bill.',
           correctAnswers: ['Having finished'],
           explanation: 'Perfect participle підкреслює завершеність дії перед наступною подією.',
         },
         {
-          id: 'pc-5',
+          id: 'partc-5',
           type: 'multiple-choice',
           prompt: 'Which sentence contains a dangling (misplaced) participle?',
           options: [

@@ -1,10 +1,11 @@
 // Core
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 // Components
 import GrammarTopicView from '@/pages/Grammar/GrammarTopicView'
 // Hooks
 import { useGrammarProgress } from '@/hooks/useGrammarProgress'
 import { useGrammarTopicReviews } from '@/hooks/useGrammarTopicReviews'
+import { useLanguageStore } from '@/hooks/useLanguageStore'
 import { useTranslation } from '@/i18n/useTranslation'
 // Services
 import { grammarProgressRepository } from '@/services/db/grammarProgressRepository'
@@ -23,14 +24,25 @@ function findCategoryByTopicId(topicId: string) {
 
 function Grammar() {
   const { t } = useTranslation()
+  const activeLanguage = useLanguageStore((state) => state.activeLanguage)
   const { progress, reload } = useGrammarProgress()
   const { reviews, reload: reloadReviews } = useGrammarTopicReviews()
   const [selectedCategoryId, setSelectedCategoryId] = useState<GrammarCategoryId | null>(null)
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null)
 
+  const categories = useMemo(
+    () => GRAMMAR_CATEGORIES.filter((category) => category.language === activeLanguage),
+    [activeLanguage],
+  )
+
+  useEffect(() => {
+    setSelectedCategoryId(null)
+    setSelectedTopicId(null)
+  }, [activeLanguage])
+
   const selectedCategory = useMemo(
-    () => GRAMMAR_CATEGORIES.find((category) => category.id === selectedCategoryId) ?? null,
-    [selectedCategoryId],
+    () => categories.find((category) => category.id === selectedCategoryId) ?? null,
+    [categories, selectedCategoryId],
   )
   const selectedTopic = useMemo(
     () => selectedCategory?.topics.find((topic) => topic.id === selectedTopicId) ?? null,
@@ -46,8 +58,9 @@ function Grammar() {
           const topic = category?.topics.find((candidate) => candidate.id === review.topicId)
           return topic && category ? { topic, category } : null
         })
-        .filter((entry): entry is { topic: GrammarTopic; category: GrammarCategory } => entry !== null),
-    [reviews],
+        .filter((entry): entry is { topic: GrammarTopic; category: GrammarCategory } => entry !== null)
+        .filter((entry) => entry.category.language === activeLanguage),
+    [reviews, activeLanguage],
   )
 
   const handleAnswered = async (exerciseId: string, correct: boolean) => {
@@ -146,7 +159,7 @@ function Grammar() {
       )}
 
       <div className="grammar-categories">
-        {GRAMMAR_CATEGORIES.map((category) => {
+        {categories.map((category) => {
           const topicIds = new Set(category.topics.map((topic) => topic.id))
           const total = category.topics.reduce((sum, topic) => sum + topic.exercises.length, 0)
           const correct = progress.filter((record) => record.correct && topicIds.has(record.topicId)).length

@@ -3,6 +3,7 @@ import type { GrammarCategory } from '@/types/grammarTopic'
 
 export const partsOfSpeech: GrammarCategory = {
   id: 'parts-of-speech',
+  language: 'en',
   title: 'Частини мови та їхні нюанси',
   description:
     'Артиклі, визначники й квантифікатори, займенники, іменники, прикметники/прислівники та прийменники — деталі, які найчастіше видають нерідного мовця, навіть коли базова граматика вже засвоєна.',
@@ -13,9 +14,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'A/an вживається при першій згадці предмета чи коли він один із багатьох ("I saw a dog"). The вживається, коли річ уже відома зі контексту, згадувалась раніше, або є єдиною у своєму роді ("the sun", "the dog I mentioned"). Нульовий артикль вживається з незлічуваними/множинними іменниками в загальному значенні ("I like music", "Dogs are loyal") та з більшістю власних назв (imена людей, більшість країн, вулиць), а також у стійких виразах на кшталт "go to school/work/bed" (у їхньому типовому, функціональному значенні, без the). Географічні назви мають свої правила: гори/континенти/озера/більшість країн — без the (Mount Everest, Lake Baikal), але океани, річки, групи островів, гірські пасма й країни з "of"/множинною формою в назві — з the (the Pacific, the Alps, the United States).',
       examples: [
-        { en: 'I bought a book yesterday. The book was fascinating.', uk: 'Я купив книгу вчора. Книга (та сама) виявилась захопливою.' },
-        { en: 'Dogs make great companions.', uk: 'Собаки — чудові компаньйони (загальне твердження, нульовий артикль).' },
-        { en: 'We climbed Mount Everest, but he lives near the Alps.', uk: 'Ми піднялися на Еверест, а він живе біля Альп (гора без the, гірське пасмо — з the).' },
+        { target: 'I bought a book yesterday. The book was fascinating.', uk: 'Я купив книгу вчора. Книга (та сама) виявилась захопливою.' },
+        { target: 'Dogs make great companions.', uk: 'Собаки — чудові компаньйони (загальне твердження, нульовий артикль).' },
+        { target: 'We climbed Mount Everest, but he lives near the Alps.', uk: 'Ми піднялися на Еверест, а він живе біля Альп (гора без the, гірське пасмо — з the).' },
       ],
       exercises: [
         {
@@ -64,9 +65,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'Some зазвичай вживається в стверджувальних реченнях і в питаннях-пропозиціях/проханнях ("Would you like some tea?"), тоді як any типове для питань і заперечень ("Do you have any milk? I don\'t have any"). Every розглядає групу як єдине ціле й вживається з дієсловом в однині ("Every student has a book"), тоді як each підкреслює кожного члена групи окремо, часто коли їх небагато ("Each student received a certificate individually"). Either/neither вживаються лише з двома предметами (either вибір з двох, neither — заперечення обох), на відміну від any/none, які підходять для трьох і більше. Few/little (без a) мають негативний відтінок — "майже немає, недостатньо", тоді як a few/a little — позитивний відтінок "трохи є, достатньо".',
       examples: [
-        { en: 'Would you like some coffee?', uk: 'Хочеш кави? (пропозиція, some у питанні).' },
-        { en: "I have few friends here — I feel quite lonely.", uk: 'У мене тут мало друзів — я почуваюсь доволі самотнім (few, негативний відтінок).' },
-        { en: "I have a few friends here, so it's not too bad.", uk: 'У мене тут є декілька друзів, тож не так уже й погано (a few, позитивний відтінок).' },
+        { target: 'Would you like some coffee?', uk: 'Хочеш кави? (пропозиція, some у питанні).' },
+        { target: "I have few friends here — I feel quite lonely.", uk: 'У мене тут мало друзів — я почуваюсь доволі самотнім (few, негативний відтінок).' },
+        { target: "I have a few friends here, so it's not too bad.", uk: 'У мене тут є декілька друзів, тож не так уже й погано (a few, позитивний відтінок).' },
       ],
       exercises: [
         {
@@ -120,9 +121,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'Англійська розрізняє п\'ять типів займенників: підметові (I, you, he, she, it, we, they), додаткові (me, you, him, her, it, us, them), присвійні (mine, yours, his, hers, its, ours, theirs — самостійні, без іменника поруч, на відміну від присвійних прикметників my/your/his), зворотні (myself, yourself, himself... — коли підмет і об\'єкт дії збігаються) і відносні (who/whom для людей, which для речей, whose для присвійності, that для обох у обмежувальних реченнях). Типова помилка — плутати myself із просто me ("give it to myself" неправильно, треба "give it to me", бо me не є тим самим, хто виконує дію), а also who/whom: who — підмет, whom — додаток (формально), хоча в розмовній мові who часто заміняє обидва.',
       examples: [
-        { en: 'She bought herself a new phone.', uk: 'Вона купила собі новий телефон (зворотний займенник, підмет=об\'єкт).' },
-        { en: 'This book is mine, not yours.', uk: 'Ця книга моя, не твоя (присвійні займенники, самостійні).' },
-        { en: 'The man who called you is my uncle.', uk: 'Чоловік, який тобі дзвонив, — мій дядько (відносний займенник who для людини-підмета).' },
+        { target: 'She bought herself a new phone.', uk: 'Вона купила собі новий телефон (зворотний займенник, підмет=об\'єкт).' },
+        { target: 'This book is mine, not yours.', uk: 'Ця книга моя, не твоя (присвійні займенники, самостійні).' },
+        { target: 'The man who called you is my uncle.', uk: 'Чоловік, який тобі дзвонив, — мій дядько (відносний займенник who для людини-підмета).' },
       ],
       exercises: [
         {
@@ -176,9 +177,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'Злічувані іменники мають форму однини й множини (a book/books) і можуть вживатись з числівниками та a/an. Незлічувані іменники (advice, information, furniture, news, luggage, homework) сприймаються як єдина маса й НЕ мають множини — типова помилка українських мовців: "*informations", "*advices", "*furnitures". Множина деяких іменників утворюється нестандартно: child→children, mouse→mice, man→men, foot→feet, person→people, а деякі іменники (sheep, fish, series) мають однакову форму в однині й множині. Складні іменники (compound nouns) зазвичай додають -s лише до останнього слова (bookshops, websites), хоча є винятки (mothers-in-law, де -s додається до головного слова).',
       examples: [
-        { en: "Can you give me some advice?", uk: 'Можеш дати мені пораду? (advice — незлічуваний, без a і без -s).' },
-        { en: "I saw three sheep in the field.", uk: 'Я побачив трьох овець у полі (sheep — однакова форма в однині й множині).' },
-        { en: "My mother-in-law is visiting us.", uk: 'До нас приїжджає моя теща (складний іменник, множина: mothers-in-law).' },
+        { target: "Can you give me some advice?", uk: 'Можеш дати мені пораду? (advice — незлічуваний, без a і без -s).' },
+        { target: "I saw three sheep in the field.", uk: 'Я побачив трьох овець у полі (sheep — однакова форма в однині й множині).' },
+        { target: "My mother-in-law is visiting us.", uk: 'До нас приїжджає моя теща (складний іменник, множина: mothers-in-law).' },
       ],
       exercises: [
         {
@@ -227,9 +228,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'Коли кілька прикметників стоять перед іменником, вони йдуть у типовому порядку: думка (opinion) → розмір (size) → вік (age) → форма (shape) → колір (colour) → походження (origin) → матеріал (material) → призначення (purpose) + іменник ("a beautiful small old round black Italian wooden dining table" — хоча на практиці рідко використовують стільки одразу). Короткі прикметники (1 склад, деякі 2-складові) утворюють порівняльний ступінь через -er/-est (tall→taller→tallest), довші — через more/most (expensive→more expensive→most expensive). Подвійний порівняльний зворот "the more..., the better/more..." виражає пропорційну залежність двох явищ: "The more you practice, the better you get."',
       examples: [
-        { en: 'She bought a beautiful antique French vase.', uk: 'Вона купила красиву старовинну французьку вазу (порядок: думка-вік-походження).' },
-        { en: 'This exercise is more difficult than the last one.', uk: 'Ця вправа складніша за попередню (довгий прикметник → more).' },
-        { en: 'The more you read, the more you know.', uk: 'Чим більше читаєш, тим більше знаєш (подвійний порівняльний зворот).' },
+        { target: 'She bought a beautiful antique French vase.', uk: 'Вона купила красиву старовинну французьку вазу (порядок: думка-вік-походження).' },
+        { target: 'This exercise is more difficult than the last one.', uk: 'Ця вправа складніша за попередню (довгий прикметник → more).' },
+        { target: 'The more you read, the more you know.', uk: 'Чим більше читаєш, тим більше знаєш (подвійний порівняльний зворот).' },
       ],
       exercises: [
         {
@@ -288,9 +289,9 @@ export const partsOfSpeech: GrammarCategory = {
       theory:
         'Для місця: in — усередині простору (in the room, in London), on — на поверхні (on the table, on the wall), at — у конкретній точці (at the door, at the bus stop). Для часу: in — місяці/роки/періоди доби (in July, in 2024, in the morning), on — дні й дати (on Monday, on 5th May), at — конкретний момент (at 6 o\'clock, at night, at the weekend у британській англійській). Багато дієслів і прикметників вимагають конкретного, "залежного" прийменника, який не завжди збігається з українським еквівалентом: interested IN (не "for"), good AT (не "in"), depend ON, afraid OF, married TO, responsible FOR — ці комбінації просто треба запам\'ятовувати як стійкі пари.',
       examples: [
-        { en: 'The meeting is at 3 p.m. on Friday in March.', uk: 'Зустріч о 15:00 у п\'ятницю в березні (at для часу, on для дня, in для місяця).' },
-        { en: "I'm really interested in learning Spanish.", uk: 'Мені справді цікаво вивчати іспанську (interested in, не for).' },
-        { en: 'She is married to a doctor.', uk: 'Вона одружена з лікарем (married to, не with).' },
+        { target: 'The meeting is at 3 p.m. on Friday in March.', uk: 'Зустріч о 15:00 у п\'ятницю в березні (at для часу, on для дня, in для місяця).' },
+        { target: "I'm really interested in learning Spanish.", uk: 'Мені справді цікаво вивчати іспанську (interested in, не for).' },
+        { target: 'She is married to a doctor.', uk: 'Вона одружена з лікарем (married to, не with).' },
       ],
       exercises: [
         {

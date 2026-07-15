@@ -3,6 +3,7 @@ import type { GrammarCategory } from '@/types/grammarTopic'
 
 export const tensesAspects: GrammarCategory = {
   id: 'tenses-aspects',
+  language: 'en',
   title: 'Система часів і аспектів',
   description:
     'Чотири базові ситуації: проста дія (Simple), стан/предмет (to be), досвід чи результат (Perfect) і тривалість (Continuous) — у теперішньому, минулому та майбутньому.',
@@ -13,9 +14,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Present Simple описує звички, факти, що завжди правдиві, розклади (потяги, кіно) і думки/почуття. Формула: I/you/we/they + V; he/she/it + V-s. Питання та заперечення — через do/does. Емфатичне do (I DO like it) підкреслює твердження, часто спростовуючи протилежне.',
       examples: [
-        { en: 'She works as a teacher in Graz.', uk: 'Вона працює вчителькою в Граці.' },
-        { en: 'Water boils at 100°C.', uk: 'Вода закипає при 100°C.' },
-        { en: 'I do enjoy German grammar, actually.', uk: 'Мені й справді подобається німецька граматика.' },
+        { target: 'She works as a teacher in Graz.', uk: 'Вона працює вчителькою в Граці.' },
+        { target: 'Water boils at 100°C.', uk: 'Вода закипає при 100°C.' },
+        { target: 'I do enjoy German grammar, actually.', uk: 'Мені й справді подобається німецька граматика.' },
       ],
       exercises: [
         {
@@ -64,9 +65,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Present Continuous (am/is/are + V-ing) описує дію, що відбувається прямо зараз, тимчасовий процес навколо теперішнього моменту (не обов\'язково цієї секунди) або заплановану домовленість на найближче майбутнє. Не використовується зі статичними дієсловами (know, love, believe) — див. State Verbs.',
       examples: [
-        { en: "I'm learning English this evening.", uk: 'Я вчу англійську цього вечора.' },
-        { en: "She's working on a new project this month.", uk: 'Цього місяця вона працює над новим проєктом.' },
-        { en: "We're meeting Anna at 6 p.m. tomorrow.", uk: 'Ми зустрічаємось з Анною завтра о 18:00 (домовленість).' },
+        { target: "I'm learning English this evening.", uk: 'Я вчу англійську цього вечора.' },
+        { target: "She's working on a new project this month.", uk: 'Цього місяця вона працює над новим проєктом.' },
+        { target: "We're meeting Anna at 6 p.m. tomorrow.", uk: 'Ми зустрічаємось з Анною завтра о 18:00 (домовленість).' },
       ],
       exercises: [
         {
@@ -115,9 +116,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Present Perfect (have/has + V3) з\'єднує минуле з теперішнім: результат зараз важливіший за час дії. Використовується для досвіду (ever/never), нещодавніх подій (just), незавершеного періоду (this week, so far) та дій, що почались у минулому й тривають (already/yet). На відміну від Past Simple, тут не називають конкретний момент у минулому.',
       examples: [
-        { en: "I've lost my keys — I can't find them anywhere.", uk: 'Я загубив ключі — ніде не можу їх знайти (результат зараз).' },
-        { en: 'Have you ever been to Vienna?', uk: 'Ти коли-небудь був у Відні?' },
-        { en: "She's already finished her homework.", uk: 'Вона вже закінчила домашнє завдання.' },
+        { target: "I've lost my keys — I can't find them anywhere.", uk: 'Я загубив ключі — ніде не можу їх знайти (результат зараз).' },
+        { target: 'Have you ever been to Vienna?', uk: 'Ти коли-небудь був у Відні?' },
+        { target: "She's already finished her homework.", uk: 'Вона вже закінчила домашнє завдання.' },
       ],
       exercises: [
         {
@@ -166,9 +167,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Present Perfect Continuous (have/has been + V-ing) підкреслює тривалість дії, що почалась у минулому й або триває досі, або щойно закінчилась, залишивши видимий результат/наслідок. Часто з for/since/how long, на відміну від Present Perfect Simple, де важливий факт/результат, а не сам процес тривання.',
       examples: [
-        { en: "I've been learning German for two years.", uk: 'Я вчу німецьку вже два роки (і продовжую).' },
-        { en: "She's tired because she's been working all day.", uk: 'Вона втомлена, бо працювала весь день (наслідок зараз).' },
-        { en: 'How long have you been waiting?', uk: 'Скільки ти вже чекаєш?' },
+        { target: "I've been learning German for two years.", uk: 'Я вчу німецьку вже два роки (і продовжую).' },
+        { target: "She's tired because she's been working all day.", uk: 'Вона втомлена, бо працювала весь день (наслідок зараз).' },
+        { target: 'How long have you been waiting?', uk: 'Скільки ти вже чекаєш?' },
       ],
       exercises: [
         {
@@ -222,9 +223,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Past Simple описує завершені дії в конкретний момент/період у минулому (yesterday, in 2020, last week). Правильні дієслова + -ed, неправильні — за списком форм. Питання/заперечення — через did/didn\'t + інфінітив без to.',
       examples: [
-        { en: 'I visited Berlin last summer.', uk: 'Я відвідав Берлін минулого літа.' },
-        { en: 'She didn\'t call me yesterday.', uk: 'Вона не подзвонила мені вчора.' },
-        { en: 'When did you move to Graz?', uk: 'Коли ти переїхав до Граца?' },
+        { target: 'I visited Berlin last summer.', uk: 'Я відвідав Берлін минулого літа.' },
+        { target: 'She didn\'t call me yesterday.', uk: 'Вона не подзвонила мені вчора.' },
+        { target: 'When did you move to Graz?', uk: 'Коли ти переїхав до Граца?' },
       ],
       exercises: [
         {
@@ -273,9 +274,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Past Continuous (was/were + V-ing) описує процес, що тривав у певний момент минулого, або дві паралельні дії. Класична пара: довша дія в Past Continuous переривається коротшою дією в Past Simple (I was cooking when the phone rang).',
       examples: [
-        { en: 'I was cooking dinner when you called.', uk: 'Я готував вечерю, коли ти подзвонив.' },
-        { en: 'At 8 p.m. we were still driving home.', uk: 'О 20:00 ми ще їхали додому.' },
-        { en: 'While she was studying, he was watching TV.', uk: 'Поки вона навчалась, він дивився телевізор (паралельні дії).' },
+        { target: 'I was cooking dinner when you called.', uk: 'Я готував вечерю, коли ти подзвонив.' },
+        { target: 'At 8 p.m. we were still driving home.', uk: 'О 20:00 ми ще їхали додому.' },
+        { target: 'While she was studying, he was watching TV.', uk: 'Поки вона навчалась, він дивився телевізор (паралельні дії).' },
       ],
       exercises: [
         {
@@ -324,9 +325,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Past Perfect (had + V3) — "доминуле": дія, що відбулась раніше за іншу вказану дію в минулому. Показує чітку послідовність двох подій у минулому: спочатку had + V3, потім Past Simple.',
       examples: [
-        { en: 'When I arrived, the train had already left.', uk: 'Коли я прийшов, потяг уже поїхав (раніша подія).' },
-        { en: "She'd never seen snow before she moved to Austria.", uk: 'Вона ніколи не бачила снігу до переїзду в Австрію.' },
-        { en: 'I realised I had forgotten my passport.', uk: 'Я зрозумів, що забув паспорт.' },
+        { target: 'When I arrived, the train had already left.', uk: 'Коли я прийшов, потяг уже поїхав (раніша подія).' },
+        { target: "She'd never seen snow before she moved to Austria.", uk: 'Вона ніколи не бачила снігу до переїзду в Австрію.' },
+        { target: 'I realised I had forgotten my passport.', uk: 'Я зрозумів, що забув паспорт.' },
       ],
       exercises: [
         {
@@ -380,9 +381,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Past Perfect Continuous (had been + V-ing) підкреслює тривалість дії, що йшла аж до певної точки в минулому (або до неї впритул), часто пояснюючи причину чогось, що сталося потім. Аналог Present Perfect Continuous, але зсунутий у минуле.',
       examples: [
-        { en: 'He was tired because he had been working all night.', uk: 'Він був втомлений, бо працював усю ніч (до цього моменту в минулому).' },
-        { en: 'They had been waiting for an hour when the bus finally came.', uk: 'Вони чекали годину, коли нарешті приїхав автобус.' },
-        { en: 'The ground was wet — it had been raining.', uk: 'Земля була мокра — до цього йшов дощ.' },
+        { target: 'He was tired because he had been working all night.', uk: 'Він був втомлений, бо працював усю ніч (до цього моменту в минулому).' },
+        { target: 'They had been waiting for an hour when the bus finally came.', uk: 'Вони чекали годину, коли нарешті приїхав автобус.' },
+        { target: 'The ground was wet — it had been raining.', uk: 'Земля була мокра — до цього йшов дощ.' },
       ],
       exercises: [
         {
@@ -436,9 +437,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Will + інфінітив вживається для спонтанних рішень у момент мовлення, обіцянок, передбачень без конкретних доказів та пропозицій допомоги. Відрізняється від going to, яке базується на вже наявному намірі чи видимих доказах.',
       examples: [
-        { en: "I'll help you with that — give me the bag.", uk: 'Я тобі допоможу — дай сумку (спонтанне рішення).' },
-        { en: 'I think it will rain tomorrow.', uk: 'Думаю, завтра піде дощ (передбачення без доказів).' },
-        { en: "I promise I'll call you tonight.", uk: 'Обіцяю, що подзвоню тобі ввечері.' },
+        { target: "I'll help you with that — give me the bag.", uk: 'Я тобі допоможу — дай сумку (спонтанне рішення).' },
+        { target: 'I think it will rain tomorrow.', uk: 'Думаю, завтра піде дощ (передбачення без доказів).' },
+        { target: "I promise I'll call you tonight.", uk: 'Обіцяю, що подзвоню тобі ввечері.' },
       ],
       exercises: [
         {
@@ -487,9 +488,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Future Continuous (will be + V-ing) описує процес, що триватиме в певний момент майбутнього, або дію, що відбудеться за звичайним планом/розкладом (без відтінку рішення чи наміру — просто констатація факту).',
       examples: [
-        { en: 'This time tomorrow, I\'ll be flying to Vienna.', uk: 'Завтра о цій порі я летітиму до Відня.' },
-        { en: "Don't call at 9 — I'll be sleeping.", uk: 'Не дзвони о 9-ій — я спатиму.' },
-        { en: 'I\'ll be seeing him at the meeting anyway, so I\'ll tell him then.', uk: 'Я так чи інакше побачу його на зустрічі, тож скажу тоді (нейтральний факт).' },
+        { target: 'This time tomorrow, I\'ll be flying to Vienna.', uk: 'Завтра о цій порі я летітиму до Відня.' },
+        { target: "Don't call at 9 — I'll be sleeping.", uk: 'Не дзвони о 9-ій — я спатиму.' },
+        { target: 'I\'ll be seeing him at the meeting anyway, so I\'ll tell him then.', uk: 'Я так чи інакше побачу його на зустрічі, тож скажу тоді (нейтральний факт).' },
       ],
       exercises: [
         {
@@ -548,9 +549,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Future Perfect (will have + V3) показує, що дія завершиться до певного моменту в майбутньому (by next year). Future Perfect Continuous (will have been + V-ing) додає акцент на тривалість цієї дії до того моменту (for five years by then).',
       examples: [
-        { en: 'By 2027, I will have finished my degree.', uk: 'До 2027 року я закінчу навчання.' },
-        { en: 'By next June, we will have been living here for five years.', uk: 'До наступного червня ми проживатимемо тут уже п\'ять років.' },
-        { en: 'She will have left by the time you arrive.', uk: 'Вона вже поїде до того, як ти приїдеш.' },
+        { target: 'By 2027, I will have finished my degree.', uk: 'До 2027 року я закінчу навчання.' },
+        { target: 'By next June, we will have been living here for five years.', uk: 'До наступного червня ми проживатимемо тут уже п\'ять років.' },
+        { target: 'She will have left by the time you arrive.', uk: 'Вона вже поїде до того, як ти приїдеш.' },
       ],
       exercises: [
         {
@@ -604,9 +605,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Коли ми говоримо про майбутнє з точки зору минулого (наприклад, у непрямій мові чи розповіді), will замінюється на would, а be going to — на was/were going to. Це "майбутнє, яким воно бачилось тоді".',
       examples: [
-        { en: 'He said he would call me back.', uk: 'Він сказав, що передзвонить мені.' },
-        { en: 'She was going to study medicine, but she changed her mind.', uk: 'Вона збиралась вивчати медицину, але передумала.' },
-        { en: 'I knew we would be late.', uk: 'Я знав, що ми запізнимось.' },
+        { target: 'He said he would call me back.', uk: 'Він сказав, що передзвонить мені.' },
+        { target: 'She was going to study medicine, but she changed her mind.', uk: 'Вона збиралась вивчати медицину, але передумала.' },
+        { target: 'I knew we would be late.', uk: 'Я знав, що ми запізнимось.' },
       ],
       exercises: [
         {
@@ -660,9 +661,9 @@ export const tensesAspects: GrammarCategory = {
       theory:
         'Дієслова стану (know, believe, love, hate, own, understand, seem, need, want) описують почуття, думки, володіння чи сприйняття, а не дію — тому вони зазвичай не вживаються в Continuous-формах. Деякі дієслова мають два значення: динамічне (можна в Continuous) і статичне (тільки Simple) — наприклад think (think that = вважати, статичне; be thinking = обдумувати, динамічне) чи have (have a car = володіти, статичне; be having lunch = їсти, динамічне).',
       examples: [
-        { en: 'I know the answer.', uk: 'Я знаю відповідь (стан, не *I am knowing).' },
-        { en: 'I think she is right.', uk: 'Я вважаю, що вона права (думка, статичне think).' },
-        { en: "I'm thinking about changing jobs.", uk: 'Я обдумую зміну роботи (процес, динамічне think).' },
+        { target: 'I know the answer.', uk: 'Я знаю відповідь (стан, не *I am knowing).' },
+        { target: 'I think she is right.', uk: 'Я вважаю, що вона права (думка, статичне think).' },
+        { target: "I'm thinking about changing jobs.", uk: 'Я обдумую зміну роботи (процес, динамічне think).' },
       ],
       exercises: [
         {

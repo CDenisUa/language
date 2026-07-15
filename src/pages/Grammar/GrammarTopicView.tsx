@@ -26,8 +26,8 @@ function GrammarTopicView({ topic, progress, onAnswered }: GrammarTopicViewProps
 
       <ul className="grammar-topic-view__examples">
         {topic.examples.map((example) => (
-          <li key={example.en} className="grammar-topic-view__example">
-            <span className="grammar-topic-view__example-en">{example.en}</span>
+          <li key={example.target} className="grammar-topic-view__example">
+            <span className="grammar-topic-view__example-target">{example.target}</span>
             <span className="grammar-topic-view__example-uk">{example.uk}</span>
           </li>
         ))}

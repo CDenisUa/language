@@ -10,6 +10,7 @@ import { grammarTopicReviewsRepository } from '@/services/db/grammarTopicReviews
 import { createNewCard } from '@/services/fsrs/fsrsScheduler'
 // Hooks
 import { useLocaleStore } from '@/hooks/useLocaleStore'
+import { useLanguageStore } from '@/hooks/useLanguageStore'
 
 async function openTopic(user: ReturnType<typeof userEvent.setup>) {
   const categoryHeading = screen.getByRole('heading', { name: 'Система часів і аспектів', level: 2 })
@@ -24,6 +25,22 @@ describe('Grammar', () => {
     await grammarProgressRepository.clear()
     await grammarTopicReviewsRepository.clear()
     useLocaleStore.setState({ locale: 'uk' })
+    useLanguageStore.setState({ activeLanguage: 'en' })
+  })
+
+  it('shows only English grammar categories while English is the active study language', () => {
+    render(<Grammar />)
+
+    expect(screen.getByRole('heading', { name: 'Система часів і аспектів', level: 2 })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Відмінки (Kasus)', level: 2 })).not.toBeInTheDocument()
+  })
+
+  it('shows only German grammar categories while German is the active study language', () => {
+    useLanguageStore.setState({ activeLanguage: 'de' })
+    render(<Grammar />)
+
+    expect(screen.getByRole('heading', { name: 'Відмінки (Kasus)', level: 2 })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Система часів і аспектів', level: 2 })).not.toBeInTheDocument()
   })
 
   it('shows category cards on the initial view', () => {
