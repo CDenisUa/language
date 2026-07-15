@@ -45,4 +45,13 @@ describe('getDatabase', () => {
     const tx = db.transaction('errorJournalEntries', 'readonly')
     expect(tx.store.indexNames.contains('by-language')).toBe(true)
   })
+
+  it('creates the vocabularyStudySessions store with a by-language index', async () => {
+    const db = await getDatabase()
+
+    expect(db.objectStoreNames.contains('vocabularyStudySessions')).toBe(true)
+
+    const tx = db.transaction('vocabularyStudySessions', 'readonly')
+    expect(tx.store.indexNames.contains('by-language')).toBe(true)
+  })
 })

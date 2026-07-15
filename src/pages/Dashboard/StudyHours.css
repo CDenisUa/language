@@ -1,0 +1,44 @@
+.study-hours {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.study-hours h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.study-hours__empty {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.study-hours__row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.study-hours__language {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.study-hours__language--de {
+  color: #ef4444;
+}
+
+.study-hours__language--en {
+  color: #3b82f6;
+}
+
+.study-hours__balance {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
