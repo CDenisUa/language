@@ -13,7 +13,7 @@ export const cohesion: GrammarCategory = {
       title: 'Reported Speech',
       engVidUrl: 'https://www.engvid.com/english-grammar-reported-speech/',
       theory:
-        'У непрямій мові часи зазвичай зсуваються на один крок у минуле (backshift): Present Simple → Past Simple, Present Perfect → Past Perfect, will → would ("I am tired" → "She said she was tired"). Займенники й вказівники часу/місця також змінюються відповідно до нової точки зору: today → that day, tomorrow → the next day, here → there, this → that. Непрямі питання зберігають порядок слів стверджувального речення (без інверсії) і додають if/whether для питань без питального слова: "Are you coming?" → "He asked if I was coming." Непрямі накази передаються через to-infinitive: "Close the door!" → "She told him to close the door."',
+        'У непрямій мові часи зазвичай зсуваються на один крок у минуле (backshift): `Present Simple → Past Simple`, `Present Perfect → Past Perfect`, `will → would` (`I am tired` → `She said she was tired`). Займенники й вказівники часу/місця також змінюються відповідно до нової точки зору: `today → that day, tomorrow → the next day, here → there, this → that`. Непрямі питання зберігають порядок слів стверджувального речення (без інверсії) і додають if/whether для питань без питального слова: `Are you coming? → He asked if I was coming.` Непрямі накази передаються через to-infinitive: `Close the door! → She told him to close the door.`',
       examples: [
         { target: '"I am tired," she said. → She said she was tired.', uk: 'Present Simple зсувається в Past Simple.' },
         { target: '"Are you coming tomorrow?" → He asked if I was coming the next day.', uk: 'Питання без wh-слова отримує if, а tomorrow стає the next day.' },
@@ -70,7 +70,7 @@ export const cohesion: GrammarCategory = {
       title: 'Discourse Markers (however, despite, although, because)',
       engVidUrl: 'https://www.engvid.com/how-to-express-opposing-ideas-in-english/',
       theory:
-        'Для контрасту: however вводить нове речення (часто після крапки чи з комою) — "The plan was risky. However, it worked." Although/though вводять повне підрядне речення з підметом і дієсловом ("Although it was raining, we went out"), тоді як despite/in spite of вимагають іменника чи -ing форми, а не повного речення ("Despite the rain, we went out" / "Despite raining"). Для причини: because вводить повне речення ("because it was raining"), тоді as/since — теж повне речення, але звучать формальніше й ставлять причину на перший план, а because of/due to вимагають іменника, як despite. Для наслідку: therefore, as a result, consequently вводять новий результат, типово у формальному письмовому стилі.',
+        'Для контрасту: however вводить нове речення (часто після крапки чи з комою) — `The plan was risky. However, it worked.` Although/though вводять повне підрядне речення з підметом і дієсловом (`Although it was raining, we went out`), тоді як despite/in spite of вимагають іменника чи -ing форми, а не повного речення (`Despite the rain, we went out` / `Despite raining`). Для причини: because вводить повне речення ("because it was raining"), тоді as/since — теж повне речення, але звучать формальніше й ставлять причину на перший план, а because of/due to вимагають іменника, як despite. Для наслідку: therefore, as a result, consequently вводять новий результат, типово у формальному письмовому стилі.',
       examples: [
         { target: 'Despite the heavy rain, the match continued.', uk: 'Незважаючи на сильний дощ, матч тривав (despite + іменник).' },
         { target: 'Although it was raining heavily, the match continued.', uk: 'Хоча йшов сильний дощ, матч тривав (although + повне речення).' },
@@ -126,7 +126,7 @@ export const cohesion: GrammarCategory = {
       id: 'ellipsis-and-substitution',
       title: 'Ellipsis and Substitution',
       theory:
-        'Еліпсис — це пропуск слів, які повторюються й зрозумілі з контексту, щоб уникнути зайвої тавтології: "I\'d like to go, but I can\'t [go]" — дієслово go опущене вдруге. Субституція замінює вже сказану інформацію коротким словом замість повторення: so/not замінюють цілу пропозицію ("Will it rain? I think so" / "I hope not"), one/ones замінюють іменник ("I don\'t like this shirt — I\'ll take the blue one"), а do/does/did замінюють цілу дієслівну групу ("She loves jazz, and so do I" = and I love jazz too).',
+        'Еліпсис — це пропуск слів, які повторюються й зрозумілі з контексту, щоб уникнути зайвої тавтології: `I\'d like to go, but I can\'t [go]` — дієслово go опущене вдруге. Субституція замінює вже сказану інформацію коротким словом замість повторення: so/not замінюють цілу пропозицію (`Will it rain? I think so` / `I hope not`), one/ones замінюють іменник (`I don\'t like this shirt — I\'ll take the blue one`), а do/does/did замінюють цілу дієслівну групу (`She loves jazz, and so do I` = and I love jazz too).',
       examples: [
         { target: "I wanted to help, but I couldn't.", uk: 'Я хотів допомогти, але не зміг (help опущено — еліпсис).' },
         { target: '"Will she come?" "I hope so."', uk: '"Вона прийде?" "Сподіваюсь, що так" (so замінює "she will come").' },
@@ -183,7 +183,7 @@ export const cohesion: GrammarCategory = {
       title: 'There is / There are',
       engVidUrl: 'https://www.engvid.com/confusing-english-grammar-there-is-or-there-are/',
       theory:
-        'Конструкція there is/are вводить нову інформацію про існування чогось — уперше повідомляє слухачеві, що щось є ("There is a café around the corner"). Дієслово узгоджується з іменником, що йде після нього: there is/was для однини й незлічуваних, there are/were для множини. Конструкція працює в будь-якому часі: there has been, there will be, there used to be. Важливо не плутати з it is, яке натомість посилається на щось уже відоме зі контексту ("There is a book on the table" уводить книгу вперше; "It is on the table" вказує, де перебуває вже згадана книга).',
+        'Конструкція there is/are вводить нову інформацію про існування чогось — уперше повідомляє слухачеві, що щось є (`There is a café around the corner`). Дієслово узгоджується з іменником, що йде після нього: `there is/was` для однини й незлічуваних, `there are/were` для множини. Конструкція працює в будь-якому часі: `there has been`, `there will be`, `there used to be`. Важливо не плутати з it is, яке натомість посилається на щось уже відоме зі контексту (`There is a book on the table` уводить книгу вперше; `It is on the table` вказує, де перебуває вже згадана книга).',
       examples: [
         { target: "There is a new restaurant on Main Street.", uk: 'На Мейн-стріт є новий ресторан (нова інформація, that/it непридатне тут).' },
         { target: "There used to be a cinema here.", uk: 'Тут раніше було кіно (there used to be — минуле, що зникло).' },

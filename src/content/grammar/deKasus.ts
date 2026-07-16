@@ -12,7 +12,7 @@ export const deKasus: GrammarCategory = {
       id: 'nominativ-akkusativ',
       title: 'Nominativ und Akkusativ',
       theory:
-        'Nominativ — відмінок підмета (хто/що виконує дію): der Mann schläft. Akkusativ — відмінок прямого додатка (кого/що бачимо, маємо, купуємо): ich sehe den Mann. Різниця між ними видно лише в чоловічому роді однини: der → den (артикль), ein → einen, mein → meinen. Жіночий, середній рід і множина в Nominativ та Akkusativ виглядають однаково (die Frau = die Frau, das Kind = das Kind). Akkusativ також вживається після певних прийменників (durch, für, gegen, ohne, um) незалежно від руху чи місця.',
+        'Nominativ — відмінок підмета (хто/що виконує дію): `der Mann schläft`. Akkusativ — відмінок прямого додатка (кого/що бачимо, маємо, купуємо): `ich sehe den Mann`. Різниця між ними видно лише в чоловічому роді однини: `der → den` (артикль), `ein → einen`, `mein → meinen`. Жіночий, середній рід і множина в Nominativ та Akkusativ виглядають однаково (die Frau = die Frau, das Kind = das Kind). Akkusativ також вживається після певних прийменників (durch, für, gegen, ohne, um) незалежно від руху чи місця.',
       examples: [
         { target: 'Der Hund läuft schnell.', uk: 'Собака швидко біжить (Nominativ — підмет).' },
         { target: 'Ich sehe den Hund.', uk: 'Я бачу собаку (Akkusativ — прямий додаток, der→den).' },
@@ -63,7 +63,7 @@ export const deKasus: GrammarCategory = {
       id: 'dativ',
       title: 'Dativ',
       theory:
-        'Dativ — відмінок непрямого додатка (кому/чому щось дають, допомагають, дякують): ich gebe dem Mann das Buch. Артиклі в Dativ: der/das → dem, die → der, множина → den + -n на кінці іменника (den Kindern). Деякі дієслова вимагають Dativ для ЄДИНОГО додатка, не Akkusativ — helfen, danken, gefallen, gehören, folgen (ich helfe dir, не *ich helfe dich). Dativ також вживається після прийменників aus, bei, mit, nach, seit, von, zu — завжди, незалежно від контексту.',
+        'Dativ — відмінок непрямого додатка (кому/чому щось дають, допомагають, дякують): `ich gebe dem Mann das Buch`. Артиклі в Dativ: `der/das → dem`, `die → der`, множина → `den + -n` на кінці іменника (den Kindern). Деякі дієслова вимагають Dativ для ЄДИНОГО додатка, не Akkusativ — helfen, danken, gefallen, gehören, folgen (`ich helfe dir`, не `*ich helfe dich`). Dativ також вживається після прийменників aus, bei, mit, nach, seit, von, zu — завжди, незалежно від контексту.',
       examples: [
         { target: 'Ich gebe dem Kind ein Buch.', uk: 'Я даю дитині книгу (Dativ — непрямий додаток).' },
         { target: 'Kannst du mir helfen?', uk: 'Можеш мені допомогти? (helfen вимагає Dativ: mir).' },
@@ -114,7 +114,7 @@ export const deKasus: GrammarCategory = {
       id: 'genitiv',
       title: 'Genitiv',
       theory:
-        'Genitiv виражає приналежність (чий/чиє): das Auto des Mannes (машина чоловіка). Артиклі: der/das → des + іменник отримує закінчення -s/-es (der Mann → des Mannes, das Kind → des Kindes), die → der (без змін іменника). У розмовній німецькій Genitiv дедалі частіше заміняють конструкцією von + Dativ (das Auto von dem Mann / vom Mann) — але в письмовій та формальній мові Genitiv лишається нормою. Деякі прийменники завжди вимагають Genitiv: während (протягом), trotz (незважаючи на), wegen (через/з причини), statt (замість) — хоча в розмовній мові wegen і trotz дедалі частіше вживають з Dativ.',
+        'Genitiv виражає приналежність (чий/чиє): `das Auto des Mannes` (машина чоловіка). Артиклі: `der/das → des` + іменник отримує закінчення -s/-es (`der Mann → des Mannes`, `das Kind → des Kindes`), `die → der` (без змін іменника). У розмовній німецькій Genitiv дедалі частіше заміняють конструкцією `von + Dativ` (`das Auto von dem Mann / vom Mann`) — але в письмовій та формальній мові Genitiv лишається нормою. Деякі прийменники завжди вимагають Genitiv: während (протягом), trotz (незважаючи на), wegen (через/з причини), statt (замість) — хоча в розмовній мові wegen і trotz дедалі частіше вживають з Dativ.',
       examples: [
         { target: 'Das ist das Auto meines Bruders.', uk: 'Це машина мого брата (Genitiv — приналежність).' },
         { target: 'Wegen des schlechten Wetters bleiben wir zu Hause.', uk: 'Через погану погоду ми залишаємось вдома (wegen + Genitiv).' },
@@ -165,7 +165,7 @@ export const deKasus: GrammarCategory = {
       id: 'wechselprapositionen',
       title: 'Wechselpräpositionen (in, an, auf, über, unter, vor, hinter, neben, zwischen)',
       theory:
-        'Дев\'ять прийменників (in, an, auf, über, unter, vor, hinter, neben, zwischen) можуть вимагати або Akkusativ, або Dativ — залежно від значення. Якщо описуємо РУХ У НАПРЯМКУ (питання "куди? — wohin?"), вживаємо Akkusativ: ich gehe in die Schule (я йду В школу). Якщо описуємо МІСЦЕ, СТАТИЧНЕ ПОЛОЖЕННЯ (питання "де? — wo?"), вживаємо Dativ: ich bin in der Schule (я В школі, перебуваю там). Це одне з найскладніших правил для тих, хто вивчає німецьку, бо один і той самий прийменник змінює відмінок залежно від контексту дії.',
+        'Дев\'ять прийменників (in, an, auf, über, unter, vor, hinter, neben, zwischen) можуть вимагати або Akkusativ, або Dativ — залежно від значення. Якщо описуємо РУХ У НАПРЯМКУ (питання "куди? — wohin?"), вживаємо Akkusativ: `wohin? → Akkusativ` (`ich gehe in die Schule` — я йду В школу). Якщо описуємо МІСЦЕ, СТАТИЧНЕ ПОЛОЖЕННЯ (питання "де? — wo?"), вживаємо Dativ: `wo? → Dativ` (`ich bin in der Schule` — я В школі, перебуваю там). Це одне з найскладніших правил для тих, хто вивчає німецьку, бо один і той самий прийменник змінює відмінок залежно від контексту дії.',
       examples: [
         { target: 'Ich lege das Buch auf den Tisch.', uk: 'Я кладу книгу на стіл (рух, wohin? → Akkusativ).' },
         { target: 'Das Buch liegt auf dem Tisch.', uk: 'Книга лежить на столі (місце, wo? → Dativ).' },

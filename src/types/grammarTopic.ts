@@ -50,6 +50,7 @@ export type GrammarExercise = MultipleChoiceExercise | FillBlankExercise
 export interface GrammarTopic {
   id: string
   title: string
+  /** Supports inline `formula` markup: wrap a sentence-structure pattern or quoted special construction in backticks to render it as a highlighted schematic chip instead of plain prose. */
   theory: string
   examples: GrammarExample[]
   exercises: GrammarExercise[]

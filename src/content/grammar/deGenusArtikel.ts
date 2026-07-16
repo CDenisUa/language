@@ -12,7 +12,7 @@ export const deGenusArtikel: GrammarCategory = {
       id: 'der-die-das-gender-rules',
       title: 'Der, die, das — Genusregeln',
       theory:
-        'Граматичний рід німецького іменника здебільшого не піддається логіці й просто запам\'ятовується разом зі словом (краще вчити не Hund, а der Hund). Проте є корисні, хоч і не абсолютні, підказки. За закінченням слова: -ung, -heit, -keit, -schaft, -ion, -tät майже завжди жіночий рід (die Zeitung, die Freiheit, die Nation); -chen, -lein завжди середній рід — це суфікси зменшувальності, і слово з ними зберігає середній рід незалежно від початкового роду (das Mädchen, хоча дівчина — вона). За значенням: дні тижня, місяці, пори року — чоловічий рід (der Montag, der Mai, der Sommer); більшість металів і хімічних елементів — середній рід (das Gold, das Eisen); іменники на -er, що позначають діяча-чоловіка — чоловічий рід (der Lehrer).',
+        'Граматичний рід німецького іменника здебільшого не піддається логіці й просто запам\'ятовується разом зі словом (краще вчити не Hund, а `der Hund`). Проте є корисні, хоч і не абсолютні, підказки. За закінченням слова: `-ung, -heit, -keit, -schaft, -ion, -tät → жіночий рід` (die Zeitung, die Freiheit, die Nation); `-chen, -lein → середній рід` — це суфікси зменшувальності, і слово з ними зберігає середній рід незалежно від початкового роду (das Mädchen, хоча дівчина — вона). За значенням: дні тижня, місяці, пори року — чоловічий рід (der Montag, der Mai, der Sommer); більшість металів і хімічних елементів — середній рід (das Gold, das Eisen); іменники на -er, що позначають діяча-чоловіка — чоловічий рід (der Lehrer).',
       examples: [
         { target: 'Die Freundschaft zwischen ihnen ist stark.', uk: 'Дружба між ними міцна (-schaft → жіночий рід).' },
         { target: 'Das Mädchen spielt im Garten.', uk: 'Дівчинка грає в саду (-chen → завжди середній рід, попри значення).' },
@@ -63,7 +63,7 @@ export const deGenusArtikel: GrammarCategory = {
       id: 'bestimmter-unbestimmter-artikel',
       title: 'Bestimmter und unbestimmter Artikel',
       theory:
-        'Означений артикль (der/die/das — "той/та/те", тобто "the") вживається для чогось конкретного чи вже відомого зі контексту. Неозначений артикль (ein/eine/ein — "якийсь", тобто "a/an") вживається для чогось неконкретного чи вперше згаданого. Обидва відмінюються за відмінками: означений — der/die/das (Nom.) → den/die/das (Akk.) → dem/der/dem (Dat.) → des/der/des (Gen.); неозначений — ein/eine/ein (Nom.) → einen/eine/ein (Akk.) → einem/einer/einem (Dat.) → eines/einer/eines (Gen.). У множині означений артикль завжди die (Nom./Akk.), den (Dat.), der (Gen.), а неозначений артикль у множині взагалі відсутній (просто Hunde, без артикля).',
+        'Означений артикль (der/die/das — "той/та/те", тобто "the") вживається для чогось конкретного чи вже відомого зі контексту. Неозначений артикль (ein/eine/ein — "якийсь", тобто "a/an") вживається для чогось неконкретного чи вперше згаданого. Обидва відмінюються за відмінками: означений — `der/die/das (Nom.) → den/die/das (Akk.) → dem/der/dem (Dat.) → des/der/des (Gen.)`; неозначений — `ein/eine/ein (Nom.) → einen/eine/ein (Akk.) → einem/einer/einem (Dat.) → eines/einer/eines (Gen.)`. У множині означений артикль завжди `die (Nom./Akk.), den (Dat.), der (Gen.)`, а неозначений артикль у множині взагалі відсутній (просто Hunde, без артикля).',
       examples: [
         { target: 'Ich sehe einen Hund. Der Hund bellt laut.', uk: 'Я бачу собаку (невідомий). Собака (вже відомий) голосно гавкає.' },
         { target: 'Ich gebe einem Kind ein Eis.', uk: 'Я даю дитині морозиво (ein у Dativ: einem, після дієслова geben).' },
@@ -114,7 +114,7 @@ export const deGenusArtikel: GrammarCategory = {
       id: 'plural-forms',
       title: 'Pluralbildung',
       theory:
-        'На відміну від англійської, де майже завжди достатньо додати -s, німецька множина не має єдиного правила — кожен іменник потрібно вчити разом з його формою множини. Найпоширеніші типи: -e (der Hund → die Hunde), -er з умлаутом, де можливо (das Kind → die Kinder, без умлаута; das Buch → die Bücher, з умлаутом), -(e)n (die Frau → die Frauen, die Blume → die Blumen), -s переважно для запозичених слів (das Auto → die Autos, das Hotel → die Hotels), і взагалі без змін для деяких чоловічих/середніх іменників на -er/-el/-en (der Lehrer → die Lehrer, das Fenster → die Fenster). Незалежно від роду в однині, artikль множини завжди die.',
+        'На відміну від англійської, де майже завжди достатньо додати -s, німецька множина не має єдиного правила — кожен іменник потрібно вчити разом з його формою множини. Найпоширеніші типи: -e (`Hund → Hunde`), -er з умлаутом, де можливо (`Kind → Kinder`, без умлаута; `Buch → Bücher`, з умлаутом), -(e)n (`Frau → Frauen`, `Blume → Blumen`), -s переважно для запозичених слів (`Auto → Autos`, `Hotel → Hotels`), і взагалі без змін для деяких чоловічих/середніх іменників на -er/-el/-en (`Lehrer → Lehrer`, `Fenster → Fenster`). Незалежно від роду в однині, artikль множини завжди die.',
       examples: [
         { target: 'Ich habe zwei Hunde und drei Katzen.', uk: 'У мене дві собаки і три кішки (der Hund → die Hunde, -e).' },
         { target: 'Die Bücher liegen auf dem Tisch.', uk: 'Книги лежать на столі (das Buch → die Bücher, -er з умлаутом).' },
@@ -165,7 +165,7 @@ export const deGenusArtikel: GrammarCategory = {
       id: 'null-artikel',
       title: 'Nullartikel',
       theory:
-        'У кількох випадках німецька взагалі не вживає артикль. Більшість власних назв (імена людей, більшість країн): Deutschland ist groß, не *das Deutschland. Незлічувані/абстрактні іменники в загальному значенні: Ich trinke Wasser, Ich habe Hunger — без артикля. Множинні іменники в неконкретному, загальному значенні: Ich mag Hunde (собаки загалом, не конкретні). Професії та національності після дієслів sein/werden: Er ist Lehrer (не *ein Lehrer) — це протилежність типовій помилці, коли той, хто вивчає англійську, забуває артикль у "He is a teacher"; тут навпаки, той, хто вивчає німецьку, часто помилково вставляє ein там, де воно не потрібне.',
+        'У кількох випадках німецька взагалі не вживає артикль. Більшість власних назв (імена людей, більшість країн): `Deutschland ist groß`, не `*das Deutschland`. Незлічувані/абстрактні іменники в загальному значенні: `Ich trinke Wasser`, `Ich habe Hunger` — без артикля. Множинні іменники в неконкретному, загальному значенні: `Ich mag Hunde` (собаки загалом, не конкретні). Професії та національності після дієслів sein/werden: `Er ist Lehrer` (не `*ein Lehrer`) — це протилежність типовій помилці, коли той, хто вивчає англійську, забуває артикль у "He is a teacher"; тут навпаки, той, хто вивчає німецьку, часто помилково вставляє ein там, де воно не потрібне.',
       examples: [
         { target: 'Deutschland liegt in Europa.', uk: 'Німеччина розташована в Європі (власна назва країни — без артикля).' },
         { target: 'Ich trinke gern Kaffee.', uk: 'Я люблю пити каву (незлічуваний іменник у загальному значенні — без артикля).' },
