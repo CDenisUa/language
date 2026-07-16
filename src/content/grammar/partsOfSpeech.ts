@@ -11,6 +11,7 @@ export const partsOfSpeech: GrammarCategory = {
     {
       id: 'articles',
       title: 'Articles (a/an, the, and the Zero Article)',
+      engVidUrl: 'https://www.engvid.com/a-an-the-articles-in-english/',
       theory:
         'A/an вживається при першій згадці предмета чи коли він один із багатьох ("I saw a dog"). The вживається, коли річ уже відома зі контексту, згадувалась раніше, або є єдиною у своєму роді ("the sun", "the dog I mentioned"). Нульовий артикль вживається з незлічуваними/множинними іменниками в загальному значенні ("I like music", "Dogs are loyal") та з більшістю власних назв (imена людей, більшість країн, вулиць), а також у стійких виразах на кшталт "go to school/work/bed" (у їхньому типовому, функціональному значенні, без the). Географічні назви мають свої правила: гори/континенти/озера/більшість країн — без the (Mount Everest, Lake Baikal), але океани, річки, групи островів, гірські пасма й країни з "of"/множинною формою в назві — з the (the Pacific, the Alps, the United States).',
       examples: [
@@ -174,6 +175,7 @@ export const partsOfSpeech: GrammarCategory = {
     {
       id: 'nouns-countable-uncountable',
       title: 'Countable and Uncountable Nouns',
+      engVidUrl: 'https://www.engvid.com/countable-uncountable-nouns-english-grammar/',
       theory:
         'Злічувані іменники мають форму однини й множини (a book/books) і можуть вживатись з числівниками та a/an. Незлічувані іменники (advice, information, furniture, news, luggage, homework) сприймаються як єдина маса й НЕ мають множини — типова помилка українських мовців: "*informations", "*advices", "*furnitures". Множина деяких іменників утворюється нестандартно: child→children, mouse→mice, man→men, foot→feet, person→people, а деякі іменники (sheep, fish, series) мають однакову форму в однині й множині. Складні іменники (compound nouns) зазвичай додають -s лише до останнього слова (bookshops, websites), хоча є винятки (mothers-in-law, де -s додається до головного слова).',
       examples: [

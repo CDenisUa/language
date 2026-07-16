@@ -11,6 +11,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'zero-first-conditional',
       title: 'Zero and First Conditional',
+      engVidUrl: 'https://www.engvid.com/zero-and-first-conditionals/',
       theory:
         'Zero Conditional (if + Present Simple, Present Simple) описує загальні істини та закономірності, що завжди правдиві — науковий факт чи логічний наслідок, де if можна замінити на when без зміни змісту. First Conditional (if + Present Simple, will + інфінітив) описує реальну, цілком імовірну ситуацію в майбутньому та її наслідок. У обох типах after if вживається Present Simple, а не will, навіть коли йдеться про майбутнє — це типова помилка українських мовців, що калькують "якщо буде".',
       examples: [
@@ -67,6 +68,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'second-conditional',
       title: 'Second Conditional',
+      engVidUrl: 'https://www.engvid.com/the-2nd-conditional-would-could/',
       theory:
         'Second Conditional (if + Past Simple, would + інфінітив) описує гіпотетичну, нереальну або малоймовірну ситуацію в теперішньому чи майбутньому — те, чого немає зараз, або те, що малоймовірне. Минулий час тут не означає минулий момент, а лише сигналізує нереальність. У формальному стилі для всіх осіб (включно з I/he/she) прийнято вживати were замість was: "If I were you, I would apologise."',
       examples: [
@@ -123,6 +125,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'third-conditional',
       title: 'Third Conditional',
+      engVidUrl: 'https://www.engvid.com/learn-english-grammar-how-to-use-the-3rd-conditional/',
       theory:
         'Third Conditional (if + Past Perfect, would have + V3) описує нереальну ситуацію в минулому та її нереальний наслідок — те, чого насправді не сталося. Використовується для жалю чи розмірковувань "а що якби": подія в if-частині вже відбулася (чи не відбулася) остаточно, і змінити це неможливо.',
       examples: [
@@ -179,6 +182,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'mixed-conditionals',
       title: 'Mixed Conditionals',
+      engVidUrl: 'https://www.engvid.com/mixed-verb-tenses-in-english-conditionals-and-if-clauses/',
       theory:
         'Змішані умовні речення поєднують часові плани, коли причина й наслідок стосуються різних періодів. Найпоширеніший тип: минула нереальна причина → теперішній нереальний результат (if + Past Perfect, would + інфінітив): "If I had studied medicine, I would be a doctor now" — рішення в минулому досі впливає на теперішнє. Рідше трапляється й зворотний варіант: загальна/теперішня нереальна риса → минулий нереальний результат (if + Past Simple, would have + V3): "If she weren\'t so shy, she would have spoken up yesterday" — її характер (постійна риса) вплинув на конкретну минулу подію.',
       examples: [
@@ -235,6 +239,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'alternatives-to-if',
       title: 'Alternatives to "if" (as long as, provided/providing, unless, in case, but for, supposing)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-negative-conditional/',
       theory:
         'Кілька виразів заміняють if, додаючи нюанс. As long as / provided (that) / providing (that) означають "за умови, що" й підкреслюють обов\'язкову умову, часто у формальному стилі. Unless означає "якщо не" (= if...not), але не завжди взаємозамінне з усіма запереченнями: unless вживають для єдиної винятковiї умови, а не для гіпотетичного заперечення (порівняйте: "I\'ll come unless it rains" природно, але "*I would help unless you asked" звучить дивно — тут потрібне if...didn\'t). In case вводить запобіжний захід ("про всяк випадок"), а не умову: "Take an umbrella in case it rains" означає взяти парасольку заздалегідь, незалежно від того, піде дощ чи ні — це не те саме, що "if it rains". But for + іменник означає "якби не" і вказує на єдину причину, що змінила б результат.',
       examples: [
@@ -291,6 +296,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'inversion-in-conditionals',
       title: 'Inversion in Conditionals (Had I known..., Were I you..., Should you need...)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-inversion/',
       theory:
         'У формальному чи літературному стилі if можна опустити, переставивши допоміжне дієслово на початок речення (інверсія). Had + підмет + V3 замінює third conditional if-частину: "Had I known, I would have called." Were + підмет замінює second conditional з were: "Were I you, I would apologise." Should + підмет + інфінітив замінює first conditional для малоймовірної, гіпотетичної умови: "Should you need anything, let me know." Ця конструкція типова для офіційних листів, договорів і літературного стилю.',
       examples: [
@@ -352,6 +358,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'wishes-and-regrets',
       title: 'Wishes and Regrets (I wish / If only)',
+      engVidUrl: 'https://www.engvid.com/wish-subjunctive/',
       theory:
         'Wish/if only + Past Simple виражає бажання змінити теперішню ситуацію (нереальний теперішній стан): "I wish I spoke French" (я не розмовляю французькою зараз). Wish/if only + Past Perfect виражає жаль за минулим: "I wish I had studied harder" (я не вчився старанно тоді). Wish + would + інфінітив висловлює роздратування чужою поведінкою чи бажання, щоб ситуація змінилась (не про самого мовця): "I wish you would stop smoking." If only звучить емоційнішим і сильнішим за wish, часто зі знаком оклику.',
       examples: [
@@ -464,6 +471,7 @@ export const conditionals: GrammarCategory = {
     {
       id: 'subjunctive',
       title: 'The Subjunctive (suggest that he be, it\'s essential that she attend)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-subjunctive/',
       theory:
         'Сослагательний спосіб (mandative subjunctive) вживається після дієслів-наказів/пропозицій (suggest, recommend, insist, demand, propose) і прикметників необхідності (essential, vital, important, necessary) у конструкції that + підмет + базова форма дієслова, незалежно від особи чи часу: "I suggest that he be more careful" (не "is"), "It is essential that she attend the meeting" (не "attends"). Це особливо поширено в американській та формальній англійській; у британській розмовній мові частіше вживають альтернативу з should: "I suggest that he should be more careful."',
       examples: [

@@ -125,14 +125,28 @@ describe('Grammar', () => {
     expect(within(topicListItem).getByText('1/5')).toBeInTheDocument()
   })
 
-  it('shows an engVid search link for the current topic', async () => {
+  it('shows the curated engVid video link for a topic that has one', async () => {
     const user = userEvent.setup()
     render(<Grammar />)
     await openTopic(user)
 
     const link = screen.getByRole('link', { name: /engVid/ })
-    expect(link).toHaveAttribute('href', 'https://www.engvid.com/?s=Present%20Simple')
+    expect(link).toHaveAttribute('href', 'https://www.engvid.com/present-simple-tense/')
     expect(link).toHaveAttribute('target', '_blank')
+  })
+
+  it('falls back to a generic engVid search link for a topic without a curated video', async () => {
+    const user = userEvent.setup()
+    useLanguageStore.setState({ activeLanguage: 'de' })
+    render(<Grammar />)
+
+    const categoryHeading = screen.getByRole('heading', { name: 'Відмінки (Kasus)', level: 2 })
+    await user.click(categoryHeading.closest('button')!)
+    const topicButton = screen.getAllByRole('button').find((button) => button.textContent?.includes('Nominativ'))!
+    await user.click(topicButton)
+
+    const link = screen.getByRole('link', { name: /engVid/ })
+    expect(link.getAttribute('href')).toMatch(/^https:\/\/www\.engvid\.com\/\?s=/)
   })
 
   it('schedules a topic review once all of its exercises have been answered', async () => {

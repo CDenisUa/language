@@ -50,4 +50,14 @@ describe('GRAMMAR_CATEGORIES', () => {
     const languages = new Set(GRAMMAR_CATEGORIES.map((category) => category.language))
     expect(languages).toEqual(new Set(['en', 'de']))
   })
+
+  it('only sets engVidUrl on real engvid.com lesson pages, and never on German topics', () => {
+    for (const category of GRAMMAR_CATEGORIES) {
+      for (const topic of category.topics) {
+        if (topic.engVidUrl === undefined) continue
+        expect(category.language).toBe('en')
+        expect(topic.engVidUrl).toMatch(/^https:\/\/www\.engvid\.com\/.+\/$/)
+      }
+    }
+  })
 })
