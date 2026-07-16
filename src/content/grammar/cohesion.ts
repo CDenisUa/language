@@ -11,6 +11,7 @@ export const cohesion: GrammarCategory = {
     {
       id: 'reported-speech',
       title: 'Reported Speech',
+      engVidUrl: 'https://www.engvid.com/english-grammar-reported-speech/',
       theory:
         'У непрямій мові часи зазвичай зсуваються на один крок у минуле (backshift): Present Simple → Past Simple, Present Perfect → Past Perfect, will → would ("I am tired" → "She said she was tired"). Займенники й вказівники часу/місця також змінюються відповідно до нової точки зору: today → that day, tomorrow → the next day, here → there, this → that. Непрямі питання зберігають порядок слів стверджувального речення (без інверсії) і додають if/whether для питань без питального слова: "Are you coming?" → "He asked if I was coming." Непрямі накази передаються через to-infinitive: "Close the door!" → "She told him to close the door."',
       examples: [
@@ -67,6 +68,7 @@ export const cohesion: GrammarCategory = {
     {
       id: 'discourse-markers',
       title: 'Discourse Markers (however, despite, although, because)',
+      engVidUrl: 'https://www.engvid.com/how-to-express-opposing-ideas-in-english/',
       theory:
         'Для контрасту: however вводить нове речення (часто після крапки чи з комою) — "The plan was risky. However, it worked." Although/though вводять повне підрядне речення з підметом і дієсловом ("Although it was raining, we went out"), тоді як despite/in spite of вимагають іменника чи -ing форми, а не повного речення ("Despite the rain, we went out" / "Despite raining"). Для причини: because вводить повне речення ("because it was raining"), тоді as/since — теж повне речення, але звучать формальніше й ставлять причину на перший план, а because of/due to вимагають іменника, як despite. Для наслідку: therefore, as a result, consequently вводять новий результат, типово у формальному письмовому стилі.',
       examples: [
@@ -179,6 +181,7 @@ export const cohesion: GrammarCategory = {
     {
       id: 'there-is-there-are',
       title: 'There is / There are',
+      engVidUrl: 'https://www.engvid.com/confusing-english-grammar-there-is-or-there-are/',
       theory:
         'Конструкція there is/are вводить нову інформацію про існування чогось — уперше повідомляє слухачеві, що щось є ("There is a café around the corner"). Дієслово узгоджується з іменником, що йде після нього: there is/was для однини й незлічуваних, there are/were для множини. Конструкція працює в будь-якому часі: there has been, there will be, there used to be. Важливо не плутати з it is, яке натомість посилається на щось уже відоме зі контексту ("There is a book on the table" уводить книгу вперше; "It is on the table" вказує, де перебуває вже згадана книга).',
       examples: [

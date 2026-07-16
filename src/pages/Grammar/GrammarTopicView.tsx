@@ -35,7 +35,7 @@ function GrammarTopicView({ topic, progress, onAnswered }: GrammarTopicViewProps
 
       <a
         className="grammar-topic-view__engvid-link"
-        href={getEngVidSearchUrl(topic.title)}
+        href={topic.engVidUrl ?? getEngVidSearchUrl(topic.title)}
         target="_blank"
         rel="noopener noreferrer"
       >

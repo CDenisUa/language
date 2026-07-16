@@ -565,6 +565,24 @@ While merging the German content, a new `src/content/grammar/index.test.ts` was 
 
 ---
 
+### 2026-07-16 — Curated per-topic engVid videos for 39 of 50 English topics — supersedes the "generic search link only" part of the earlier engVid decision
+
+**Status:** accepted
+
+The user asked directly for real per-topic engVid videos, not just the generic search link. `GrammarTopic` (`src/types/grammarTopic.ts`) gained an optional `engVidUrl` field; `GrammarTopicView` now renders `topic.engVidUrl ?? getEngVidSearchUrl(topic.title)` — the generic search link becomes a fallback, not a replacement, exactly as the earlier decision's "How to apply" note anticipated.
+
+Finding real URLs was delegated to 4 parallel research agents (one per group of English categories, ~10-14 topics each), each required to verify every candidate URL via a live `WebFetch` (confirming the page is a real engVid lesson and its content genuinely matches the topic) before reporting it, and explicitly instructed to report "NO MATCH FOUND" rather than force a loose or fabricated fit — the same integrity bar the original engVid decision set. Every returned URL was then re-verified independently with a direct `curl` HTTP-status check (all 39 returned `200`) before being written into the content files, and `index.test.ts` gained a regression test asserting every `engVidUrl` matches `https://www.engvid.com/.../ ` and that no German-category topic ever has one (see below).
+
+Result: **39 of 50** English topics got a real, verified, specific video (e.g. `present-simple` → `https://www.engvid.com/present-simple-tense/`, "Learn English Tenses: PRESENT SIMPLE" by Rebecca). **11 topics genuinely have no dedicated engVid lesson** and keep the generic search-link fallback: `complex-object`, `infinitive-with-without-to`, `cleft-sentences`, `fronting`, `questions-general-special-subject` (verified against a close-looking "9 Types of Questions" video that turned out not to teach the general/special/subject framework), `determiners-quantifiers`, `pronouns`, `adjectives-adverbs-comparison`, `prepositions`, `ellipsis-and-substitution`, and `unreal-time`. A few matches are intentionally partial-coverage rather than exhaustive (e.g. `semi-modals` links to a video covering only "have to / have got to" of the six listed semi-modals; `alternatives-to-if` covers only "unless / if not" of six alternatives) — kept because a real, on-topic, verified video covering *some* of the topic is still strictly better for the user than no video, and the topic's own theory/exercises already cover the rest in text.
+
+**Why German topics have no curated links:** engVid teaches English grammar exclusively — there is no engVid video about German Kasus, Konjunktiv, etc. Curating "closest English-language video" matches for German grammar points was rejected as misleading (a German learner clicking through to an English-tense video from a German case-system topic isn't a real match, it's noise). German topics keep the pre-existing generic engVid search-link fallback unchanged.
+
+**Why:** This is a direct extension of the 2026-07-15 "generic per-topic search link, not curated" decision's own stated escape hatch — it was written specifically to anticipate this ask ("if a specific, verified video is later wanted... that's an additive, per-topic override... not a replacement of the general mechanism"). The verification bar (live fetch + independent HTTP re-check, explicit NO MATCH reporting) is unchanged from the fabrication-risk concern that motivated the original decision to not guess URLs.
+
+**How to apply:** If a topic that currently has no `engVidUrl` gets a real matching engVid lesson published later, adding it is a one-line content-file edit, not a new decision. Don't add an `engVidUrl` to any topic without actually verifying the URL loads and is genuinely on-topic first — `index.test.ts`'s format check catches malformed URLs but can't catch a wrong-but-well-formed one.
+
+---
+
 ### 2026-07-15 — Word Levels: self-assessment ("Знаю"/"Не знаю"), not an auto-graded quiz — frequency rank as the CEFR proxy for both languages
 
 **Status:** accepted

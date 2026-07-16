@@ -11,6 +11,7 @@ export const syntaxEmphasis: GrammarCategory = {
     {
       id: 'inversion',
       title: 'Inversion for Emphasis (Never have I..., Here comes...)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-inversion/',
       theory:
         'Коли речення починається з негативного чи обмежувального прислівника (Never, Rarely, Seldom, Not only, No sooner, Under no circumstances, Little), порядок слів у головній частині інвертується, як у питанні: допоміжне дієслово виходить перед підметом — "Never have I seen such chaos" (замість "I have never seen"). Це створює формальний, драматичний або літературний ефект і типове для писемного стилю чи ораторської мови. Простіша інверсія трапляється й після прислівників місця чи напрямку (Here, There) з непідметовими займенниками: "Here comes the bus", "There goes our last chance" — тут інверсія лише зі звичайним іменником-підметом, а не з займенником (порівняйте: "Here it comes", без інверсії).',
       examples: [
@@ -245,6 +246,7 @@ export const syntaxEmphasis: GrammarCategory = {
     {
       id: 'question-tags',
       title: 'Question Tags',
+      engVidUrl: 'https://www.engvid.com/english-grammar-tag-questions/',
       theory:
         'Розділові питання (tags) додаються в кінці речення, щоб підтвердити інформацію чи запросити згоду. Головне правило — протилежна полярність: стверджувальне речення отримує заперечний tag, а заперечне — стверджувальний ("She is nice, isn\'t she?" / "You don\'t smoke, do you?"). Tag використовує те саме допоміжне дієслово, що й головне речення (or does/do/did, якщо в реченні немає допоміжного). Є кілька особливих випадків: "I am" → "aren\'t I?" (не "amn\'t I"), наказовий спосіб → "will you?" ("Close the door, will you?"), пропозиція з Let\'s → "shall we?".',
       examples: [

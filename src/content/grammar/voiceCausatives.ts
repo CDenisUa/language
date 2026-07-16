@@ -11,6 +11,7 @@ export const voiceCausatives: GrammarCategory = {
     {
       id: 'passive-voice',
       title: 'Passive Voice',
+      engVidUrl: 'https://www.engvid.com/easy-introduction-to-passive/',
       theory:
         'Пасивний стан (be + V3) переносить увагу з виконавця дії на об\'єкт або результат: "Someone stole my bike" → "My bike was stolen" — виконавець (someone) уже не важливий. Форма be змінюється за часом (is/was/has been/will be), а V3 лишається незмінним: Present Simple — is/are done, Past Simple — was/were done, Present Perfect — has/have been done, Future — will be done, модальне дієслово + пасив — must/can/should be done. Пасив обирають, коли діяч невідомий, неважливий, очевидний з контексту, або коли треба підкреслити сам об\'єкт чи результат дії, а не того, хто її виконав.',
       examples: [
@@ -72,6 +73,7 @@ export const voiceCausatives: GrammarCategory = {
     {
       id: 'impersonal-passive',
       title: 'Impersonal Passive (It is said/thought/believed that...)',
+      engVidUrl: 'https://www.engvid.com/writing-passive-verbs-that-clauses/',
       theory:
         'Безособовий пасив дозволяє передати чутки, припущення чи неперевірені твердження, не називаючи джерело. Є дві типові моделі: "It is + V3 (said/thought/believed/reported) + that-clause" ("It is thought that he left the country") і "Subject + is + V3 + to-infinitive (або to have + V3 для минулого)" ("He is thought to have left the country"). Обидві конструкції типові для новинного, наукового чи офіційного стилю, коли автор навмисно дистанціюється від відповідальності за правдивість інформації.',
       examples: [
@@ -128,6 +130,7 @@ export const voiceCausatives: GrammarCategory = {
     {
       id: 'causative',
       title: 'Causative (have/get something done)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-passive-causative/',
       theory:
         'Каузативна конструкція have/get + object + V3 (past participle) описує дію, яку для вас виконує хтось інший — ви лише організовуєте чи замовляєте її: "I had my hair cut" (мене підстригли, не я сама), "I\'m getting the car repaired" (машину ремонтує майстер). Це принципово відрізняється від простої активної форми "I cut my hair" чи "I repaired the car", де підмет сам фізично виконує дію. Get + object + V3 звучить трохи розмовніше за have + object + V3, а обидва можуть вживатися в будь-якому часі.',
       examples: [

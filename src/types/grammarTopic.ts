@@ -53,6 +53,8 @@ export interface GrammarTopic {
   theory: string
   examples: GrammarExample[]
   exercises: GrammarExercise[]
+  /** A specific, verified engVid lesson URL for this topic. Falls back to a generic engVid search link when absent (e.g. German topics, which engVid doesn't cover). */
+  engVidUrl?: string
 }
 
 export interface GrammarCategory {

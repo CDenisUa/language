@@ -11,6 +11,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'present-simple',
       title: 'Present Simple',
+      engVidUrl: 'https://www.engvid.com/present-simple-tense/',
       theory:
         'Present Simple описує звички, факти, що завжди правдиві, розклади (потяги, кіно) і думки/почуття. Формула: I/you/we/they + V; he/she/it + V-s. Питання та заперечення — через do/does. Емфатичне do (I DO like it) підкреслює твердження, часто спростовуючи протилежне.',
       examples: [
@@ -62,6 +63,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'present-continuous',
       title: 'Present Continuous',
+      engVidUrl: 'https://www.engvid.com/present-continuous-progressive-tense/',
       theory:
         'Present Continuous (am/is/are + V-ing) описує дію, що відбувається прямо зараз, тимчасовий процес навколо теперішнього моменту (не обов\'язково цієї секунди) або заплановану домовленість на найближче майбутнє. Не використовується зі статичними дієсловами (know, love, believe) — див. State Verbs.',
       examples: [
@@ -113,6 +115,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'present-perfect',
       title: 'Present Perfect',
+      engVidUrl: 'https://www.engvid.com/present-perfect-tense/',
       theory:
         'Present Perfect (have/has + V3) з\'єднує минуле з теперішнім: результат зараз важливіший за час дії. Використовується для досвіду (ever/never), нещодавніх подій (just), незавершеного періоду (this week, so far) та дій, що почались у минулому й тривають (already/yet). На відміну від Past Simple, тут не називають конкретний момент у минулому.',
       examples: [
@@ -164,6 +167,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'present-perfect-continuous',
       title: 'Present Perfect Continuous',
+      engVidUrl: 'https://www.engvid.com/present-perfect-continuous/',
       theory:
         'Present Perfect Continuous (have/has been + V-ing) підкреслює тривалість дії, що почалась у минулому й або триває досі, або щойно закінчилась, залишивши видимий результат/наслідок. Часто з for/since/how long, на відміну від Present Perfect Simple, де важливий факт/результат, а не сам процес тривання.',
       examples: [
@@ -220,6 +224,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'past-simple',
       title: 'Past Simple',
+      engVidUrl: 'https://www.engvid.com/past-simple-tense/',
       theory:
         'Past Simple описує завершені дії в конкретний момент/період у минулому (yesterday, in 2020, last week). Правильні дієслова + -ed, неправильні — за списком форм. Питання/заперечення — через did/didn\'t + інфінітив без to.',
       examples: [
@@ -271,6 +276,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'past-continuous',
       title: 'Past Continuous',
+      engVidUrl: 'https://www.engvid.com/past-continuous/',
       theory:
         'Past Continuous (was/were + V-ing) описує процес, що тривав у певний момент минулого, або дві паралельні дії. Класична пара: довша дія в Past Continuous переривається коротшою дією в Past Simple (I was cooking when the phone rang).',
       examples: [
@@ -322,6 +328,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'past-perfect',
       title: 'Past Perfect',
+      engVidUrl: 'https://www.engvid.com/past-perfect/',
       theory:
         'Past Perfect (had + V3) — "доминуле": дія, що відбулась раніше за іншу вказану дію в минулому. Показує чітку послідовність двох подій у минулому: спочатку had + V3, потім Past Simple.',
       examples: [
@@ -378,6 +385,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'past-perfect-continuous',
       title: 'Past Perfect Continuous',
+      engVidUrl: 'https://www.engvid.com/past-perfect-continuous/',
       theory:
         'Past Perfect Continuous (had been + V-ing) підкреслює тривалість дії, що йшла аж до певної точки в минулому (або до неї впритул), часто пояснюючи причину чогось, що сталося потім. Аналог Present Perfect Continuous, але зсунутий у минуле.',
       examples: [
@@ -434,6 +442,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'future-simple',
       title: 'Future Simple (will)',
+      engVidUrl: 'https://www.engvid.com/future-simple/',
       theory:
         'Will + інфінітив вживається для спонтанних рішень у момент мовлення, обіцянок, передбачень без конкретних доказів та пропозицій допомоги. Відрізняється від going to, яке базується на вже наявному намірі чи видимих доказах.',
       examples: [
@@ -485,6 +494,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'future-continuous',
       title: 'Future Continuous',
+      engVidUrl: 'https://www.engvid.com/future-continuous/',
       theory:
         'Future Continuous (will be + V-ing) описує процес, що триватиме в певний момент майбутнього, або дію, що відбудеться за звичайним планом/розкладом (без відтінку рішення чи наміру — просто констатація факту).',
       examples: [
@@ -546,6 +556,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'future-perfect-continuous',
       title: 'Future Perfect / Future Perfect Continuous',
+      engVidUrl: 'https://www.engvid.com/future-perfect-continuous/',
       theory:
         'Future Perfect (will have + V3) показує, що дія завершиться до певного моменту в майбутньому (by next year). Future Perfect Continuous (will have been + V-ing) додає акцент на тривалість цієї дії до того моменту (for five years by then).',
       examples: [
@@ -602,6 +613,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'future-in-the-past',
       title: 'Future in the Past',
+      engVidUrl: 'https://www.engvid.com/english-grammar-the-future-in-the-past/',
       theory:
         'Коли ми говоримо про майбутнє з точки зору минулого (наприклад, у непрямій мові чи розповіді), will замінюється на would, а be going to — на was/were going to. Це "майбутнє, яким воно бачилось тоді".',
       examples: [
@@ -658,6 +670,7 @@ export const tensesAspects: GrammarCategory = {
     {
       id: 'state-verbs',
       title: 'Статичні дієслова (State Verbs)',
+      engVidUrl: 'https://www.engvid.com/english-resource/stative-verbs-in-english/',
       theory:
         'Дієслова стану (know, believe, love, hate, own, understand, seem, need, want) описують почуття, думки, володіння чи сприйняття, а не дію — тому вони зазвичай не вживаються в Continuous-формах. Деякі дієслова мають два значення: динамічне (можна в Continuous) і статичне (тільки Simple) — наприклад think (think that = вважати, статичне; be thinking = обдумувати, динамічне) чи have (have a car = володіти, статичне; be having lunch = їсти, динамічне).',
       examples: [

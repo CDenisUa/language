@@ -11,6 +11,7 @@ export const modals: GrammarCategory = {
     {
       id: 'core-modals',
       title: 'Core Modal Verbs (can, could, may, might, must, shall, should, will, would)',
+      engVidUrl: 'https://www.engvid.com/modals-3-easy-rules/',
       theory:
         'Модальні дієслова (can, could, may, might, must, shall, should, will, would) виражають не саму дію, а ставлення мовця до неї: можливість чи здатність (can/could), дозвіл (may/could), пораду (should), обов\'язок чи необхідність (must), припущення/здогад (must/might/could) або ступінь ввічливості у проханні/пропозиції (could/would/shall). Після модального дієслова завжди йде інфінітив без to (he can go, не he can to go), форма не змінюється за особами (he can, а не he cans), а заперечення й питання утворюються без допоміжного do. Той самий модальний вербіум часто має кілька значень залежно від контексту — must може означати і обов\'язок (You must wear a seatbelt), і впевнений здогад (She must be tired).',
       examples: [
@@ -62,6 +63,7 @@ export const modals: GrammarCategory = {
     {
       id: 'semi-modals',
       title: 'Semi-Modals (have to, have got to, ought to, had better, need to, dare)',
+      engVidUrl: 'https://www.engvid.com/must-have-to-have-got-to-necessity/',
       theory:
         'Have to й must обидва передають обов\'язок, але мають різне джерело: must — це обов\'язок, який мовець накладає сам на себе або вважає особисто важливим (внутрішній), тоді як have to описує правило чи вимогу, що йде ззовні — від закону, начальника, обставин (зовнішній обов\'язок). Have got to — розмовний варіант have to, типовий для британської англійської. Had better + інфінітив без to дає негайну пораду з прихованою погрозою наслідків, якщо їй не піти (You\'d better hurry, or...), і звучить різкіше за should. Need to — нейтральний, менш категоричний спосіб висловити необхідність, а заперечення don\'t need to означає, що дія не є обов\'язковою (на відміну від mustn\'t, яке забороняє).',
       examples: [
@@ -113,6 +115,7 @@ export const modals: GrammarCategory = {
     {
       id: 'past-modals-deduction',
       title: 'Past Modals of Deduction (must have, can\'t have, might have)',
+      engVidUrl: 'https://www.engvid.com/english-grammar-modal-verbs-of-certainty/',
       theory:
         'Щоб висловити здогад про минуле, до модального дієслова додають have + V3. Must have + V3 — впевнений позитивний висновок на основі доказів (щось точно сталося). Can\'t have + V3 — впевнений негативний висновок: мовець переконаний, що це неможливо. Might have / could have / may have + V3 — менш категоричне припущення, коли є лише часткова ймовірність, а не впевненість. Ці конструкції не пов\'язані з дозволом чи здатністю в минулому — тут модальне дієслово повністю переключається на функцію здогаду.',
       examples: [
@@ -169,6 +172,7 @@ export const modals: GrammarCategory = {
     {
       id: 'past-modals-regret',
       title: 'Past Modals of Regret and Criticism (should have, could have, needn\'t have)',
+      engVidUrl: 'https://www.engvid.com/could-would-should-modals/',
       theory:
         'Should have + V3 виражає жаль за власну помилку в минулому (щось варто було зробити, але цього не сталося) або критику чужих дій (людина мала вчинити інакше). Could have + V3 вказує на можливість чи здатність, яку мовець мав у минулому, але не скористався нею, — часто з відтінком жалю за втраченою нагодою. Needn\'t have + V3 описує дію, яка була фактично виконана, хоча в ній не було потреби (на відміну від didn\'t need to, яке лише констатує відсутність необхідності, не уточнюючи, чи дія відбулась).',
       examples: [
@@ -219,6 +223,7 @@ export const modals: GrammarCategory = {
     {
       id: 'will-would-habits',
       title: 'will / would for Habits and Characteristic Behaviour',
+      engVidUrl: 'https://www.engvid.com/english-grammar-would-in-the-past/',
       theory:
         'Will + інфінітив використовується не лише для майбутнього, а й для опису типової, характерної поведінки в теперішньому — звички, які повторюються знову і знову (He\'ll sit there for hours). Would + інфінітив — той самий смисл, перенесений у минуле: повторювана дія-звичка (не стан!), яка вже не відбувається (When I was a child, we would visit our grandparents every weekend). Якщо will/would вимовляється з наголосом, речення набуває відтінку роздратування щодо чужої звички (She WILL leave her shoes in the hallway!). На відміну від used to, would не можна вживати зі статичними дієсловами (мати, любити, знати) для опису минулих станів — там потрібно used to.',
       examples: [
