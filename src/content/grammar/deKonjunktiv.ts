@@ -12,7 +12,7 @@ export const deKonjunktiv: GrammarCategory = {
       id: 'konjunktiv-ii-hypothetical',
       title: 'Konjunktiv II — hypothetische und irreale Situationen',
       theory:
-        'Konjunktiv II виражає нереальні або гіпотетичні ситуації в теперішньому чи минулому, а також ввічливі прохання та побажання. У сучасній розмовній німецькій для більшості дієслів він утворюється перифрастично: würde + Infinitiv (Ich würde das nicht machen), а не власною — часто застарілою на слух — формою Konjunktiv II самого дієслова. Виняток становить невелика група дуже вживаних дієслів, що зберігають власні сильні форми Konjunktiv II в побутовому мовленні: sein → wäre, haben → hätte, werden → würde, а також модальні дієслова (мають свої поширені форми, розглянуті в окремій темі Modalverben). Для минулого часу Konjunktiv II утворюється за допомогою hätte/wäre + Partizip II: Ich hätte das gewusst, wenn... (я б знав це, якби...).',
+        'Konjunktiv II виражає нереальні або гіпотетичні ситуації в теперішньому чи минулому, а також ввічливі прохання та побажання. У сучасній розмовній німецькій для більшості дієслів він утворюється перифрастично: `würde + Infinitiv` (`Ich würde das nicht machen`), а не власною — часто застарілою на слух — формою Konjunktiv II самого дієслова. Виняток становить невелика група дуже вживаних дієслів, що зберігають власні сильні форми Konjunktiv II в побутовому мовленні: `sein → wäre`, `haben → hätte`, `werden → würde`, а також модальні дієслова (мають свої поширені форми, розглянуті в окремій темі Modalverben). Для минулого часу Konjunktiv II утворюється за допомогою `hätte/wäre + Partizip II`: `Ich hätte das gewusst, wenn...` (я б знав це, якби...).',
       examples: [
         {
           target: 'Wenn ich Zeit hätte, würde ich dich besuchen.',
@@ -77,7 +77,7 @@ export const deKonjunktiv: GrammarCategory = {
       id: 'konjunktiv-i-reported-speech',
       title: 'Konjunktiv I — indirekte Rede',
       theory:
-        'Konjunktiv I вживається майже виключно для непрямої (переказаної) мови у формальному та журналістському стилі — коли автор передає чужі слова, не підтверджуючи й не заперечуючи їхню правдивість: Er sagte, er sei müde (він сказав, що він втомлений). Утворюється від основи дієслова + закінчення -e/-est/-e/-en/-et/-en (наприклад, sein: ich sei, du seiest, er sei, wir seien, ihr seiet, sie seien). Якщо форма Konjunktiv I збігається з формою Indikativ — а це найчастіше трапляється у множині, — таку неоднозначну форму замінюють на Konjunktiv II, щоб зберегти чіткість переказаної мови. У розмовній і побутовій німецькій Konjunktiv I практично не вживається: люди або цитують пряму мову, або використовують підрядні речення з dass.',
+        'Konjunktiv I вживається майже виключно для непрямої (переказаної) мови у формальному та журналістському стилі — коли автор передає чужі слова, не підтверджуючи й не заперечуючи їхню правдивість: `Er sagte, er sei müde` (він сказав, що він втомлений). Утворюється від основи дієслова + закінчення `-e/-est/-e/-en/-et/-en` (наприклад, sein: `ich sei, du seiest, er sei, wir seien, ihr seiet, sie seien`). Якщо форма Konjunktiv I збігається з формою Indikativ — а це найчастіше трапляється у множині, — таку неоднозначну форму замінюють на Konjunktiv II, щоб зберегти чіткість переказаної мови. У розмовній і побутовій німецькій Konjunktiv I практично не вживається: люди або цитують пряму мову, або використовують підрядні речення з dass.',
       examples: [
         {
           target: 'Der Minister sagte, die Lage sei ernst.',

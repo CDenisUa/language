@@ -12,7 +12,7 @@ export const dePraepositionen: GrammarCategory = {
       id: 'akkusativ-prepositions',
       title: 'Präpositionen mit Akkusativ (durch, für, gegen, ohne, um)',
       theory:
-        'П\'ять прийменників durch (через, крізь), für (для), gegen (проти, об), ohne (без) та um (навколо; о котрій годині) завжди вимагають Akkusativ — без жодних винятків і незалежно від того, йдеться про рух чи статичне положення (на відміну від Wechselpräpositionen, де відмінок залежить від контексту дії). Означений артикль чоловічого роду однини після цих прийменників завжди набуває форми den, а ein → einen, mein → meinen; жіночий, середній рід і множина не змінюються. Ці п\'ять прийменників найпростіше запам\'ятати просто як групу "завжди Akkusativ", і тоді вибір відмінка ніколи не буде проблемою.',
+        'П\'ять прийменників `durch, für, gegen, ohne, um → завжди Akkusativ` (через, для, проти, без, навколо/о котрій годині) — без жодних винятків і незалежно від того, йдеться про рух чи статичне положення (на відміну від Wechselpräpositionen, де відмінок залежить від контексту дії). Означений артикль чоловічого роду однини після цих прийменників завжди набуває форми `der → den`, а `ein → einen`, `mein → meinen`; жіночий, середній рід і множина не змінюються. Ці п\'ять прийменників найпростіше запам\'ятати просто як групу "завжди Akkusativ", і тоді вибір відмінка ніколи не буде проблемою.',
       examples: [
         { target: 'Wir gehen durch den Park.', uk: 'Ми йдемо через парк (durch + Akkusativ).' },
         { target: 'Das Auto fährt gegen den Baum.', uk: 'Машина врізається в дерево (gegen + Akkusativ).' },
@@ -63,7 +63,7 @@ export const dePraepositionen: GrammarCategory = {
       id: 'dativ-prepositions',
       title: 'Präpositionen mit Dativ (aus, bei, mit, nach, seit, von, zu)',
       theory:
-        'Сім прийменників aus (з, звідки), bei (біля, у когось), mit (з, за допомогою), nach (після; до — напрямок для міст і країн), seit (з якогось часу), von (від) та zu (до) завжди вимагають Dativ — без винятків. У щоденному мовленні деякі з них зливаються з означеним артиклем в одне слово: zu + dem → zum, zu + der → zur, bei + dem → beim, von + dem → vom. Ці стягнені форми вживаються значно частіше за повні (zu dem, von dem), тож їх варто одразу запам\'ятовувати як стандартний варіант.',
+        'Сім прийменників `aus, bei, mit, nach, seit, von, zu → завжди Dativ` (з/звідки, біля/у когось, з/за допомогою, після/до, з якогось часу, від, до) — без винятків. У щоденному мовленні деякі з них зливаються з означеним артиклем в одне слово: `zu + dem → zum`, `zu + der → zur`, `bei + dem → beim`, `von + dem → vom`. Ці стягнені форми вживаються значно частіше за повні (zu dem, von dem), тож їх варто одразу запам\'ятовувати як стандартний варіант.',
       examples: [
         { target: 'Ich komme gerade vom Bahnhof.', uk: 'Я щойно з вокзалу (von + dem = vom, Dativ).' },
         { target: 'Wir gehen heute zum Arzt.', uk: 'Ми йдемо сьогодні до лікаря (zu + dem = zum, Dativ).' },
@@ -114,7 +114,7 @@ export const dePraepositionen: GrammarCategory = {
       id: 'genitiv-prepositions',
       title: 'Präpositionen mit Genitiv (während, trotz, wegen, statt)',
       theory:
-        'Прийменники während (протягом), trotz (незважаючи на), wegen (через, з причини) та statt (замість) у формальній та письмовій німецькій вимагають Genitiv: während des Sommers, trotz des Regens, wegen der Prüfung, statt eines Kaffees. У розмовній мові trotz і wegen дедалі частіше вживають з Dativ (wegen dem Regen) — цю тенденцію докладніше розглянуто в темі Genitiv категорії Kasus. Statt і während натомість і в розмовній мові майже завжди лишаються з Genitiv.',
+        'Прийменники `während, trotz, wegen, statt → Genitiv` (протягом, незважаючи на, через/з причини, замість) у формальній та письмовій німецькій: `während des Sommers`, `trotz des Regens`, `wegen der Prüfung`, `statt eines Kaffees`. У розмовній мові trotz і wegen дедалі частіше вживають з Dativ (`wegen dem Regen`) — цю тенденцію докладніше розглянуто в темі Genitiv категорії Kasus. Statt і während натомість і в розмовній мові майже завжди лишаються з Genitiv.',
       examples: [
         { target: 'Während des Unterrichts darf man nicht telefonieren.', uk: 'Під час уроку не можна телефонувати (während + Genitiv).' },
         { target: 'Trotz des schlechten Wetters spielen die Kinder draußen.', uk: 'Незважаючи на погану погоду, діти граються надворі (trotz + Genitiv).' },
@@ -165,7 +165,7 @@ export const dePraepositionen: GrammarCategory = {
       id: 'verb-preposition-combinations',
       title: 'Verben mit festen Präpositionen (warten auf, sich freuen über, denken an ...)',
       theory:
-        'Багато німецьких дієслів утворюють стійку пару з конкретним прийменником, чий відмінок потрібно просто вивчити напам\'ять разом із дієсловом: warten auf + Akkusativ (чекати на), sich freuen über + Akkusativ (радіти з приводу), denken an + Akkusativ (думати про), teilnehmen an + Dativ (брати участь у). Прийменник у таких сполученнях часто не збігається з тим, який очікувано вжити за аналогією з англійською чи українською мовою — наприклад, teilnehmen вживається з an, хоча за змістом хочеться інтуїтивно іншого прийменника. Такі дієслівно-прийменникові пари — одне з найпоширеніших джерел помилок, і їх варто заучувати як нерозривні одиниці, а не перекладати прийменник окремо.',
+        'Багато німецьких дієслів утворюють стійку пару з конкретним прийменником, чий відмінок потрібно просто вивчити напам\'ять разом із дієсловом: `warten auf + Akkusativ` (чекати на), `sich freuen über + Akkusativ` (радіти з приводу), `denken an + Akkusativ` (думати про), `teilnehmen an + Dativ` (брати участь у). Прийменник у таких сполученнях часто не збігається з тим, який очікувано вжити за аналогією з англійською чи українською мовою — наприклад, teilnehmen вживається з an, хоча за змістом хочеться інтуїтивно іншого прийменника. Такі дієслівно-прийменникові пари — одне з найпоширеніших джерел помилок, і їх варто заучувати як нерозривні одиниці, а не перекладати прийменник окремо.',
       examples: [
         { target: 'Ich warte auf den Bus.', uk: 'Я чекаю на автобус (warten auf + Akkusativ).' },
         { target: 'Sie freut sich über das Geschenk.', uk: 'Вона радіє подарунку (sich freuen über + Akkusativ).' },

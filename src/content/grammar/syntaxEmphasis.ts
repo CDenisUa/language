@@ -13,7 +13,7 @@ export const syntaxEmphasis: GrammarCategory = {
       title: 'Inversion for Emphasis (Never have I..., Here comes...)',
       engVidUrl: 'https://www.engvid.com/english-grammar-inversion/',
       theory:
-        'Коли речення починається з негативного чи обмежувального прислівника (Never, Rarely, Seldom, Not only, No sooner, Under no circumstances, Little), порядок слів у головній частині інвертується, як у питанні: допоміжне дієслово виходить перед підметом — "Never have I seen such chaos" (замість "I have never seen"). Це створює формальний, драматичний або літературний ефект і типове для писемного стилю чи ораторської мови. Простіша інверсія трапляється й після прислівників місця чи напрямку (Here, There) з непідметовими займенниками: "Here comes the bus", "There goes our last chance" — тут інверсія лише зі звичайним іменником-підметом, а не з займенником (порівняйте: "Here it comes", без інверсії).',
+        'Коли речення починається з негативного чи обмежувального прислівника (Never, Rarely, Seldom, Not only, No sooner, Under no circumstances, Little), порядок слів у головній частині інвертується, як у питанні: допоміжне дієслово виходить перед підметом — `Never have I seen such chaos` (замість `I have never seen`). Це створює формальний, драматичний або літературний ефект і типове для писемного стилю чи ораторської мови. Простіша інверсія трапляється й після прислівників місця чи напрямку (Here, There) з непідметовими займенниками: `Here comes the bus`, `There goes our last chance` — тут інверсія лише зі звичайним іменником-підметом, а не з займенником (порівняйте: `Here it comes`, без інверсії).',
       examples: [
         { target: 'Never have I seen such a beautiful sunset.', uk: 'Ніколи я не бачив такого красивого заходу сонця (формальна інверсія для емфази).' },
         { target: "No sooner had we left than it started to rain.", uk: 'Щойно ми вийшли, як почався дощ.' },
@@ -69,7 +69,7 @@ export const syntaxEmphasis: GrammarCategory = {
       id: 'cleft-sentences',
       title: 'Cleft Sentences (It is/was ... that, What ... is/was)',
       theory:
-        'Розщеплені речення дозволяють виділити одну конкретну частину інформації, "розбиваючи" просте речення на дві частини. It-cleft: "It was John who broke the vase" підкреслює саме John (а не хтось інший). Wh-cleft (pseudo-cleft): "What I need is a holiday" підкреслює a holiday, виносячи предикат на початок через what-речення. Обидва типи типові, коли треба протиставити щось очікуваному ("It wasn\'t me who forgot the keys — it was you") або підкреслити найважливішу частину повідомлення.',
+        'Розщеплені речення дозволяють виділити одну конкретну частину інформації, "розбиваючи" просте речення на дві частини. It-cleft: `It was John who broke the vase` підкреслює саме John (а не хтось інший). Wh-cleft (pseudo-cleft): `What I need is a holiday` підкреслює a holiday, виносячи предикат на початок через what-речення. Обидва типи типові, коли треба протиставити щось очікуваному (`It wasn\'t me who forgot the keys — it was you`) або підкреслити найважливішу частину повідомлення.',
       examples: [
         { target: "It was Maria who solved the problem, not Tom.", uk: 'Саме Марія розв\'язала проблему, а не Том (it-cleft, наголос на Maria).' },
         { target: "What surprised me most was his honesty.", uk: 'Що мене найбільше здивувало, то це його чесність (wh-cleft, наголос на his honesty).' },
@@ -130,7 +130,7 @@ export const syntaxEmphasis: GrammarCategory = {
       id: 'fronting',
       title: 'Fronting',
       theory:
-        'Fronting — це винесення другорядного члена речення (об\'єкта, додатка, обставини) на початок для емфази чи зв\'язку з попереднім контекстом, без повної граматичної інверсії підмета й дієслова, як буває в класичній інверсії. Наприклад: "A wonderful teacher she turned out to be" (замість "She turned out to be a wonderful teacher") — додаток винесений уперед, а підмет із дієсловом лишаються у звичному порядку. Fronting часто трапляється в розповідній і літературній мові, коли треба плавно перейти від попередньої думки до нової, або підкреслити щось несподіване.',
+        'Fronting — це винесення другорядного члена речення (об\'єкта, додатка, обставини) на початок для емфази чи зв\'язку з попереднім контекстом, без повної граматичної інверсії підмета й дієслова, як буває в класичній інверсії. Наприклад: `A wonderful teacher she turned out to be` (замість `She turned out to be a wonderful teacher`) — додаток винесений уперед, а підмет із дієсловом лишаються у звичному порядку. Fronting часто трапляється в розповідній і літературній мові, коли треба плавно перейти від попередньої думки до нової, або підкреслити щось несподіване.',
       examples: [
         { target: 'Strange, it seemed, that no one had noticed.', uk: 'Дивним здавалося, що ніхто не помітив (комплемент винесено на початок).' },
         { target: 'A great deal of money, he spent on that car.', uk: 'Купу грошей він витратив на ту машину (об\'єкт винесено на початок для наголосу).' },
@@ -191,7 +191,7 @@ export const syntaxEmphasis: GrammarCategory = {
       id: 'questions-general-special-subject',
       title: 'General, Special, and Subject Questions',
       theory:
-        'Загальні (yes/no) питання вимагають допоміжного дієслова перед підметом ("Do you like coffee?"). Спеціальні питання (wh-questions) починаються з питального слова, після якого йде та сама структура з допоміжним дієсловом ("Where do you live?"). Особливий випадок — питання до підмета, де питальне слово (who/what/which) саме є підметом речення: тоді допоміжне do/does/did НЕ додається, а порядок слів лишається як у стверджувальному реченні: "Who called you?" (не "*Who did call you?"), бо саме who виконує дію called.',
+        'Загальні (yes/no) питання вимагають допоміжного дієслова перед підметом (`Do you like coffee?`). Спеціальні питання (wh-questions) починаються з питального слова, після якого йде та сама структура з допоміжним дієсловом (`Where do you live?`). Особливий випадок — питання до підмета, де питальне слово (who/what/which) саме є підметом речення: тоді допоміжне do/does/did НЕ додається, а порядок слів лишається як у стверджувальному реченні: `Who called you?` (не `*Who did call you?`), бо саме who виконує дію called.',
       examples: [
         { target: 'Do you speak Italian?', uk: 'Ти розмовляєш італійською? (загальне питання).' },
         { target: 'Where did you buy that jacket?', uk: 'Де ти купив цю куртку? (спеціальне питання).' },
@@ -248,7 +248,7 @@ export const syntaxEmphasis: GrammarCategory = {
       title: 'Question Tags',
       engVidUrl: 'https://www.engvid.com/english-grammar-tag-questions/',
       theory:
-        'Розділові питання (tags) додаються в кінці речення, щоб підтвердити інформацію чи запросити згоду. Головне правило — протилежна полярність: стверджувальне речення отримує заперечний tag, а заперечне — стверджувальний ("She is nice, isn\'t she?" / "You don\'t smoke, do you?"). Tag використовує те саме допоміжне дієслово, що й головне речення (or does/do/did, якщо в реченні немає допоміжного). Є кілька особливих випадків: "I am" → "aren\'t I?" (не "amn\'t I"), наказовий спосіб → "will you?" ("Close the door, will you?"), пропозиція з Let\'s → "shall we?".',
+        'Розділові питання (tags) додаються в кінці речення, щоб підтвердити інформацію чи запросити згоду. Головне правило — протилежна полярність: стверджувальне речення отримує заперечний tag, а заперечне — стверджувальний (`She is nice, isn\'t she?` / `You don\'t smoke, do you?`). Tag використовує те саме допоміжне дієслово, що й головне речення (or does/do/did, якщо в реченні немає допоміжного). Є кілька особливих випадків: `I am` → `aren\'t I?` (не "amn\'t I"), наказовий спосіб → `will you?` (`Close the door, will you?`), пропозиція з Let\'s → `shall we?`.',
       examples: [
         { target: "You're coming to the party, aren't you?", uk: 'Ти прийдеш на вечірку, чи не так?' },
         { target: "She doesn't like spicy food, does she?", uk: 'Їй не подобається гостра їжа, правда?' },
